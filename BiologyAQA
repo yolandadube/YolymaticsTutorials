@@ -1,0 +1,190 @@
+# biology_checklist_builder.py
+"""
+Creates:
+  • biology_checklist.md – a Markdown file with tick boxes
+  • biology_checklist.csv – a spreadsheet-friendly CSV
+Just run:  python biology_checklist_builder.py
+"""
+
+import csv
+from pathlib import Path
+
+# ── 1. Raw contents copied from the textbook TOC ────────────────────────────────
+toc = """
+B1.1 The world of the microscope
+B1.2 Animal and plant cells
+B1.3 Eukaryotic and prokaryotic cells
+B1.4 Specialisation in animal cells
+B1.5 Specialisation in plant cells
+B1.6 Diffusion
+B1.7 Osmosis
+B1.8 Osmosis in plants
+B1.9 Active transport
+B1.10 Exchanging materials
+B1 Summary questions
+B1 Practice questions
+B2.1 Cell division
+B2.2 Growth and differentiation
+B2.3 Stem cells
+B2.4 Stem cell dilemmas
+B2 Summary questions
+B2 Practice questions
+B3.1 Tissues and organs
+B3.2 The human digestive system
+B3.3 The chemistry of food
+B3.4 Catalysts and enzymes
+B3.5 Factors affecting enzyme action
+B3.6 How the digestive system works
+B3.7 Making digestion efficient
+B3 Summary questions
+B3 Practice questions
+B4.1 The blood
+B4.2 The blood vessels
+B4.3 The heart
+B4.4 Helping the heart
+B4.5 Breathing and gas exchange
+B4.6 Tissues and organs in plants
+B4.7 Transport systems in plants
+B4.8 Evaporation and transpiration
+B4.9 Factors affecting transpiration
+B4 Summary questions
+B4 Practice questions
+B5.1 Health and disease
+B5.2 Pathogens and disease
+B5.3 Growing bacteria in the lab
+B5.4 Preventing bacterial growth
+B5.5 Preventing infections
+B5.6 Viral diseases
+B5.7 Bacterial diseases
+B5.8 Diseases caused by fungi and protists
+B5.9 Human defence responses
+B5.10 More about plant diseases
+B5.11 Plant defence responses
+B5 Summary questions
+B5 Practice questions
+B6.1 Vaccination
+B6.2 Antibiotics and painkillers
+B6.3 Discovering drugs
+B6.4 Developing drugs
+B6.5 Making monoclonal antibodies
+B6.6 Uses of monoclonal antibodies
+B6 Summary questions
+B6 Practice questions
+B7.1 Non-communicable diseases
+B7.2 Cancer
+B7.3 Smoking and the risk of disease
+B7.4 Diet, exercise, and disease
+B7.5 Alcohol and other carcinogens
+B7 Summary questions
+B7 Practice questions
+B8.1 Photosynthesis
+B8.2 The rate of photosynthesis
+B8.3 How plants use glucose
+B8.4 Making the most of photosynthesis
+B8 Summary questions
+B8 Practice questions
+B9.1 Aerobic respiration
+B9.2 The response to exercise
+B9.3 Anaerobic respiration
+B9.4 Metabolism and the liver
+B9 Summary questions
+B9 Practice questions
+B10.1 Principles of homeostasis
+B10.2 The structure and function of the nervous system
+B10.3 Reflex actions
+B10.4 The brain
+B10.5 The eye
+B10.6 Common problems of the eye
+B10 Summary questions
+B10 Practice questions
+B11.1 Principles of hormonal control
+B11.2 The control of blood glucose levels
+B11.3 Treating diabetes
+B11.4 The role of negative feedback
+B11.5 Human reproduction
+B11.6 Hormones and the menstrual cycle
+B11.7 The artificial control of fertility
+B11.8 Infertility treatments
+B11.9 Plant hormones and responses
+B11.10 Using plant hormones
+B11 Summary questions
+B11 Practice questions
+B12.1 Controlling body temperature
+B12.2 Removing waste products
+B12.3 The human kidney
+B12.4 Dialysis - an artificial kidney
+B12.5 Kidney transplants
+B12 Summary questions
+B12 Practice questions
+B13.1 Types of reproduction
+B13.2 Cell division in sexual reproduction
+B13.3 The best of both worlds
+B13.4 DNA and the genome
+B13.5 DNA structure and protein synthesis
+B13.6 Gene expression and mutation
+B13.7 Inheritance in action
+B13.8 More about genetics
+B13.9 Inherited disorders
+B13.10 Screening for genetic disorders
+B13 Summary questions
+B13 Practice questions
+B14.1 Variation
+B14.2 Evolution by natural section
+B14.3 Selective breeding
+B14.4 Genetic engineering
+B14.5 Cloning
+B14.6 Adult cell cloning
+B14.7 Ethics of genetic technologies
+B14 Summary questions
+B14 Practice questions
+B15.1 The history of genetics
+B15.2 Theories of evolution
+B15.3 Accepting Darwin's ideas
+B15.4 Evolution and speciation
+B15.5 Evidence for evolution
+B15.6 Fossils and extinction
+B15.7 More about extinction
+B15.8 Antibiotic resistant bacteria
+B15.9 Classification
+B15.10 New systems of classification
+B15 Summary questions
+B15 Practice questions
+B16.1 The importance of communities
+B16.2 Organisms in their environment
+B16.3 Distribution and abundance
+B16.4 Competition in animals
+B16.5 Competition in plants
+B16.6 Adapt and survive
+B16.7 Adaptation in animals
+B16.8 Adaptations in plants
+B16 Summary questions
+B16 Practice questions
+""".strip().splitlines()
+
+# ── 2. Parse into a (chapter, code, title) list ────────────────────────────────
+records = []
+for line in toc:
+    parts = line.split(maxsplit=1)
+    code = parts[0]
+    title = parts[1]
+    chapter = code.split('.')[0]  # e.g. "B1" from "B1.4" or "B1"
+    records.append((chapter, code, title))
+
+# ── 3. Build Markdown checklist ───────────────────────────────────────────────
+md_lines = ["# GCSE Biology Lesson Checklist\n"]
+current_chapter = None
+for chapter, code, title in records:
+    if chapter != current_chapter:
+        md_lines.append(f"\n## {chapter}\n")
+        current_chapter = chapter
+    md_lines.append(f"- [ ] {code}  {title}")
+Path("biology_checklist.md").write_text("\n".join(md_lines), encoding="utf-8")
+
+# ── 4. Build CSV version (chapter, code, title, done?) ────────────────────────
+with open("biology_checklist.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Chapter", "Code", "Title", "Completed?"])
+    for chapter, code, title in records:
+        writer.writerow([chapter, code, title, ""])
+
+print("✓  biology_checklist.md and biology_checklist.csv created!")
