@@ -264,18 +264,19 @@ class InvoiceGenerator:
         story.append(Paragraph("SERVICE DETAILS", header_style))
         
         service_data = [
-            ['Description', 'Quantity', 'Rate (ZAR)', 'Amount (ZAR)']
+            ['Description', 'Quantity (hours)', 'Rate (ZAR/hour)', 'Amount (ZAR)']
         ]
         
-        for course, lessons in zip(courses, lessons_per_course):
+        for course, hours in zip(courses, lessons_per_course):
             service_data.append([
-                f'{course} Tutoring Sessions',
-                str(lessons),
+                f'{course}',
+                str(hours),
                 f'R {rate_per_lesson:,.2f}',
-                f'R {lessons * rate_per_lesson:,.2f}'
+                f'R {hours * rate_per_lesson:,.2f}'
             ])
         
-        service_table = Table(service_data, colWidths=[3*inch, 1*inch, 1.25*inch, 1.25*inch])
+        # Make Description column narrower and other columns wider and more equal
+        service_table = Table(service_data, colWidths=[2*inch, 2*inch, 1.5*inch, 1.5*inch])
         service_table.setStyle(TableStyle([
             ('BACKGROUND', (0, 0), (-1, 0), colors.darkblue),
             ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
@@ -624,25 +625,34 @@ class InvoiceGenerator:
 if __name__ == "__main__":
     generator = InvoiceGenerator()
 
-    # Dr T Moagi Inc billing info
-    dr_moagi_info = {
-        'name': 'Dr T Moagi Inc',
-        'address_line1': 'Ferncrest Hospital, Suite 4, 2nd floor',
-        'address_line2': 'Tlhabane',
+    # Rosaria Grasso billing info
+    rosaria_grasso_info = {
+        'name': 'Rosaria Grasso',
+        'address_line1': '',
+        'address_line2': '',
         'city': '',
         'country': '',
-        'postal_code': '0309',
-        'email': '',
-        'vat_no': '4700208483'
+        'postal_code': '7441',
+        'email': ''
     }
 
-    # Generate invoice for Mtuma Moagi
+    # Lessons for Bella Grasso
+    lessons = [
+        ("Monday (08/09)", 2),
+        ("Wednesday (10/09)", 2),
+        ("Friday (12/09)", 2),
+        ("Saturday (13/09)", 2),
+        ("Sunday (21/09)", 2),
+        ("Sunday (28/09)", 2),
+    ]
+    total_hours = sum(hours for _, hours in lessons)
+
     result = generator.generate_invoice(
-        student_name="Mtuma Moagi",
-        courses=["Introductory Calculus", "Introductory Statistics"],
-        lessons_per_course=[4, 4],
-        rate_per_lesson=200.00,
-        client_info=dr_moagi_info,
+        student_name="Bella Grasso",
+        courses=["Discrete Mathematics"],
+        lessons_per_course=[total_hours],
+        rate_per_lesson=350.00,
+        client_info=rosaria_grasso_info,
         use_tti_default=False
     )
 
