@@ -1,0 +1,11 @@
+\beamer@sectionintoc {1}{Foundations}{3}{0}{1}
+\beamer@sectionintoc {2}{Scaling}{8}{0}{2}
+\beamer@sectionintoc {3}{Reflections}{11}{0}{3}
+\beamer@sectionintoc {4}{Projections}{14}{0}{4}
+\beamer@sectionintoc {5}{Shearing}{17}{0}{5}
+\beamer@sectionintoc {6}{Rotation}{19}{0}{6}
+\beamer@sectionintoc {7}{Determining Transformation Matrices}{23}{0}{7}
+\beamer@sectionintoc {8}{Transformation of Lines and Planes}{28}{0}{8}
+\beamer@sectionintoc {9}{Invariant Lines and Fixed Points}{33}{0}{9}
+\beamer@sectionintoc {10}{Practice Problems}{40}{0}{10}
+\beamer@sectionintoc {11}{Summary}{108}{0}{11}
