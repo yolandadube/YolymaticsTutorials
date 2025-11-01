@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Z-Tests}{2}{0}{1}
+\beamer@sectionintoc {2}{T-Tests}{21}{0}{2}
+\beamer@sectionintoc {3}{Mean Comparisons (Two-Sample Tests)}{40}{0}{3}
+\beamer@sectionintoc {4}{Mixed Practice}{65}{0}{4}

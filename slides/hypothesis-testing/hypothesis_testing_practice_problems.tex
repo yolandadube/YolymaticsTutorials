@@ -1,0 +1,857 @@
+% Yolymatics Tutorials — Hypothesis Testing Practice Problems
+% Build with: pdflatex hypothesis_testing_practice_problems.tex
+
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+
+% Core packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc,shapes,arrows.meta,decorations.pathreplacing}
+\usepackage{hyperref}
+
+% Professional brand colors
+\definecolor{YolyPrimary}{HTML}{1E3A8A}   % deep professional blue
+\definecolor{YolyAccent}{HTML}{F59E0B}    % warm amber
+\definecolor{YolyDark}{HTML}{0F172A}      % slate dark
+\definecolor{YolyLight}{HTML}{F8FAFC}     % very light gray
+\definecolor{YolyMid}{HTML}{475569}       % mid slate
+\definecolor{YolySecondary}{HTML}{3B82F6} % bright blue
+
+% Beamer theme and professional styling
+\mode<presentation>{
+  \usetheme{Madrid}
+  \usecolortheme{default}
+  \setbeamertemplate{navigation symbols}{}
+  
+  % Main structure colors
+  \setbeamercolor{structure}{fg=YolyPrimary}
+  \setbeamercolor{title}{fg=white,bg=YolyPrimary}
+  \setbeamercolor{frametitle}{fg=YolyDark,bg=YolyLight}
+  
+  % Block styling
+  \setbeamercolor{block title}{fg=white,bg=YolyPrimary}
+  \setbeamercolor{block body}{fg=YolyDark,bg=YolyLight}
+  \setbeamercolor{block title example}{fg=white,bg=YolyAccent}
+  \setbeamercolor{block body example}{fg=YolyDark,bg=YolyLight}
+  
+  % Item colors
+  \setbeamercolor{itemize item}{fg=YolyAccent}
+  \setbeamercolor{itemize subitem}{fg=YolySecondary}
+  \setbeamercolor{enumerate item}{fg=YolyAccent}
+  
+  % Alert color
+  \setbeamercolor{alerted text}{fg=YolyAccent}
+  
+  % Frame title template
+  \setbeamertemplate{frametitle}{
+    \vspace{0.3cm}
+    \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm,dp=0.3cm,leftskip=0.5cm]{frametitle}
+      \usebeamerfont{frametitle}\insertframetitle
+      \ifx\insertframesubtitle\@empty
+      \else
+        \\{\small\usebeamerfont{framesubtitle}\insertframesubtitle}
+      \fi
+    \end{beamercolorbox}
+    \vspace{-0.15cm}
+    \textcolor{YolyAccent}{\rule{\paperwidth}{2pt}}
+  }
+  
+  % Rounded blocks
+  \setbeamertemplate{blocks}[rounded][shadow=false]
+}
+
+% Custom footline
+\setbeamertemplate{footline}{%
+  \leavevmode
+  \hbox{%
+  \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.8ex,dp=1.2ex,left]{frametitle}%
+    \hspace*{1.5ex}\textbf{\textcolor{YolyPrimary}{Yolymatics Tutorials}}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.8ex,dp=1.2ex,center]{frametitle}%
+    \textcolor{YolyMid}{\href{mailto:yolymatics007@gmail.com}{yolymatics007@gmail.com}}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.8ex,dp=1.2ex,right]{frametitle}%
+    \textcolor{YolyMid}{\insertframenumber{} / \inserttotalframenumber}\hspace*{1.5ex}
+  \end{beamercolorbox}}
+  \vskip0pt}
+
+% Professional section title page
+\AtBeginSection[]{
+  \begin{frame}[plain,noframenumbering]
+    \vfill
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[YolyPrimary!10] (current page.north west) rectangle (current page.south east);
+      \fill[YolyPrimary] (current page.north west) rectangle ($(current page.north east)+(0,-0.5cm)$);
+      \fill[YolyAccent] (current page.north west) rectangle ($(current page.north east)+(0,-0.3cm)$);
+    \end{tikzpicture}
+    \vspace*{4cm}
+    \begin{center}
+      {\usebeamerfont{title}\textcolor{YolyPrimary}{\LARGE\insertsection}}
+      \vspace{0.5cm}
+      
+      \textcolor{YolyAccent}{\rule{0.6\linewidth}{3pt}}
+    \end{center}
+    \vfill
+  \end{frame}
+}
+
+% Title and author
+\title{\textbf{Hypothesis Testing}}
+\subtitle{Practice Problems}
+\author{\textbf{Yolymatics Tutorials}}
+\date{}
+
+\begin{document}
+
+% Title slide
+\begin{frame}[plain,noframenumbering]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[YolyPrimary] (current page.north west) rectangle (current page.south east);
+    \fill[YolyAccent,opacity=0.2] (current page.north east) circle (5cm);
+    \fill[YolySecondary,opacity=0.15] ($(current page.south west)+(4cm,4cm)$) circle (4cm);
+  \end{tikzpicture}
+  \vfill
+  \begin{center}
+    {\color{white}\Huge\textbf{Hypothesis Testing}}\\[0.5cm]
+    {\color{YolyLight}\LARGE Practice Problems}\\[1.5cm]
+    {\color{YolyAccent}\Large Real-World Applications}\\[0.5cm]
+    {\color{YolyLight}\large z-tests $\bullet$ t-tests $\bullet$ Mean Comparisons}\\[2cm]
+    {\color{YolyLight}\Large\textbf{Yolymatics Tutorials}}\\[0.3cm]
+    {\color{YolyLight}\large\href{mailto:yolymatics007@gmail.com}{yolymatics007@gmail.com}}
+  \end{center}
+  \vfill
+\end{frame}
+
+\section{Z-Tests}
+
+\begin{frame}{Problem 1: Quality Control — Battery Life}
+  \begin{block}{Scenario}
+    A battery manufacturer claims their AA batteries last 50 hours on average. 
+    A quality control inspector tests 100 batteries and finds a mean life of 48.5 hours.
+    The population standard deviation is known to be $\sigma = 6$ hours.
+    
+    \vspace{0.5em}
+    At the 5\% significance level, test whether the actual mean battery life is less than claimed.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item State $H_0$ and $H_a$
+    \item Calculate the test statistic
+    \item Find the critical value or p-value
+    \item Make your decision
+    \item Write a conclusion in context
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 1: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 1: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 2: Healthcare — Weight Loss Program}
+  \begin{block}{Scenario}
+    A weight loss clinic claims their program results in an average weight loss of 15 pounds 
+    over 3 months. A researcher samples 80 participants and finds they lost an average of 
+    16.2 pounds. The population standard deviation is $\sigma = 5.5$ pounds.
+    
+    \vspace{0.5em}
+    At the 1\% significance level, test if the actual mean weight loss differs from 15 pounds.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item State $H_0$ and $H_a$ (two-tailed test)
+    \item Calculate the test statistic
+    \item Find the critical values or p-value
+    \item Make your decision
+    \item Interpret in context
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 2: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 2: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 3: Education — Student Performance}
+  \begin{block}{Scenario}
+    The national average score on a standardized math test is 520 with a standard deviation 
+    of 95. A new teaching method is implemented in a school district. After one year, 
+    150 students take the test and achieve a mean score of 542.
+    
+    \vspace{0.5em}
+    At the 5\% significance level, does the new teaching method improve test scores?
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Identify why this is a z-test
+    \item State hypotheses
+    \item Calculate z-statistic
+    \item Find p-value
+    \item Conclusion
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 3: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 3: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 4: Business — Customer Satisfaction}
+  \begin{block}{Scenario}
+    A retail chain's customer satisfaction score has historically averaged 72 (out of 100) 
+    with $\sigma = 12$. After implementing a new customer service training program, 
+    they survey 200 customers and get a mean score of 74.8.
+    
+    \vspace{0.5em}
+    Test at $\alpha = 0.10$ whether satisfaction has increased.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Set up one-tailed test
+    \item Compute test statistic
+    \item Determine critical region
+    \item Decision and interpretation
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 4: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 4: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 5: Manufacturing — Product Dimensions}
+  \begin{block}{Scenario}
+    A factory produces metal rods that should be 10 cm long. The production process has 
+    a known standard deviation of 0.15 cm. A quality inspector measures 64 rods and finds 
+    a mean length of 10.04 cm.
+    
+    \vspace{0.5em}
+    At the 5\% level, test if the production process is meeting the 10 cm specification.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Choose appropriate hypotheses (two-tailed)
+    \item Calculate z-statistic
+    \item Find rejection region
+    \item Make decision
+    \item What should the factory do?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 5: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 5: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 6: Environmental Science — Water Quality}
+  \begin{block}{Scenario}
+    Safe drinking water should have a pH of 7.0. Historical data shows water pH in a region 
+    has $\sigma = 0.4$. After industrial development, 100 water samples are tested with a 
+    mean pH of 6.85.
+    
+    \vspace{0.5em}
+    At the 1\% significance level, test if the water pH has decreased from 7.0.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item State hypotheses
+    \item Compute z-statistic
+    \item Find p-value
+    \item Decision at $\alpha = 0.01$
+    \item Practical interpretation
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 6: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 6: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\section{T-Tests}
+
+\begin{frame}{Problem 7: Medical — Blood Pressure Medication}
+  \begin{block}{Scenario}
+    A pharmaceutical company tests a new blood pressure medication on 25 patients. 
+    Before treatment, patients had an average systolic BP of 145 mmHg. After 3 months, 
+    the mean is 138 mmHg with a sample standard deviation of 12 mmHg.
+    
+    \vspace{0.5em}
+    At the 5\% level, test if the medication significantly reduces blood pressure.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Explain why this is a t-test (not z-test)
+    \item State $H_0$ and $H_a$
+    \item Calculate t-statistic
+    \item Find critical value (df = 24)
+    \item Conclusion
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 7: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 7: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 8: Agriculture — Crop Yield}
+  \begin{block}{Scenario}
+    A farmer claims that using a new fertilizer increases corn yield from the historical 
+    average of 180 bushels per acre. He tests it on 16 plots and gets a mean of 192 bushels 
+    with sample standard deviation $s = 22$ bushels.
+    
+    \vspace{0.5em}
+    At the 5\% significance level, test the farmer's claim.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Set up one-tailed test
+    \item Calculate t-statistic
+    \item Find p-value or critical value (df = 15)
+    \item Decision
+    \item Is the fertilizer effective?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 8: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 8: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 9: Psychology — Sleep Study}
+  \begin{block}{Scenario}
+    Adults typically sleep 7 hours per night. A psychologist suspects college students 
+    sleep less. She surveys 30 students and finds they sleep an average of 6.2 hours with 
+    $s = 1.5$ hours.
+    
+    \vspace{0.5em}
+    Test at the 1\% level whether college students sleep significantly less than 7 hours.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Hypotheses for one-tailed test
+    \item Compute t-statistic
+    \item Find critical value (df = 29) at $\alpha = 0.01$
+    \item Make decision
+    \item Interpret for the psychologist
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 9: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 9: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 10: Finance — Investment Returns}
+  \begin{block}{Scenario}
+    An investment advisor claims a portfolio will generate 8\% annual returns. 
+    You analyze 12 years of data and find a mean return of 6.5\% with sample 
+    standard deviation 3.2\%.
+    
+    \vspace{0.5em}
+    At the 5\% level, test if the actual return is different from 8\%.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Two-tailed hypotheses
+    \item Calculate t-statistic
+    \item Find critical values (df = 11)
+    \item Decision
+    \item Should you trust the advisor's claim?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 10: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 10: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 11: Education — Reading Speed}
+  \begin{block}{Scenario}
+    A reading program claims to increase reading speed from an average of 250 words per minute. 
+    After completing the program, 20 students are tested with mean speed 275 wpm and $s = 45$ wpm.
+    
+    \vspace{0.5em}
+    At the 10\% level, test if the program increases reading speed.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item State hypotheses
+    \item Calculate t-statistic
+    \item Determine p-value or critical value (df = 19)
+    \item Decision at $\alpha = 0.10$
+    \item Program effectiveness?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 11: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 11: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 12: Retail — Store Foot Traffic}
+  \begin{block}{Scenario}
+    A store typically has 500 customers per day. After a renovation, they track daily 
+    customer counts for 18 days: mean = 535, $s = 68$ customers.
+    
+    \vspace{0.5em}
+    Test at the 5\% level if foot traffic has increased.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Explain why t-test is appropriate
+    \item Set up test (one-tailed)
+    \item Calculate t-statistic
+    \item Find critical value (df = 17)
+    \item Was renovation successful?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 12: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 12: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\section{Mean Comparisons (Two-Sample Tests)}
+
+\begin{frame}{Problem 13: Education — Teaching Methods Comparison}
+  \begin{block}{Scenario}
+    Two teaching methods are compared. Method A is used with 35 students (mean score = 78, $s_1 = 12$). 
+    Method B is used with 40 students (mean score = 82, $s_2 = 10$).
+    
+    \vspace{0.5em}
+    At the 5\% level, test if there's a significant difference between the methods.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item State $H_0: \mu_1 = \mu_2$ vs $H_a: \mu_1 \neq \mu_2$
+    \item Calculate pooled standard deviation
+    \item Compute t-statistic for two samples
+    \item Find critical value
+    \item Which method is better?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 13: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 13: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 14: Healthcare — Drug Comparison}
+  \begin{block}{Scenario}
+    Drug A (n=50): reduces pain score by mean of 4.2 points, $s_1 = 1.8$.
+    Drug B (n=45): reduces pain score by mean of 3.5 points, $s_2 = 1.5$.
+    
+    \vspace{0.5em}
+    Test at the 1\% level if Drug A is more effective than Drug B.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item One-tailed hypotheses
+    \item Calculate two-sample t-statistic
+    \item Determine degrees of freedom
+    \item Find critical value at $\alpha = 0.01$
+    \item Decision and recommendation
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 14: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 14: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 15: Business — Marketing Campaign}
+  \begin{block}{Scenario}
+    Company tests two ad campaigns. Campaign 1 reaches 60 people with mean engagement 
+    time 45 seconds ($s_1 = 12$). Campaign 2 reaches 55 people with mean 52 seconds ($s_2 = 15$).
+    
+    \vspace{0.5em}
+    At the 5\% level, test if Campaign 2 generates more engagement.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Set up appropriate test
+    \item Calculate test statistic
+    \item Find p-value or critical value
+    \item Decision
+    \item Which campaign should they use?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 15: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 15: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 16: Sports Science — Training Programs}
+  \begin{block}{Scenario}
+    Program A: 28 athletes improve 100m sprint time by mean 0.8 sec ($s_1 = 0.3$).
+    Program B: 32 athletes improve by mean 0.6 sec ($s_2 = 0.25$).
+    
+    \vspace{0.5em}
+    Test at 5\% level if there's a difference in program effectiveness.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Two-tailed test setup
+    \item Compute pooled variance
+    \item Calculate t-statistic
+    \item Degrees of freedom and critical values
+    \item Conclusion
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 16: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 16: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 17: Manufacturing — Assembly Lines}
+  \begin{block}{Scenario}
+    Line A: 40 products made with mean time 15.2 min ($s_1 = 2.1$).
+    Line B: 38 products made with mean time 14.5 min ($s_2 = 2.4$).
+    
+    \vspace{0.5em}
+    At 10\% level, test if Line B is faster than Line A.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item One-tailed hypotheses
+    \item Calculate test statistic
+    \item Find critical value at $\alpha = 0.10$
+    \item Make decision
+    \item Should they switch to Line B?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 17: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 17: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 18: Environmental — Pollution Levels}
+  \begin{block}{Scenario}
+    City A (n=25): mean air quality index 85, $s_1 = 18$.
+    City B (n=30): mean air quality index 92, $s_2 = 20$.
+    
+    \vspace{0.5em}
+    Test at 5\% level if there's a significant difference in air quality between cities.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item State hypotheses
+    \item Two-sample t-test calculation
+    \item Determine critical region
+    \item Decision
+    \item Interpretation
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 18: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 18: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 19: Technology — Battery Life Comparison}
+  \begin{block}{Scenario}
+    Brand X batteries (n=50): mean life 42 hours, $s_1 = 6$.
+    Brand Y batteries (n=48): mean life 45 hours, $s_2 = 7$.
+    
+    \vspace{0.5em}
+    At 1\% level, test if Brand Y lasts significantly longer.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item One-tailed test setup
+    \item Calculate pooled standard error
+    \item Compute t-statistic
+    \item Critical value and decision
+    \item Recommendation
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 19: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 19: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 20: Retail — Customer Spending}
+  \begin{block}{Scenario}
+    Store location A: 65 customers spend mean \$48 ($s_1 = 12$).
+    Store location B: 58 customers spend mean \$52 ($s_2 = 15$).
+    
+    \vspace{0.5em}
+    Test at 5\% level if spending differs between locations.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Two-tailed hypotheses
+    \item Calculate test statistic
+    \item Find p-value or critical values
+    \item Decision
+    \item Business implications
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 20: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 20: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\section{Mixed Practice}
+
+\begin{frame}{Problem 21: Comprehensive — Restaurant Wait Times}
+  \begin{block}{Scenario}
+    A restaurant chain advertises average wait time of 20 minutes. Regional manager 
+    samples 45 customers: mean = 22.5 min, $s = 8$ min.
+    
+    \vspace{0.5em}
+    Also, they compare two locations: Location 1 (n=30, mean=23, $s_1=7$) vs 
+    Location 2 (n=35, mean=21, $s_2=9$).
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Test if actual wait time exceeds 20 min (use t-test, $\alpha=0.05$)
+    \item Compare the two locations (two-sample test, $\alpha=0.05$)
+    \item Write recommendations
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 21: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 21: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 21: Workspace (continued 2)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 22: Comprehensive — Salary Analysis}
+  \begin{block}{Scenario}
+    National average salary for a position is \$55,000 ($\sigma = \$8,000$). 
+    Company A surveys 100 employees: mean = \$57,200.
+    
+    \vspace{0.5em}
+    Compare Company A (above data) with Company B: 80 employees, mean = \$54,500, 
+    $s_2 = \$7,500$.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Test if Company A pays above national average (z-test, $\alpha=0.01$)
+    \item Compare salaries between companies (appropriate test, $\alpha=0.05$)
+    \item Interpret results
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 22: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 22: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 22: Workspace (continued 2)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 23: Real-World — Clinical Trial}
+  \begin{block}{Scenario}
+    A new therapy is tested. Control group (n=42): improvement score mean 15 ($s_1=5$).
+    Treatment group (n=38): improvement score mean 19 ($s_2=6$).
+    
+    \vspace{0.5em}
+    Additionally, compare treatment results to historical standard of 16 points.
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Compare treatment vs control groups ($\alpha=0.05$)
+    \item Test treatment group vs historical standard ($\alpha=0.05$)
+    \item Is the new therapy effective?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 23: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 23: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 23: Workspace (continued 2)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 24: Real-World — Website Performance}
+  \begin{block}{Scenario}
+    Website should load in under 3 seconds. Test 200 page loads: mean = 3.2 sec, $\sigma = 0.8$ sec.
+    
+    \vspace{0.5em}
+    After optimization: Design A (n=50, mean=2.7, $s_1=0.6$) vs Design B (n=55, mean=2.5, $s_2=0.7$).
+  \end{block}
+  
+  \textbf{Tasks:}
+  \begin{enumerate}
+    \item Test if current site exceeds 3 sec (z-test, $\alpha=0.01$)
+    \item Compare optimized designs ($\alpha=0.05$)
+    \item Which design should they implement?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 24: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 24: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 24: Workspace (continued 2)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}{Problem 25: Challenge — Complete Analysis}
+  \begin{block}{Scenario}
+    A company wants to analyze employee productivity before and after a new policy.
+    
+    \textbf{Before:} Historical data shows mean 100 units/day, $\sigma = 15$ (large dataset).
+    
+    \textbf{After (small sample):} 20 employees measured: mean 108, $s = 18$.
+    
+    \textbf{Departments:} Dept A (n=25, mean=110, $s_1=16$) vs Dept B (n=22, mean=105, $s_2=20$).
+  \end{block}
+  
+  \textbf{Complete analysis:}
+  \begin{enumerate}
+    \item Test if productivity increased overall
+    \item Compare departments
+    \item Write executive summary
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]{Problem 25: Workspace}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 25: Workspace (continued)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 25: Workspace (continued 2)}
+  \vspace{8cm}
+\end{frame}
+
+\begin{frame}[plain]{Problem 25: Workspace (continued 3)}
+  \vspace{8cm}
+\end{frame}
+
+% Final slide
+\begin{frame}[plain,noframenumbering]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[YolyPrimary] (current page.north west) rectangle (current page.south east);
+    \fill[YolyAccent,opacity=0.2] (current page.north east) circle (4cm);
+    \fill[YolySecondary,opacity=0.15] ($(current page.south west)+(3cm,3cm)$) circle (3cm);
+  \end{tikzpicture}
+  \vfill
+  \begin{center}
+    {\color{white}\Huge\textbf{Great Work!}}\\[1cm]
+    {\color{YolyLight}\LARGE\textbf{Yolymatics Tutorials}}\\[0.5cm]
+    {\color{YolyLight}\Large\href{mailto:yolymatics007@gmail.com}{yolymatics007@gmail.com}}\\[1.5cm]
+    {\color{YolyAccent}\Large Keep testing those hypotheses!}
+  \end{center}
+  \vfill
+\end{frame}
+
+\end{document}

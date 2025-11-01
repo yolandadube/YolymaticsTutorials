@@ -1,0 +1,965 @@
+% Yolymatics Tutorials — Analysis Comprehensive Worksheet
+% Build with: pdflatex analysis_comprehensive_worksheet.tex
+
+\documentclass[11pt,letterpaper]{article}
+
+% Core packages
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+% Professional brand colors
+\definecolor{YolyPrimary}{HTML}{1E3A8A}   % deep professional blue
+\definecolor{YolyAccent}{HTML}{F59E0B}    % warm amber
+\definecolor{YolyDark}{HTML}{0F172A}      % slate dark
+\definecolor{YolyLight}{HTML}{F8FAFC}     % very light gray
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{YolyPrimary}{\textbf{Yolymatics Tutorials}}}
+\fancyhead[R]{\textcolor{YolyDark}{Analysis Comprehensive Worksheet}}
+\fancyfoot[C]{\textcolor{YolyDark}{\thepage}}
+\fancyfoot[R]{\textcolor{YolyAccent}{\href{mailto:yolymatics007@gmail.com}{yolymatics007@gmail.com}}}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{YolyAccent}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{YolyPrimary}\leaders\hrule height \footrulewidth\hfill}}
+
+% Custom tcolorbox styles
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{sectionbox}[1]{
+  colback=YolyPrimary!5,
+  colframe=YolyPrimary,
+  fonttitle=\bfseries\large,
+  title=#1,
+  boxrule=2pt,
+  arc=3mm,
+  breakable
+}
+
+\newtcolorbox{problembox}[1]{
+  colback=white,
+  colframe=YolyAccent,
+  fonttitle=\bfseries,
+  title=#1,
+  boxrule=1.5pt,
+  arc=2mm,
+  breakable
+}
+
+% Workspace command
+\newcommand{\workspace}[1]{
+  \vspace{#1}
+  \begin{center}
+    \textcolor{YolyLight}{\rule{0.9\textwidth}{0.5pt}}
+  \end{center}
+}
+
+% Custom commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\dx}{\,dx}
+\newcommand{\dy}{\,dy}
+\newcommand{\dt}{\,dt}
+
+\title{
+  \textcolor{YolyPrimary}{\Huge\textbf{Analysis}}\\
+  \textcolor{YolyAccent}{\Large Comprehensive Worksheet}\\[0.5cm]
+  \textcolor{YolyDark}{Improper Integrals, Series, and Differential Equations}
+}
+\author{\textcolor{YolyPrimary}{\textbf{Yolymatics Tutorials}}}
+\date{\textcolor{YolyDark}{\today}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\vspace{1cm}
+\begin{center}
+  \begin{tcolorbox}[colback=YolyLight,colframe=YolyPrimary,width=0.8\textwidth,arc=3mm]
+    \centering
+    \textcolor{YolyDark}{\textbf{Student Name:} \underline{\hspace{6cm}}}\\[0.3cm]
+    \textcolor{YolyDark}{\textbf{Date:} \underline{\hspace{6cm}}}
+  \end{tcolorbox}
+\end{center}
+
+\vspace{0.5cm}
+\begin{center}
+  \textcolor{YolyDark}{\textit{Show all work clearly. Use additional paper if needed.}}
+\end{center}
+
+\newpage
+
+% ===========================
+% SECTION 1: IMPROPER INTEGRALS
+% ===========================
+\begin{sectionbox}{Section 7.8 | Improper Integrals}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 1: Type I — Infinite interval}
+Determine whether the following improper integrals converge or diverge. If convergent, evaluate.
+
+\textbf{(a)} $\displaystyle \int_1^\infty \frac{1}{x^2} \dx$
+
+\workspace{4cm}
+
+\textbf{(b)} $\displaystyle \int_0^\infty e^{-3x} \dx$
+
+\workspace{4cm}
+
+\textbf{(c)} $\displaystyle \int_{-\infty}^0 \frac{1}{1+x^2} \dx$
+
+\workspace{4cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 2: Type II — Discontinuous integrand}
+Evaluate the following improper integrals or show that they diverge.
+
+\textbf{(a)} $\displaystyle \int_0^1 \frac{1}{\sqrt{x}} \dx$
+
+\workspace{5cm}
+
+\textbf{(b)} $\displaystyle \int_0^3 \frac{1}{(x-1)^{2/3}} \dx$
+
+\workspace{5cm}
+
+\textbf{(c)} $\displaystyle \int_{-1}^1 \frac{1}{x^2} \dx$
+
+\workspace{5cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 3: Comparison test for improper integrals}
+Use the comparison test to determine whether the integral converges or diverges.
+
+\textbf{(a)} $\displaystyle \int_1^\infty \frac{1+\sin^2 x}{x^2} \dx$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \int_2^\infty \frac{1}{\sqrt{x^3-1}} \dx$
+
+\workspace{6cm}
+\end{problembox}
+
+\begin{problembox}{Problem 4: Challenge problem}
+Find the value of $p$ for which the integral $\displaystyle \int_e^\infty \frac{1}{x(\ln x)^p} \dx$ converges.
+
+\workspace{6cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 2: BETA AND GAMMA FUNCTIONS
+% ===========================
+\begin{sectionbox}{Beta and Gamma Functions}
+\vspace{0.3cm}
+
+\textbf{Recall:}
+\begin{itemize}
+  \item Gamma function: $\Gamma(n) = \int_0^\infty x^{n-1}e^{-x} \dx$, with $\Gamma(n+1) = n\Gamma(n)$ and $\Gamma(n+1) = n!$ for $n \in \N$
+  \item Beta function: $B(m,n) = \int_0^1 x^{m-1}(1-x)^{n-1} \dx = \frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}$
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{problembox}{Problem 5: Gamma function properties}
+\textbf{(a)} Show that $\Gamma(1) = 1$ and find $\Gamma(5)$.
+
+\workspace{5cm}
+
+\textbf{(b)} Prove that $\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$ by evaluating $\displaystyle \int_0^\infty x^{-1/2}e^{-x} \dx$.
+
+\workspace{6cm}
+
+\textbf{(c)} Evaluate $\Gamma\left(\frac{7}{2}\right)$.
+
+\workspace{4cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 6: Beta function evaluation}
+\textbf{(a)} Evaluate $B(3,4)$ using the definition.
+
+\workspace{5cm}
+
+\textbf{(b)} Verify your answer using the relationship $B(m,n) = \frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}$.
+
+\workspace{5cm}
+
+\textbf{(c)} Use the beta function to evaluate $\displaystyle \int_0^1 x^5(1-x)^3 \dx$.
+
+\workspace{5cm}
+\end{problembox}
+
+\begin{problembox}{Problem 7: Applications}
+Express the following integrals in terms of gamma or beta functions, then evaluate:
+
+\textbf{(a)} $\displaystyle \int_0^\infty x^4 e^{-x} \dx$
+
+\workspace{4cm}
+
+\textbf{(b)} $\displaystyle \int_0^{\pi/2} \sin^3\theta \cos^5\theta \, d\theta$ \quad (Hint: Use substitution $x = \sin^2\theta$)
+
+\workspace{6cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 3: SEQUENCES
+% ===========================
+\begin{sectionbox}{Section 11.1 | Sequences}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 8: Finding limits of sequences}
+Find the limit of each sequence or show that it diverges.
+
+\textbf{(a)} $a_n = \frac{3n^2 + 5n}{2n^2 - 1}$
+
+\workspace{4cm}
+
+\textbf{(b)} $a_n = \frac{n^2}{e^n}$
+
+\workspace{5cm}
+
+\textbf{(c)} $a_n = \frac{\ln n}{n}$
+
+\workspace{4cm}
+
+\textbf{(d)} $a_n = \left(1 + \frac{2}{n}\right)^n$
+
+\workspace{5cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 9: Monotonicity and boundedness}
+For the sequence $a_n = \frac{n}{n+1}$:
+
+\textbf{(a)} Prove that the sequence is increasing.
+
+\workspace{5cm}
+
+\textbf{(b)} Prove that the sequence is bounded above by 1.
+
+\workspace{4cm}
+
+\textbf{(c)} Find $\lim_{n\to\infty} a_n$.
+
+\workspace{3cm}
+\end{problembox}
+
+\begin{problembox}{Problem 10: Recursive sequences}
+Consider the sequence defined by $a_1 = 1$ and $a_{n+1} = \sqrt{2 + a_n}$ for $n \geq 1$.
+
+\textbf{(a)} Calculate $a_2, a_3, a_4, a_5$.
+
+\workspace{4cm}
+
+\textbf{(b)} Prove that the sequence is increasing and bounded above by 2.
+
+\workspace{6cm}
+
+\textbf{(c)} Find the limit of the sequence.
+
+\workspace{5cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 4: SERIES
+% ===========================
+\begin{sectionbox}{Section 11.2 | Series}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 11: Geometric series}
+Determine whether each geometric series converges or diverges. If it converges, find the sum.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \left(\frac{2}{3}\right)^n$
+
+\workspace{4cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=0}^\infty \frac{3^n}{4^{n-1}}$
+
+\workspace{5cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty (-1)^n \left(\frac{5}{4}\right)^n$
+
+\workspace{4cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 12: Telescoping series}
+Find the sum of the series by writing out several terms and identifying the pattern.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{1}{n(n+1)}$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \left(\frac{1}{\sqrt{n}} - \frac{1}{\sqrt{n+1}}\right)$
+
+\workspace{6cm}
+\end{problembox}
+
+\begin{problembox}{Problem 13: Divergence test}
+Use the divergence test to show that the following series diverge.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{n^2}{n^2+1}$
+
+\workspace{4cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{n+1}{2n+1}$
+
+\workspace{4cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 5: INTEGRAL TEST
+% ===========================
+\begin{sectionbox}{Section 11.3 | Integral Test}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 14: Using the integral test}
+Use the integral test to determine whether the series converges or diverges.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{1}{n^3}$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{n}{n^2+1}$
+
+\workspace{6cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=2}^\infty \frac{1}{n\ln n}$
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 15: The $p$-series}
+\textbf{(a)} State the $p$-series test and explain when a $p$-series converges.
+
+\workspace{3cm}
+
+\textbf{(b)} Determine convergence or divergence: $\displaystyle \sum_{n=1}^\infty \frac{1}{n^{3/2}}$
+
+\workspace{3cm}
+
+\textbf{(c)} For what values of $p$ does $\displaystyle \sum_{n=1}^\infty \frac{1}{n^p}$ converge?
+
+\workspace{3cm}
+\end{problembox}
+
+\begin{problembox}{Problem 16: Estimating sums}
+Consider the series $\displaystyle \sum_{n=1}^\infty \frac{1}{n^4}$.
+
+\textbf{(a)} Use the integral test remainder estimate to find bounds for the error if we approximate the sum by $S_{10}$ (sum of first 10 terms).
+
+\workspace{6cm}
+
+\textbf{(b)} How many terms are needed to ensure the error is less than 0.0001?
+
+\workspace{5cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 6: COMPARISON TEST
+% ===========================
+\begin{sectionbox}{Section 11.4 | Comparison Test}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 17: Direct comparison test}
+Use the direct comparison test to determine whether the series converges or diverges.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{1}{2^n + n}$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{n+1}{n^3 - n}$
+
+\workspace{6cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty \frac{\sin^2 n}{n^2}$
+
+\workspace{6cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 18: Limit comparison test}
+Use the limit comparison test to determine convergence or divergence.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{2n^2 + 3n}{5n^4 + n^2 - 1}$
+
+\workspace{7cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{\sqrt{n+1}}{n^2}$
+
+\workspace{7cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty \frac{1}{\sqrt{n^3 + 2n}}$
+
+\workspace{7cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 7: ALTERNATING SERIES
+% ===========================
+\begin{sectionbox}{Section 11.5 | Alternating Series Test and Absolute Convergence}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 19: Alternating series test}
+Determine whether the alternating series converges or diverges.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty (-1)^{n+1} \frac{1}{n}$ (alternating harmonic series)
+
+\workspace{5cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty (-1)^n \frac{n}{n^2+1}$
+
+\workspace{6cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty (-1)^{n+1} \frac{n^2}{n^3+1}$
+
+\workspace{6cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 20: Absolute vs conditional convergence}
+Determine whether the series is absolutely convergent, conditionally convergent, or divergent.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty (-1)^n \frac{1}{n^2}$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}$
+
+\workspace{6cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty \frac{(-1)^n n}{n+1}$
+
+\workspace{6cm}
+\end{problembox}
+
+\begin{problembox}{Problem 21: Error estimation}
+For the series $\displaystyle \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n^3}$:
+
+\textbf{(a)} Estimate the sum using the first 5 terms.
+
+\workspace{4cm}
+
+\textbf{(b)} Use the alternating series estimation theorem to find a bound for the error.
+
+\workspace{4cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 8: RATIO AND ROOT TEST
+% ===========================
+\begin{sectionbox}{Section 11.6 | Ratio and Root Test}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 22: Ratio test}
+Use the ratio test to determine whether the series converges or diverges.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{n!}{n^n}$
+
+\workspace{7cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{2^n}{n!}$
+
+\workspace{7cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty \frac{(n!)^2}{(2n)!}$
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 23: Root test}
+Use the root test to determine convergence or divergence.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \left(\frac{2n+3}{3n+2}\right)^n$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{n^n}{(n+1)^{2n}}$
+
+\workspace{7cm}
+\end{problembox}
+
+\begin{problembox}{Problem 24: Choosing the right test}
+For each series, state which test you would use and determine convergence/divergence.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{n^2 3^n}{n!}$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{(-1)^n}{\sqrt{n}}$
+
+\workspace{5cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 9: STRATEGY FOR TESTING SERIES
+% ===========================
+\begin{sectionbox}{Section 11.7 | Strategy for Testing Series (Extra Practice)}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 25: Mixed practice I}
+Determine whether each series converges or diverges. State which test you use.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{n^2 + 1}{n^4 + n}$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{1 \cdot 3 \cdot 5 \cdots (2n-1)}{n!}$
+
+\workspace{7cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty \frac{\cos n}{n^3}$
+
+\workspace{6cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 26: Mixed practice II}
+Determine convergence or divergence. Justify your answer.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{n!}{2 \cdot 5 \cdot 8 \cdots (3n-1)}$
+
+\workspace{7cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{(-1)^n \sqrt{n}}{n+1}$
+
+\workspace{7cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty \frac{n^2 + 2^n}{n^2 + 3^n}$
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 27: Challenging series}
+Determine whether the following series converge or diverge.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{2^n n!}{n^n}$
+
+\workspace{8cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=2}^\infty \frac{1}{(\ln n)^n}$
+
+\workspace{8cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty \frac{n! \, e^n}{n^n}$
+
+\workspace{8cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 10: POWER SERIES
+% ===========================
+\begin{sectionbox}{Section 11.8 | Power Series}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 28: Radius and interval of convergence}
+Find the radius of convergence and interval of convergence for each power series.
+
+\textbf{(a)} $\displaystyle \sum_{n=1}^\infty \frac{x^n}{n}$
+
+\workspace{7cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=0}^\infty \frac{(x-2)^n}{n^2 + 1}$
+
+\workspace{8cm}
+
+\textbf{(c)} $\displaystyle \sum_{n=1}^\infty \frac{(-1)^n x^n}{n \cdot 2^n}$
+
+\workspace{8cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 29: Power series with factorials}
+Find the radius and interval of convergence.
+
+\textbf{(a)} $\displaystyle \sum_{n=0}^\infty \frac{n! \, x^n}{(2n)!}$
+
+\workspace{8cm}
+
+\textbf{(b)} $\displaystyle \sum_{n=1}^\infty \frac{(x+3)^n}{n \cdot 5^n}$
+
+\workspace{8cm}
+\end{problembox}
+
+\begin{problembox}{Problem 30: Testing endpoints}
+For the power series $\displaystyle \sum_{n=1}^\infty \frac{x^n}{n^3}$:
+
+\textbf{(a)} Find the radius of convergence.
+
+\workspace{5cm}
+
+\textbf{(b)} Test convergence at both endpoints.
+
+\workspace{7cm}
+
+\textbf{(c)} State the interval of convergence.
+
+\workspace{2cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 11: REPRESENTATIONS OF FUNCTIONS
+% ===========================
+\begin{sectionbox}{Section 11.9 | Representations of Functions as Power Series}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 31: Power series representation}
+Find a power series representation for each function and determine the radius of convergence.
+
+\textbf{(a)} $f(x) = \frac{1}{1+x}$
+
+\workspace{6cm}
+
+\textbf{(b)} $f(x) = \frac{1}{1-x^2}$
+
+\workspace{6cm}
+
+\textbf{(c)} $f(x) = \frac{x}{(1-x)^2}$
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 32: Integration and differentiation}
+\textbf{(a)} Starting with the geometric series, find a power series for $f(x) = \ln(1+x)$.
+
+\workspace{8cm}
+
+\textbf{(b)} Find a power series representation for $f(x) = \arctan x$.
+
+\workspace{8cm}
+
+\textbf{(c)} Use part (b) to find a series for $\pi$ (Hint: evaluate at $x=1$).
+
+\workspace{6cm}
+\end{problembox}
+
+\begin{problembox}{Problem 33: Application}
+Use a power series to evaluate the integral $\displaystyle \int_0^{0.5} \frac{\sin x}{x} \dx$ accurate to three decimal places.
+
+\workspace{8cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 12: TAYLOR SERIES
+% ===========================
+\begin{sectionbox}{Section 11.10 | Taylor and Maclaurin Series}
+\vspace{0.3cm}
+
+\begin{problembox}{Problem 34: Finding Maclaurin series}
+Find the Maclaurin series for each function.
+
+\textbf{(a)} $f(x) = e^x$
+
+\workspace{6cm}
+
+\textbf{(b)} $f(x) = \sin x$
+
+\workspace{7cm}
+
+\textbf{(c)} $f(x) = \cos x$
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 35: Taylor series at $x = a$}
+Find the Taylor series for $f(x) = \ln x$ centered at $a = 1$.
+
+\workspace{10cm}
+\end{problembox}
+
+\begin{problembox}{Problem 36: Using known series}
+Use known Maclaurin series to find the Maclaurin series for:
+
+\textbf{(a)} $f(x) = x \cos(x^2)$
+
+\workspace{7cm}
+
+\textbf{(b)} $f(x) = e^{-x^2}$
+
+\workspace{7cm}
+
+\textbf{(c)} $f(x) = \frac{1-\cos x}{x^2}$
+
+\workspace{8cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 37: Taylor polynomial approximation}
+\textbf{(a)} Find the third-degree Taylor polynomial $T_3(x)$ for $f(x) = \sqrt{x}$ at $a = 4$.
+
+\workspace{8cm}
+
+\textbf{(b)} Use Taylor's inequality to estimate the error in using $T_3(x)$ to approximate $f(5)$.
+
+\workspace{8cm}
+\end{problembox}
+
+\begin{problembox}{Problem 38: Applications of Taylor series}
+\textbf{(a)} Use the Maclaurin series for $e^x$ to evaluate $\lim_{x \to 0} \frac{e^x - 1 - x}{x^2}$.
+
+\workspace{6cm}
+
+\textbf{(b)} Approximate $\sqrt{e}$ using the first four terms of the Maclaurin series for $e^{x/2}$.
+
+\workspace{6cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 13: SECOND-ORDER LINEAR DEs
+% ===========================
+\begin{sectionbox}{Second-Order Linear Differential Equations}
+\vspace{0.3cm}
+
+\textbf{Recall:} A second-order linear differential equation has the form:
+\[
+a(x)y'' + b(x)y' + c(x)y = f(x)
+\]
+If $f(x) = 0$, the equation is \textbf{homogeneous}. Otherwise, it is \textbf{nonhomogeneous}.
+
+\vspace{0.5cm}
+
+\begin{problembox}{Problem 39: Homogeneous equations with constant coefficients}
+Solve the following differential equations.
+
+\textbf{(a)} $y'' - 5y' + 6y = 0$
+
+\workspace{7cm}
+
+\textbf{(b)} $y'' + 4y' + 4y = 0$
+
+\workspace{7cm}
+
+\textbf{(c)} $y'' + 2y' + 5y = 0$
+
+\workspace{8cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 40: Initial value problems}
+Solve the initial value problem.
+
+\textbf{(a)} $y'' - 3y' - 4y = 0$, \quad $y(0) = 2$, \quad $y'(0) = -1$
+
+\workspace{10cm}
+
+\textbf{(b)} $y'' + 9y = 0$, \quad $y(0) = 1$, \quad $y'(0) = 3$
+
+\workspace{10cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 41: Characteristic equation analysis}
+For each differential equation, find the characteristic equation, classify the roots, and write the general solution.
+
+\textbf{(a)} $y'' - 6y' + 9y = 0$
+
+\workspace{7cm}
+
+\textbf{(b)} $y'' + y' - 6y = 0$
+
+\workspace{7cm}
+
+\textbf{(c)} $y'' - 2y' + 10y = 0$
+
+\workspace{7cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 14: NONHOMOGENEOUS LINEAR EQUATIONS
+% ===========================
+\begin{sectionbox}{Nonhomogeneous Linear Equations}
+\vspace{0.3cm}
+
+\textbf{Method:} The general solution is $y = y_h + y_p$, where:
+\begin{itemize}
+  \item $y_h$ is the general solution to the homogeneous equation
+  \item $y_p$ is a particular solution to the nonhomogeneous equation
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{problembox}{Problem 42: Method of undetermined coefficients}
+Solve the differential equation using the method of undetermined coefficients.
+
+\textbf{(a)} $y'' - 3y' + 2y = e^{3x}$
+
+\workspace{10cm}
+
+\textbf{(b)} $y'' + 4y = 8\sin(2x)$
+
+\workspace{10cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 43: Polynomial and exponential forcing}
+Find the general solution.
+
+\textbf{(a)} $y'' - y' - 2y = 4x^2$
+
+\workspace{11cm}
+
+\textbf{(b)} $y'' + y = x e^x$
+
+\workspace{11cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 44: Variation of parameters}
+Use the method of variation of parameters to solve:
+
+\textbf{(a)} $y'' + y = \sec x$, \quad $0 < x < \pi/2$
+
+\workspace{12cm}
+
+\textbf{(b)} $y'' - 2y' + y = \frac{e^x}{x}$, \quad $x > 0$
+
+\workspace{12cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 45: Initial value problem — Nonhomogeneous}
+Solve the initial value problem.
+
+$y'' + 4y' + 4y = e^{-2x}$, \quad $y(0) = 1$, \quad $y'(0) = 0$
+
+\workspace{14cm}
+\end{problembox}
+
+\begin{problembox}{Problem 46: Application — Spring-mass system}
+A mass on a spring satisfies the differential equation:
+\[
+m\frac{d^2x}{dt^2} + c\frac{dx}{dt} + kx = F(t)
+\]
+
+For $m = 1$ kg, $c = 4$ kg/s, $k = 5$ N/m, and external force $F(t) = 10\cos(2t)$ N:
+
+\textbf{(a)} Write the differential equation.
+
+\workspace{3cm}
+
+\textbf{(b)} Find the general solution.
+
+\workspace{12cm}
+
+\textbf{(c)} If $x(0) = 0$ and $x'(0) = 0$, find the particular solution.
+
+\workspace{8cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SUMMARY PAGE
+% ===========================
+\begin{center}
+  \begin{tcolorbox}[colback=YolyPrimary!10,colframe=YolyPrimary,width=0.9\textwidth,arc=4mm,boxrule=2pt]
+    \begin{center}
+      {\Large\textcolor{YolyPrimary}{\textbf{Excellent Work!}}}\\[0.5cm]
+      \textcolor{YolyDark}{You have completed a comprehensive review of Analysis topics.}\\[0.3cm]
+      \textcolor{YolyDark}{Remember to review any problems you found challenging.}\\[1cm]
+      {\large\textcolor{YolyAccent}{\textbf{Yolymatics Tutorials}}}\\
+      \textcolor{YolyDark}{\href{mailto:yolymatics007@gmail.com}{yolymatics007@gmail.com}}
+    \end{center}
+  \end{tcolorbox}
+\end{center}
+
+\vfill
+
+\begin{center}
+  \textcolor{YolyDark}{\textit{For additional practice problems or tutoring, contact us!}}
+\end{center}
+
+\end{document}
