@@ -1,0 +1,739 @@
+% Yolymatics Tutorials — Advanced Calculus Topics Worksheet
+% Build with: pdflatex calculus_advanced_topics_worksheet.tex
+
+\documentclass[11pt,a4paper]{article}
+
+% Core packages
+\usepackage[margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{arrows.meta,patterns,decorations.markings}
+
+% Professional brand colors
+\definecolor{YolyPrimary}{HTML}{1E3A8A}   % deep professional blue
+\definecolor{YolyAccent}{HTML}{F59E0B}    % warm amber
+\definecolor{YolyDark}{HTML}{0F172A}      % slate dark
+\definecolor{YolyLight}{HTML}{F8FAFC}     % very light gray
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{YolyPrimary}{\textbf{Yolymatics Tutorials}}}
+\fancyhead[R]{\textcolor{YolyDark}{Advanced Calculus Topics}}
+\fancyfoot[C]{\textcolor{YolyDark}{\thepage}}
+\fancyfoot[R]{\textcolor{YolyAccent}{\small\href{https://www.yolymaticstutorials.com}{www.yolymaticstutorials.com}}}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{YolyAccent}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{YolyPrimary}\leaders\hrule height \footrulewidth\hfill}}
+
+% Custom tcolorbox styles
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{sectionbox}[1]{
+  colback=YolyPrimary!5,
+  colframe=YolyPrimary,
+  fonttitle=\bfseries\large,
+  title=#1,
+  boxrule=2pt,
+  arc=3mm,
+  breakable
+}
+
+\newtcolorbox{problembox}[1]{
+  colback=white,
+  colframe=YolyAccent,
+  fonttitle=\bfseries,
+  title=#1,
+  boxrule=1.5pt,
+  arc=2mm,
+  breakable
+}
+
+\newtcolorbox{tipbox}{
+  colback=YolyAccent!10,
+  colframe=YolyAccent,
+  fonttitle=\bfseries,
+  title=\textcolor{YolyDark}{Key Points},
+  boxrule=1.5pt,
+  arc=2mm
+}
+
+% Workspace command
+\newcommand{\workspace}[1]{
+  \vspace{#1}
+}
+
+% Custom commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dx}{\,dx}
+\newcommand{\dy}{\,dy}
+\newcommand{\dt}{\,dt}
+
+\title{
+  \textcolor{YolyPrimary}{\Huge\textbf{Advanced Calculus}}\\
+  \textcolor{YolyAccent}{\Large Comprehensive Worksheet}\\[0.5cm]
+  \textcolor{YolyDark}{Partial Fractions, Parametric Equations, Optimization \& Volumes}
+}
+\author{\textcolor{YolyPrimary}{\textbf{Yolymatics Tutorials}}}
+\date{\textcolor{YolyDark}{\today}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\vspace{1cm}
+\begin{center}
+  \begin{tcolorbox}[colback=YolyLight,colframe=YolyPrimary,width=0.8\textwidth,arc=3mm]
+    \centering
+    \textcolor{YolyDark}{\textbf{Student Name:} \underline{\hspace{6cm}}}\\[0.3cm]
+    \textcolor{YolyDark}{\textbf{Date:} \underline{\hspace{6cm}}}
+  \end{tcolorbox}
+\end{center}
+
+\vspace{0.5cm}
+\begin{center}
+  \textcolor{YolyDark}{\textit{Show all work clearly. Use proper mathematical notation.}}
+\end{center}
+
+\newpage
+
+% ===========================
+% SECTION 1: PARTIAL FRACTIONS
+% ===========================
+\begin{sectionbox}{Part 1: Partial Fractions for Linear Factors}
+\vspace{0.3cm}
+
+\begin{tipbox}
+\textbf{Remember:}
+\begin{itemize}
+  \item For distinct linear factors: $\frac{P(x)}{(ax+b)(cx+d)} = \frac{A}{ax+b} + \frac{B}{cx+d}$
+  \item For repeated linear factors: $\frac{P(x)}{(ax+b)^2} = \frac{A}{ax+b} + \frac{B}{(ax+b)^2}$
+  \item Always ensure the degree of numerator $<$ degree of denominator
+  \item If not, perform polynomial division first
+\end{itemize}
+\end{tipbox}
+
+\vspace{0.5cm}
+
+\begin{problembox}{Problem 1: Basic partial fractions}
+Express each of the following in partial fractions.
+
+\textbf{(a)} $\displaystyle \frac{7x + 5}{(x+1)(x+2)}$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \frac{3x - 1}{(x-2)(x+3)}$
+
+\workspace{6cm}
+
+\textbf{(c)} $\displaystyle \frac{5x + 11}{x^2 + 5x + 6}$ \quad \textit{(Hint: Factorize the denominator first)}
+
+\workspace{6cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 2: Three linear factors}
+Express in partial fractions:
+
+\textbf{(a)} $\displaystyle \frac{2x^2 + 3x + 1}{(x+1)(x-1)(x+2)}$
+
+\workspace{8cm}
+
+\textbf{(b)} $\displaystyle \frac{x^2 - 2x + 3}{x(x+1)(x-2)}$
+
+\workspace{8cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 3: Repeated linear factors}
+Express in partial fractions:
+
+\textbf{(a)} $\displaystyle \frac{5x + 7}{(x+1)^2}$
+
+\workspace{6cm}
+
+\textbf{(b)} $\displaystyle \frac{3x^2 + 5x + 2}{(x+2)^2(x-1)}$
+
+\workspace{8cm}
+
+\textbf{(c)} $\displaystyle \frac{2x + 1}{x(x+1)^2}$
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 4: Improper fractions (require polynomial division)}
+Express in partial fractions:
+
+\textbf{(a)} $\displaystyle \frac{x^3 + 2x^2 - x + 1}{(x-1)(x+2)}$ 
+
+\textit{(Hint: Perform polynomial division first since degree of numerator $\geq$ degree of denominator)}
+
+\workspace{10cm}
+
+\textbf{(b)} $\displaystyle \frac{2x^3 - 3x^2 + 4x - 5}{x^2 - x - 2}$
+
+\workspace{10cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 5: Using partial fractions in integration}
+Use partial fractions to evaluate the following integrals:
+
+\textbf{(a)} $\displaystyle \int \frac{5x + 1}{(x+1)(x-2)} \dx$
+
+\workspace{8cm}
+
+\textbf{(b)} $\displaystyle \int \frac{3x - 4}{x^2 - 5x + 6} \dx$
+
+\workspace{8cm}
+
+\textbf{(c)} $\displaystyle \int_1^2 \frac{2x + 3}{(x+1)(x+2)} \dx$
+
+\workspace{9cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 2: PARAMETRIC EQUATIONS
+% ===========================
+\begin{sectionbox}{Part 2: Parametric Equations}
+\vspace{0.3cm}
+
+\begin{tipbox}
+\textbf{Remember:}
+\begin{itemize}
+  \item Parametric form: $x = f(t)$, $y = g(t)$
+  \item To find $\frac{dy}{dx}$: Use $\frac{dy}{dx} = \frac{dy/dt}{dx/dt}$
+  \item To find Cartesian equation: Eliminate the parameter $t$
+  \item Arc length: $L = \int_a^b \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \dt$
+\end{itemize}
+\end{tipbox}
+
+\vspace{0.5cm}
+
+\begin{problembox}{Problem 6: Converting to Cartesian form}
+Find the Cartesian equation of the curve given parametrically:
+
+\textbf{(a)} $x = 2t$, $y = t^2$
+
+\workspace{5cm}
+
+\textbf{(b)} $x = t + 1$, $y = t^2 - 2t$
+
+\workspace{6cm}
+
+\textbf{(c)} $x = 3\cos t$, $y = 3\sin t$, where $0 \leq t \leq 2\pi$
+
+\workspace{6cm}
+
+\textbf{(d)} $x = 2t - 1$, $y = \frac{1}{t}$, where $t \neq 0$
+
+\workspace{6cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 7: Finding $\frac{dy}{dx}$ for parametric curves}
+For each parametric curve, find $\frac{dy}{dx}$ in terms of $t$:
+
+\textbf{(a)} $x = t^3$, $y = t^2$
+
+\workspace{5cm}
+
+\textbf{(b)} $x = 2t + 1$, $y = t^2 - 3t$
+
+\workspace{5cm}
+
+\textbf{(c)} $x = e^t$, $y = e^{2t}$
+
+\workspace{5cm}
+
+\textbf{(d)} $x = \sin t$, $y = \cos 2t$
+
+\workspace{6cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 8: Tangents and normals to parametric curves}
+A curve is given parametrically by $x = t^2 - 1$, $y = 2t + 3$.
+
+\textbf{(a)} Find $\frac{dy}{dx}$ in terms of $t$.
+
+\workspace{5cm}
+
+\textbf{(b)} Find the equation of the tangent to the curve at the point where $t = 2$.
+
+\workspace{7cm}
+
+\textbf{(c)} Find the equation of the normal to the curve at the point where $t = 1$.
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 9: Area under parametric curves}
+A curve is defined parametrically by $x = t^2$, $y = 2t$, where $0 \leq t \leq 2$.
+
+\textbf{(a)} Sketch the curve for the given range of $t$.
+
+\workspace{6cm}
+
+\textbf{(b)} Find the area under the curve from $t = 0$ to $t = 2$ using the formula:
+\[
+A = \int_a^b y \frac{dx}{dt} \dt
+\]
+
+\workspace{8cm}
+\end{problembox}
+
+\begin{problembox}{Problem 10: Second derivative of parametric curves}
+For the parametric equations $x = 2t - 1$, $y = t^3 + t$:
+
+\textbf{(a)} Find $\frac{dy}{dx}$ in terms of $t$.
+
+\workspace{5cm}
+
+\textbf{(b)} Find $\frac{d^2y}{dx^2}$ using: $\displaystyle \frac{d^2y}{dx^2} = \frac{d}{dx}\left(\frac{dy}{dx}\right) = \frac{d}{dt}\left(\frac{dy}{dx}\right) \div \frac{dx}{dt}$
+
+\workspace{7cm}
+
+\textbf{(c)} Find the point(s) where the curve has a horizontal tangent.
+
+\workspace{5cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 3: OPTIMIZATION
+% ===========================
+\begin{sectionbox}{Part 3: Optimization Problems}
+\vspace{0.3cm}
+
+\begin{tipbox}
+\textbf{Steps for Optimization:}
+\begin{enumerate}
+  \item Draw a diagram if appropriate
+  \item Identify the quantity to be maximized or minimized
+  \item Express this quantity as a function of one variable
+  \item Find the derivative and set it equal to zero
+  \item Verify it's a maximum or minimum (second derivative test)
+  \item Check endpoints if the domain is restricted
+\end{enumerate}
+\end{tipbox}
+
+\vspace{0.5cm}
+
+\begin{problembox}{Problem 11: Maximizing area}
+A farmer has 200 metres of fencing and wants to fence a rectangular field that borders a straight river. He does not need to fence the side along the river.
+
+\textbf{(a)} Let $x$ be the width of the field (perpendicular to the river). Express the length of the field in terms of $x$.
+
+\workspace{3cm}
+
+\textbf{(b)} Write an expression for the area $A$ of the field in terms of $x$.
+
+\workspace{3cm}
+
+\textbf{(c)} Find the value of $x$ that maximizes the area.
+
+\workspace{6cm}
+
+\textbf{(d)} What is the maximum area of the field?
+
+\workspace{3cm}
+
+\textbf{(e)} Verify that this is indeed a maximum using the second derivative test.
+
+\workspace{4cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 12: Minimizing cost}
+A cylindrical can is to be designed to hold 1000 cm$^3$ of liquid. The material for the top and bottom costs \$0.05 per cm$^2$, while the material for the side costs \$0.03 per cm$^2$.
+
+Let $r$ be the radius and $h$ be the height of the cylinder.
+
+\textbf{(a)} Write the volume constraint equation.
+
+\workspace{3cm}
+
+\textbf{(b)} Express $h$ in terms of $r$ using the volume constraint.
+
+\workspace{3cm}
+
+\textbf{(c)} Write an expression for the total cost $C$ in terms of $r$ only.
+
+\workspace{6cm}
+
+\textbf{(d)} Find the radius $r$ that minimizes the cost.
+
+\workspace{8cm}
+
+\textbf{(e)} Find the corresponding height $h$ and the minimum cost.
+
+\workspace{5cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 13: Maximizing volume}
+A box with an open top is to be constructed from a square piece of cardboard, 12 inches on each side, by cutting out equal squares from each corner and folding up the sides.
+
+\textbf{(a)} Let $x$ be the side length of the squares cut from each corner. Draw a diagram showing the dimensions.
+
+\workspace{5cm}
+
+\textbf{(b)} Express the volume $V$ of the box as a function of $x$.
+
+\workspace{4cm}
+
+\textbf{(c)} What is the domain of $x$? (Consider physical constraints)
+
+\workspace{2cm}
+
+\textbf{(d)} Find the value of $x$ that maximizes the volume.
+
+\workspace{7cm}
+
+\textbf{(e)} What is the maximum volume?
+
+\workspace{3cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 14: Minimizing distance}
+Find the point on the parabola $y = x^2$ that is closest to the point $(0, 3)$.
+
+\textbf{(a)} Let $(x, x^2)$ be a point on the parabola. Write an expression for the distance $D$ from this point to $(0, 3)$.
+
+\workspace{4cm}
+
+\textbf{(b)} To simplify, minimize $D^2$ instead. Write the expression for $D^2$.
+
+\workspace{3cm}
+
+\textbf{(c)} Find $\frac{d(D^2)}{dx}$ and set it equal to zero.
+
+\workspace{6cm}
+
+\textbf{(d)} Solve for $x$ and find the corresponding $y$ coordinate.
+
+\workspace{5cm}
+
+\textbf{(e)} Verify this is a minimum and find the minimum distance.
+
+\workspace{4cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 15: Optimization with constraints}
+A rectangular poster is to contain 150 cm$^2$ of printed material with margins of 2 cm at the top and bottom and 3 cm on each side. What dimensions of the poster will minimize the total area?
+
+\textbf{(a)} Let $x$ and $y$ be the dimensions of the printed area. Write the constraint equation.
+
+\workspace{3cm}
+
+\textbf{(b)} Express the total width and height of the poster (including margins) in terms of $x$ and $y$.
+
+\workspace{3cm}
+
+\textbf{(c)} Write the expression for the total area $A$ of the poster.
+
+\workspace{3cm}
+
+\textbf{(d)} Express $A$ as a function of $x$ only.
+
+\workspace{5cm}
+
+\textbf{(e)} Find the dimensions that minimize the total area.
+
+\workspace{8cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SECTION 4: VOLUMES OF REVOLUTION
+% ===========================
+\begin{sectionbox}{Part 4: Volumes of Revolution}
+\vspace{0.3cm}
+
+\begin{tipbox}
+\textbf{Key Formulas:}
+\begin{itemize}
+  \item \textbf{Rotation about $x$-axis:} $\displaystyle V = \pi \int_a^b y^2 \dx$
+  \item \textbf{Rotation about $y$-axis:} $\displaystyle V = \pi \int_c^d x^2 \dy$
+  \item \textbf{Disk method:} Use when rotating a region between curve and axis
+  \item \textbf{Washer method:} $\displaystyle V = \pi \int_a^b (R^2 - r^2) \dx$ for hollow solids
+  \item Always sketch the region and visualize the solid
+\end{itemize}
+\end{tipbox}
+
+\vspace{0.5cm}
+
+\begin{problembox}{Problem 16: Basic volumes about the $x$-axis}
+Find the volume of the solid generated by rotating the given region about the $x$-axis.
+
+\textbf{(a)} The region bounded by $y = x^2$, the $x$-axis, and the lines $x = 0$ and $x = 2$.
+
+\workspace{7cm}
+
+\textbf{(b)} The region bounded by $y = \sqrt{x}$, the $x$-axis, and the line $x = 4$.
+
+\workspace{7cm}
+
+\textbf{(c)} The region bounded by $y = e^x$, the $x$-axis, $x = 0$, and $x = 1$.
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 17: Volumes about the $y$-axis}
+Find the volume of the solid generated by rotating the given region about the $y$-axis.
+
+\textbf{(a)} The region bounded by $x = y^2$, the $y$-axis, and the line $y = 2$.
+
+\workspace{7cm}
+
+\textbf{(b)} The region bounded by $x = \sqrt{y}$, the $y$-axis, and the line $y = 4$.
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 18: Volumes between two curves}
+Find the volume generated when the region between the two curves is rotated about the $x$-axis.
+
+\textbf{(a)} The region bounded by $y = x$ and $y = x^2$ for $0 \leq x \leq 1$.
+
+\textit{(Hint: Use washer method with outer radius $R = x$ and inner radius $r = x^2$)}
+
+\workspace{9cm}
+
+\textbf{(b)} The region bounded by $y = 4 - x^2$ and $y = 0$ for $-2 \leq x \leq 2$.
+
+\workspace{8cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 19: Parametric volumes of revolution}
+A curve is defined parametrically by $x = t^2$, $y = 2t$ for $0 \leq t \leq 2$.
+
+\textbf{(a)} Sketch the curve.
+
+\workspace{5cm}
+
+\textbf{(b)} Find the volume generated when this curve is rotated about the $x$-axis using:
+\[
+V = \pi \int_a^b y^2 \frac{dx}{dt} \dt
+\]
+
+\workspace{8cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 20: Application — Sphere volume}
+\textbf{(a)} The circle $x^2 + y^2 = r^2$ can be written as $y = \sqrt{r^2 - x^2}$ for the upper semicircle. Rotate this curve about the $x$-axis from $x = -r$ to $x = r$ to generate a sphere.
+
+Find the volume and verify that it equals $\frac{4}{3}\pi r^3$.
+
+\workspace{10cm}
+
+\textbf{(b)} A sphere of radius 6 cm has a cylindrical hole of radius 2 cm drilled through its center. Find the volume of the remaining solid.
+
+\textit{(Hint: Use the washer method)}
+
+\workspace{10cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 21: Challenge — Cone volume}
+A right circular cone has height $h$ and base radius $r$. The cone can be generated by rotating the line segment from $(0,0)$ to $(h, r)$ about the $x$-axis.
+
+\textbf{(a)} Find the equation of the line in the form $y = f(x)$.
+
+\workspace{4cm}
+
+\textbf{(b)} Set up and evaluate the integral to find the volume of the cone.
+
+\workspace{8cm}
+
+\textbf{(c)} Verify your answer matches the formula $V = \frac{1}{3}\pi r^2 h$.
+
+\workspace{3cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% MIXED PRACTICE
+% ===========================
+\begin{sectionbox}{Part 5: Mixed Practice — Comprehensive Problems}
+
+\begin{problembox}{Problem 22: Integration using partial fractions}
+Evaluate: $\displaystyle \int_0^1 \frac{4x + 2}{(x+1)(2x+1)} \dx$
+
+\workspace{10cm}
+\end{problembox}
+
+\begin{problembox}{Problem 23: Parametric curve analysis}
+A curve is given by $x = 3\cos t$, $y = 2\sin t$ for $0 \leq t \leq 2\pi$.
+
+\textbf{(a)} Find the Cartesian equation of the curve.
+
+\workspace{5cm}
+
+\textbf{(b)} Find the area enclosed by the curve.
+
+\workspace{7cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 24: Optimization with calculus}
+A wire of length 100 cm is cut into two pieces. One piece is bent into a circle and the other into a square. How should the wire be cut to minimize the total area enclosed?
+
+\textbf{(a)} Let $x$ be the length of wire used for the circle. Set up the area function $A(x)$.
+
+\workspace{6cm}
+
+\textbf{(b)} Find the value of $x$ that minimizes the total area.
+
+\workspace{8cm}
+
+\textbf{(c)} What if we want to maximize the area instead?
+
+\workspace{5cm}
+\end{problembox}
+
+\newpage
+
+\begin{problembox}{Problem 25: Volume of revolution application}
+The region bounded by $y = \sin x$, $y = 0$, $x = 0$, and $x = \pi$ is rotated about the $x$-axis.
+
+\textbf{(a)} Sketch the region.
+
+\workspace{5cm}
+
+\textbf{(b)} Find the volume of the solid generated.
+
+\workspace{8cm}
+
+\textbf{(c)} Find the volume if the same region is rotated about the line $y = -1$ instead.
+
+\textit{(Hint: Use the washer method with outer radius $R = \sin x + 1$ and inner radius $r = 1$)}
+
+\workspace{9cm}
+\end{problembox}
+
+\end{sectionbox}
+
+\newpage
+
+% ===========================
+% SUMMARY AND FORMULAS
+% ===========================
+\begin{center}
+  \begin{tcolorbox}[colback=YolyAccent!10,colframe=YolyAccent,width=0.9\textwidth,arc=4mm,boxrule=2pt]
+    \begin{center}
+      {\Large\textcolor{YolyPrimary}{\textbf{Summary — Key Formulas}}}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\textcolor{YolyPrimary}{Partial Fractions:}}
+    \begin{itemize}
+      \item Distinct factors: $\frac{P(x)}{(ax+b)(cx+d)} = \frac{A}{ax+b} + \frac{B}{cx+d}$
+      \item Repeated factors: $\frac{P(x)}{(ax+b)^n} = \frac{A_1}{ax+b} + \frac{A_2}{(ax+b)^2} + \cdots + \frac{A_n}{(ax+b)^n}$
+      \item Always factorize denominators completely
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\textcolor{YolyPrimary}{Parametric Equations:}}
+    \begin{itemize}
+      \item Derivative: $\frac{dy}{dx} = \frac{dy/dt}{dx/dt}$
+      \item Second derivative: $\frac{d^2y}{dx^2} = \frac{d}{dt}\left(\frac{dy}{dx}\right) \div \frac{dx}{dt}$
+      \item Area: $A = \int_a^b y \frac{dx}{dt} \dt$
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\textcolor{YolyPrimary}{Optimization:}}
+    \begin{itemize}
+      \item Find critical points: $f'(x) = 0$
+      \item Second derivative test: $f''(x) < 0$ (max), $f''(x) > 0$ (min)
+      \item Check endpoints for constrained domains
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\textcolor{YolyPrimary}{Volumes of Revolution:}}
+    \begin{itemize}
+      \item Disk method (about $x$-axis): $V = \pi \int_a^b y^2 \dx$
+      \item Disk method (about $y$-axis): $V = \pi \int_c^d x^2 \dy$
+      \item Washer method: $V = \pi \int_a^b (R^2 - r^2) \dx$
+      \item Parametric: $V = \pi \int_a^b y^2 \frac{dx}{dt} \dt$
+    \end{itemize}
+  \end{tcolorbox}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+  \begin{tcolorbox}[colback=YolyPrimary!10,colframe=YolyPrimary,width=0.9\textwidth,arc=4mm,boxrule=2pt]
+    \begin{center}
+      {\Large\textcolor{YolyPrimary}{\textbf{Excellent Work!}}}\\[0.5cm]
+      \textcolor{YolyDark}{You have mastered essential advanced calculus techniques.}\\[0.8cm]
+      {\large\textcolor{YolyAccent}{\textbf{Yolymatics Tutorials}}}\\
+      \textcolor{YolyDark}{\href{https://www.yolymaticstutorials.com}{www.yolymaticstutorials.com}}\\
+      \textcolor{YolyDark}{\href{mailto:yolymatics007@gmail.com}{yolymatics007@gmail.com}}
+    \end{center}
+  \end{tcolorbox}
+\end{center}
+
+\vfill
+
+\begin{center}
+  \textcolor{YolyDark}{\textit{Keep practicing and exploring the beauty of calculus!}}
+\end{center}
+
+\end{document}
