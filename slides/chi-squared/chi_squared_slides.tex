@@ -1,0 +1,705 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+% Custom colors - Professional palette
+\definecolor{yolyblue}{RGB}{13,71,161}
+\definecolor{yolylightblue}{RGB}{25,118,210}
+\definecolor{yolydarkblue}{RGB}{1,87,155}
+\definecolor{yolyaccent}{RGB}{245,124,0}
+
+\setbeamercolor{structure}{fg=yolyblue}
+\setbeamercolor{title}{fg=white,bg=yolyblue}
+\setbeamercolor{frametitle}{fg=white,bg=yolyblue}
+\setbeamercolor{block title}{bg=yolylightblue,fg=white}
+\setbeamercolor{block body}{bg=yolylightblue!10,fg=black}
+
+% Professional footer
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}Yolymatics Tutorials
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}Chi-Squared Tests
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Title information
+\title{Chi-Squared Tests}
+\subtitle{$\chi^2$ Goodness of Fit and Independence Tests}
+\author{Yolymatics Tutorials}
+\institute{www.yolymaticstutorials.com}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+\titlepage
+\begin{center}
+\vspace{0.3cm}
+\small \textit{Professional Mathematics Education}
+\end{center}
+\end{frame}
+
+% Table of contents
+\begin{frame}{Overview}
+\tableofcontents
+\end{frame}
+
+% ============================================================================
+\section{Chi-Squared Distribution}
+% ============================================================================
+
+\begin{frame}{The Chi-Squared Distribution}
+
+\begin{block}{Definition}
+The chi-squared statistic is used to test hypotheses about categorical data by comparing observed frequencies with expected frequencies.
+\end{block}
+
+\vspace{0.5cm}
+
+\textbf{Formula:}
+$$\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}$$
+
+where $O_i$ = observed frequency, $E_i$ = expected frequency
+
+\vspace{0.5cm}
+
+\textbf{Properties:}
+\begin{itemize}
+\item Always non-negative ($\chi^2 \geq 0$)
+\item Depends on degrees of freedom ($\nu$)
+\item Right-skewed distribution
+\item As $\nu$ increases, distribution approaches normal
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Hypotheses and Decision Rules}
+
+\textbf{Hypothesis Testing Framework:}
+
+\begin{itemize}
+\item $H_0$: Null hypothesis (no association/good fit)
+\item $H_1$: Alternative hypothesis (association exists/poor fit)
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Decision Rule:}
+\begin{itemize}
+\item Calculate test statistic: $\chi^2_{calc}$
+\item Find critical value from tables: $\chi^2_{crit}(\alpha, \nu)$
+\item If $\chi^2_{calc} > \chi^2_{crit}$: Reject $H_0$ (significant result)
+\item If $\chi^2_{calc} \leq \chi^2_{crit}$: Do not reject $H_0$ (insufficient evidence)
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Conditions for Validity:}
+\begin{itemize}
+\item All expected frequencies $E_i \geq 5$
+\item Independent observations
+\item Random sampling
+\end{itemize}
+
+\end{frame}
+
+% ============================================================================
+\section{Goodness of Fit Test}
+% ============================================================================
+
+\begin{frame}{Goodness of Fit Test}
+
+\begin{block}{Purpose}
+Tests whether observed data follows a specified theoretical distribution or ratio.
+\end{block}
+
+\vspace{0.5cm}
+
+\textbf{Degrees of Freedom:}
+$$\nu = n - 1 - p$$
+where $n$ = number of categories, $p$ = number of parameters estimated
+
+\vspace{0.5cm}
+
+\textbf{Hypotheses:}
+\begin{itemize}
+\item $H_0$: The data fits the specified distribution
+\item $H_1$: The data does not fit the specified distribution
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Applications:}
+\begin{itemize}
+\item Testing fairness of dice/coins
+\item Genetic ratio verification
+\item Distribution fitting (uniform, binomial, etc.)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Goodness of Fit: Worked Example}
+
+\textbf{Problem:} A genetics experiment predicts offspring ratio of 9:3:3:1. In 240 offspring, observed counts are:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Type & A & B & C & D \\
+\hline
+Observed & 142 & 48 & 39 & 11 \\
+\hline
+\end{tabular}
+\end{center}
+
+Test at $\alpha = 0.05$ level.
+
+\vspace{1cm}
+
+\textbf{Solution:}
+
+\end{frame}
+
+\begin{frame}{Goodness of Fit: Solution}
+
+\textbf{Step 1: Hypotheses}
+
+$H_0$: Data follows 9:3:3:1 ratio \quad $H_1$: Data does not follow ratio
+
+\vspace{0.3cm}
+
+\textbf{Step 2: Expected Frequencies}
+
+Total = 240, Ratio parts = $9+3+3+1 = 16$
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Type & A & B & C & D \\
+\hline
+Expected & $\frac{9}{16} \times 240 = 135$ & $\frac{3}{16} \times 240 = 45$ & $45$ & $\frac{1}{16} \times 240 = 15$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Step 3: Calculate $\chi^2$}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Type & $O$ & $E$ & $(O-E)$ & $\frac{(O-E)^2}{E}$ \\
+\hline
+A & 142 & 135 & 7 & 0.363 \\
+B & 48 & 45 & 3 & 0.200 \\
+C & 39 & 45 & -6 & 0.800 \\
+D & 11 & 15 & -4 & 1.067 \\
+\hline
+\multicolumn{4}{|r|}{$\chi^2 = $} & 2.430 \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Goodness of Fit: Solution (continued)}
+
+\textbf{Step 4: Degrees of Freedom}
+
+$$\nu = n - 1 = 4 - 1 = 3$$
+
+\vspace{0.5cm}
+
+\textbf{Step 5: Critical Value}
+
+From tables: $\chi^2_{0.05,3} = 7.815$
+
+\vspace{0.5cm}
+
+\textbf{Step 6: Decision}
+
+$\chi^2_{calc} = 2.430 < 7.815 = \chi^2_{crit}$
+
+\vspace{0.5cm}
+
+\textbf{Conclusion:}
+
+Do not reject $H_0$. There is insufficient evidence at the 5\% significance level to conclude that the data does not follow a 9:3:3:1 ratio. The genetic theory is supported by the data.
+
+\end{frame}
+
+% ============================================================================
+\section{Goodness of Fit: Practice Problems}
+% ============================================================================
+
+\begin{frame}{Practice Problem 1: Fair Die Test}
+
+A die is rolled 300 times with the following results:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Face & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+Observed & 43 & 49 & 56 & 45 & 52 & 55 \\
+\hline
+\end{tabular}
+\end{center}
+
+Test whether the die is fair at the 5\% significance level.
+
+\vspace{5cm}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 2: Blood Type Distribution}
+
+A medical study claims blood types are distributed as: O(45\%), A(40\%), B(11\%), AB(4\%). In a sample of 500 people:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Blood Type & O & A & B & AB \\
+\hline
+Observed & 234 & 197 & 52 & 17 \\
+\hline
+\end{tabular}
+\end{center}
+
+Test this claim at the 1\% significance level.
+
+\vspace{5cm}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 3: Uniform Distribution}
+
+Test whether the following data follows a uniform distribution over 5 categories. Use $\alpha = 0.05$.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Category & 1 & 2 & 3 & 4 & 5 \\
+\hline
+Frequency & 78 & 92 & 84 & 76 & 90 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{6cm}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 4: Binomial Distribution}
+
+A coin is tossed 200 times. Test whether it is fair at the 5\% level.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Outcome & Heads & Tails \\
+\hline
+Observed & 118 & 82 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{6cm}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 5: Day of Week Births}
+
+Hospital records show births on different days. Test if births are equally likely on any day ($\alpha = 0.05$).
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Day & Mon & Tue & Wed & Thu & Fri & Sat & Sun \\
+\hline
+Births & 84 & 78 & 92 & 88 & 90 & 65 & 63 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{5cm}
+
+\end{frame}
+
+% ============================================================================
+\section{Test of Independence}
+% ============================================================================
+
+\begin{frame}{Test of Independence (Contingency Tables)}
+
+\begin{block}{Purpose}
+Tests whether two categorical variables are independent or associated.
+\end{block}
+
+\vspace{0.5cm}
+
+\textbf{Degrees of Freedom:}
+$$\nu = (r-1)(c-1)$$
+where $r$ = number of rows, $c$ = number of columns
+
+\vspace{0.5cm}
+
+\textbf{Expected Frequency Formula:}
+$$E_{ij} = \frac{(\text{Row}_i \text{ total}) \times (\text{Column}_j \text{ total})}{\text{Grand total}}$$
+
+\vspace{0.5cm}
+
+\textbf{Hypotheses:}
+\begin{itemize}
+\item $H_0$: The two variables are independent
+\item $H_1$: The two variables are not independent (associated)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Test of Independence: Worked Example}
+
+\textbf{Problem:} A survey of 300 people investigated the relationship between exercise habits and health status. Test for association at $\alpha = 0.05$.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & Regular Exercise & No Exercise & \textbf{Total} \\
+\hline
+Good Health & 90 & 60 & 150 \\
+\hline
+Poor Health & 30 & 120 & 150 \\
+\hline
+\textbf{Total} & 120 & 180 & 300 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{2cm}
+
+\end{frame}
+
+\begin{frame}{Test of Independence: Solution}
+
+\textbf{Step 1: Hypotheses}
+
+$H_0$: Exercise and health are independent
+
+$H_1$: Exercise and health are associated
+
+\vspace{0.3cm}
+
+\textbf{Step 2: Expected Frequencies}
+
+$$E_{11} = \frac{150 \times 120}{300} = 60 \quad E_{12} = \frac{150 \times 180}{300} = 90$$
+
+$$E_{21} = \frac{150 \times 120}{300} = 60 \quad E_{22} = \frac{150 \times 180}{300} = 90$$
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+ & Regular Exercise & No Exercise \\
+\hline
+Good Health & $E = 60$ & $E = 90$ \\
+\hline
+Poor Health & $E = 60$ & $E = 90$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Test of Independence: Solution (continued)}
+
+\textbf{Step 3: Calculate $\chi^2$}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Cell & $O$ & $E$ & $\frac{(O-E)^2}{E}$ \\
+\hline
+Good/Exercise & 90 & 60 & 15.000 \\
+\hline
+Good/No Exercise & 60 & 90 & 10.000 \\
+\hline
+Poor/Exercise & 30 & 60 & 15.000 \\
+\hline
+Poor/No Exercise & 120 & 90 & 10.000 \\
+\hline
+\multicolumn{3}{|r|}{$\chi^2 = $} & 50.000 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Step 4: Critical Value}
+
+$\nu = (2-1)(2-1) = 1$, so $\chi^2_{0.05,1} = 3.841$
+
+\end{frame}
+
+\begin{frame}{Test of Independence: Solution (continued)}
+
+\textbf{Step 5: Decision}
+
+$\chi^2_{calc} = 50.000 > 3.841 = \chi^2_{crit}$
+
+\vspace{0.5cm}
+
+\textbf{Conclusion:}
+
+Reject $H_0$. There is very strong evidence at the 5\% significance level that exercise habits and health status are associated. The data suggests that regular exercise is associated with better health outcomes.
+
+\end{frame}
+
+% ============================================================================
+\section{Independence: Practice Problems}
+% ============================================================================
+
+\begin{frame}{Practice Problem 6: Gender and Subject Preference}
+
+Test for association between gender and subject preference at $\alpha = 0.05$.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ & Mathematics & Science & Arts & \textbf{Total} \\
+\hline
+Male & 65 & 55 & 40 & 160 \\
+\hline
+Female & 45 & 65 & 70 & 180 \\
+\hline
+\textbf{Total} & 110 & 120 & 110 & 340 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{5cm}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 7: Smoking and Disease}
+
+Investigate the relationship between smoking status and lung disease. Test at $\alpha = 0.01$.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & Smoker & Non-Smoker & \textbf{Total} \\
+\hline
+Disease Present & 78 & 32 & 110 \\
+\hline
+No Disease & 122 & 268 & 390 \\
+\hline
+\textbf{Total} & 200 & 300 & 500 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{5cm}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 8: Education Level and Income}
+
+Test whether education level is independent of income bracket ($\alpha = 0.05$).
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ & Low & Medium & High & \textbf{Total} \\
+\hline
+No Degree & 85 & 62 & 23 & 170 \\
+\hline
+Bachelor's & 45 & 78 & 57 & 180 \\
+\hline
+Postgraduate & 20 & 60 & 70 & 150 \\
+\hline
+\textbf{Total} & 150 & 200 & 150 & 500 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{4cm}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 9: Age and Technology Adoption}
+
+Test for association between age group and smartphone adoption at $\alpha = 0.05$.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & Smartphone User & Non-User & \textbf{Total} \\
+\hline
+18-35 years & 184 & 16 & 200 \\
+\hline
+36-55 years & 138 & 62 & 200 \\
+\hline
+56+ years & 78 & 122 & 200 \\
+\hline
+\textbf{Total} & 400 & 200 & 600 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{4cm}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 10: Treatment Effectiveness}
+
+A clinical trial tests two treatments. Determine if treatment type affects outcome ($\alpha = 0.01$).
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ & Improved & No Change & Worsened & \textbf{Total} \\
+\hline
+Treatment A & 82 & 48 & 20 & 150 \\
+\hline
+Treatment B & 95 & 32 & 23 & 150 \\
+\hline
+\textbf{Total} & 177 & 80 & 43 & 300 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{4cm}
+
+\end{frame}
+
+% ============================================================================
+\section{Chi-Squared Tables and Critical Values}
+% ============================================================================
+
+\begin{frame}{Chi-Squared Distribution Table}
+
+\textbf{Critical values for common significance levels:}
+
+\begin{center}
+\small
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{df ($\nu$)} & \textbf{$\alpha=0.10$} & \textbf{$\alpha=0.05$} & \textbf{$\alpha=0.025$} & \textbf{$\alpha=0.01$} & \textbf{$\alpha=0.005$} \\
+\hline
+1 & 2.706 & 3.841 & 5.024 & 6.635 & 7.879 \\
+\hline
+2 & 4.605 & 5.991 & 7.378 & 9.210 & 10.597 \\
+\hline
+3 & 6.251 & 7.815 & 9.348 & 11.345 & 12.838 \\
+\hline
+4 & 7.779 & 9.488 & 11.143 & 13.277 & 14.860 \\
+\hline
+5 & 9.236 & 11.070 & 12.833 & 15.086 & 16.750 \\
+\hline
+6 & 10.645 & 12.592 & 14.449 & 16.812 & 18.548 \\
+\hline
+7 & 12.017 & 14.067 & 16.013 & 18.475 & 20.278 \\
+\hline
+8 & 13.362 & 15.507 & 17.535 & 20.090 & 21.955 \\
+\hline
+9 & 14.684 & 16.919 & 19.023 & 21.666 & 23.589 \\
+\hline
+10 & 15.987 & 18.307 & 20.483 & 23.209 & 25.188 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{Note:} Reject $H_0$ if $\chi^2_{calc} > \chi^2_{crit}(\alpha, \nu)$
+
+\end{frame}
+
+% ============================================================================
+\section{Summary}
+% ============================================================================
+
+\begin{frame}{Key Concepts Summary}
+
+\begin{block}{Chi-Squared Test Statistic}
+$$\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}$$
+\end{block}
+
+\begin{columns}
+
+\column{0.5\textwidth}
+\textbf{Goodness of Fit}
+\begin{itemize}
+\item Tests fit to distribution
+\item $\nu = n - 1 - p$
+\item Single variable
+\item Compares observed vs theoretical
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Test of Independence}
+\begin{itemize}
+\item Tests association
+\item $\nu = (r-1)(c-1)$
+\item Two variables
+\item Uses contingency tables
+\end{itemize}
+
+\end{columns}
+
+\vspace{0.5cm}
+
+\textbf{Essential Conditions:}
+\begin{itemize}
+\item All expected frequencies $\geq 5$
+\item Independent observations
+\item Random sampling
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\Huge \textcolor{yolyblue}{Thank You}
+
+\vspace{1cm}
+
+\Large Questions?
+
+\vspace{1.5cm}
+
+\normalsize
+\textbf{Yolymatics Tutorials}
+
+\textcolor{yolylightblue}{www.yolymaticstutorials.com}
+
+\vspace{1cm}
+
+\textit{Professional Mathematics Education}
+\end{center}
+\end{frame}
+
+\end{document}
