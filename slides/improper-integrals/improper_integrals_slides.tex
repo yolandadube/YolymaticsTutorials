@@ -1,0 +1,424 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+
+% Define Yolymatics colors
+\definecolor{yolyblue}{RGB}{13,71,161}
+\definecolor{yolylightblue}{RGB}{25,118,210}
+\definecolor{yolyaccent}{RGB}{245,124,0}
+
+% Set theme colors
+\setbeamercolor{structure}{fg=yolyblue}
+\setbeamercolor{palette primary}{bg=yolyblue,fg=white}
+\setbeamercolor{palette secondary}{bg=yolylightblue,fg=white}
+\setbeamercolor{palette tertiary}{bg=yolyaccent,fg=white}
+\setbeamercolor{frametitle}{bg=yolyblue,fg=white}
+
+% Footer
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% Title information
+\title{Improper Integrals}
+\subtitle{Practice Problems}
+\author{Yolymatics Tutorials}
+\institute{www.yolymaticstutorials.com}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+% Section 1: Introduction
+\section{Introduction to Improper Integrals}
+
+\begin{frame}{What are Improper Integrals?}
+  \begin{block}{Definition}
+    An \textbf{improper integral} is a definite integral that has one or both of the following properties:
+    \begin{itemize}
+      \item One or both limits of integration are infinite
+      \item The integrand has an infinite discontinuity in the interval of integration
+    \end{itemize}
+  \end{block}
+  
+  \vspace{0.5cm}
+  
+  \begin{block}{Types of Improper Integrals}
+    \begin{enumerate}
+      \item \textbf{Type 1:} Infinite limits of integration
+      \item \textbf{Type 2:} Infinite discontinuity in the integrand
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Type 1: Infinite Limits}
+  \begin{block}{Upper Limit Infinite}
+    $$\int_a^{\infty} f(x)\,dx = \lim_{t \to \infty} \int_a^t f(x)\,dx$$
+  \end{block}
+  
+  \begin{block}{Lower Limit Infinite}
+    $$\int_{-\infty}^b f(x)\,dx = \lim_{t \to -\infty} \int_t^b f(x)\,dx$$
+  \end{block}
+  
+  \begin{block}{Both Limits Infinite}
+    $$\int_{-\infty}^{\infty} f(x)\,dx = \int_{-\infty}^c f(x)\,dx + \int_c^{\infty} f(x)\,dx$$
+    where $c$ is any real number. Both integrals must converge.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Type 2: Infinite Discontinuity}
+  \begin{block}{Discontinuity at Upper Limit}
+    If $f$ is continuous on $[a,b)$ and discontinuous at $b$:
+    $$\int_a^b f(x)\,dx = \lim_{t \to b^-} \int_a^t f(x)\,dx$$
+  \end{block}
+  
+  \begin{block}{Discontinuity at Lower Limit}
+    If $f$ is continuous on $(a,b]$ and discontinuous at $a$:
+    $$\int_a^b f(x)\,dx = \lim_{t \to a^+} \int_t^b f(x)\,dx$$
+  \end{block}
+  
+  \begin{block}{Discontinuity in the Interior}
+    If $f$ is discontinuous at $c$ where $a < c < b$:
+    $$\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Convergence and Divergence}
+  \begin{block}{Convergent Improper Integral}
+    An improper integral is \textbf{convergent} if the limit defining it exists and is finite.
+  \end{block}
+  
+  \begin{block}{Divergent Improper Integral}
+    An improper integral is \textbf{divergent} if the limit does not exist or is infinite.
+  \end{block}
+  
+  \vspace{0.5cm}
+  
+  \begin{alertblock}{Important Note}
+    When an improper integral involves both infinite limits and discontinuities, or multiple discontinuities, each part must be evaluated separately and ALL parts must converge for the integral to be convergent.
+  \end{alertblock}
+\end{frame}
+
+% Section 2: Type 1 Practice Problems
+\section{Type 1: Infinite Limits}
+
+\begin{frame}{Problem 1: Upper Limit Infinite}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_1^{\infty} \frac{1}{x^2}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 2: Upper Limit Infinite}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_1^{\infty} \frac{1}{x}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 3: Upper Limit Infinite with Exponential}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^{\infty} e^{-3x}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 4: Lower Limit Infinite}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_{-\infty}^0 e^{2x}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 5: Both Limits Infinite}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_{-\infty}^{\infty} \frac{1}{1+x^2}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 6: p-integral}
+  \begin{block}{Problem}
+    For what values of $p$ does the following integral converge?
+    $$\int_2^{\infty} \frac{1}{x^p}\,dx$$
+    
+    When it converges, find its value in terms of $p$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 7: Trigonometric Function}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^{\infty} \sin(x)\,dx$$
+    
+    Does it converge or diverge? Explain your reasoning.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 3: Type 2 Practice Problems
+\section{Type 2: Infinite Discontinuities}
+
+\begin{frame}{Problem 8: Discontinuity at Upper Limit}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^1 \frac{1}{\sqrt{1-x}}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 9: Discontinuity at Lower Limit}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^1 \frac{1}{\sqrt{x}}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 10: Discontinuity at Interior Point}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^3 \frac{1}{x-1}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+    
+    \textit{Hint: The integrand has a discontinuity at $x = 1$.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 11: Logarithmic Integrand}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^1 \ln(x)\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 12: Power Function with Discontinuity}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^4 \frac{1}{x^{2/3}}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 4: Mixed and Advanced Problems
+\section{Mixed and Advanced Problems}
+
+\begin{frame}{Problem 13: Both Infinite Limit and Discontinuity}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^{\infty} \frac{1}{\sqrt{x}(1+x)}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+    
+    \textit{Hint: Split at $x = 1$ and evaluate two improper integrals.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 14: Comparison Test Application}
+  \begin{block}{Problem}
+    Determine whether the following integral converges or diverges:
+    $$\int_1^{\infty} \frac{1+\sin^2(x)}{x^2}\,dx$$
+    
+    \textit{Hint: Use the comparison test with an appropriate function.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 15: Exponential with Polynomial}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_0^{\infty} x^2 e^{-x}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+    
+    \textit{Hint: Use integration by parts twice.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 16: Rational Function}
+  \begin{block}{Problem}
+    Evaluate the improper integral:
+    $$\int_2^{\infty} \frac{1}{x^2-1}\,dx$$
+    
+    Does it converge or diverge? If it converges, find its value.
+    
+    \textit{Hint: Use partial fractions first.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 5: Useful Formulas and Results
+\section{Reference Formulas}
+
+\begin{frame}{Important Results for Improper Integrals}
+  \begin{block}{p-integrals (Type 1)}
+    $$\int_1^{\infty} \frac{1}{x^p}\,dx \text{ converges if } p > 1 \text{ and diverges if } p \leq 1$$
+    
+    When $p > 1$: $\displaystyle\int_1^{\infty} \frac{1}{x^p}\,dx = \frac{1}{p-1}$
+  \end{block}
+  
+  \begin{block}{p-integrals (Type 2)}
+    $$\int_0^1 \frac{1}{x^p}\,dx \text{ converges if } p < 1 \text{ and diverges if } p \geq 1$$
+    
+    When $p < 1$: $\displaystyle\int_0^1 \frac{1}{x^p}\,dx = \frac{1}{1-p}$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Common Convergent Integrals}
+  \begin{block}{Useful Results}
+    \begin{enumerate}
+      \item $\displaystyle\int_0^{\infty} e^{-ax}\,dx = \frac{1}{a}$ for $a > 0$
+      
+      \item $\displaystyle\int_{-\infty}^{\infty} \frac{1}{1+x^2}\,dx = \pi$
+      
+      \item $\displaystyle\int_0^{\infty} \frac{\sin(x)}{x}\,dx = \frac{\pi}{2}$
+      
+      \item $\displaystyle\int_0^{\infty} x^n e^{-x}\,dx = n!$ for $n \in \mathbb{N}$
+      
+      \item $\displaystyle\int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}$ (Gaussian integral)
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Comparison Tests}
+  \begin{block}{Direct Comparison Test}
+    If $0 \leq f(x) \leq g(x)$ for all $x \geq a$:
+    \begin{itemize}
+      \item If $\int_a^{\infty} g(x)\,dx$ converges, then $\int_a^{\infty} f(x)\,dx$ converges
+      \item If $\int_a^{\infty} f(x)\,dx$ diverges, then $\int_a^{\infty} g(x)\,dx$ diverges
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Limit Comparison Test}
+    If $f(x) \geq 0$ and $g(x) > 0$ for $x \geq a$, and:
+    $$\lim_{x \to \infty} \frac{f(x)}{g(x)} = L \text{ where } 0 < L < \infty$$
+    
+    Then $\int_a^{\infty} f(x)\,dx$ and $\int_a^{\infty} g(x)\,dx$ either both converge or both diverge.
+  \end{block}
+\end{frame}
+
+% Final slide
+\begin{frame}
+  \begin{center}
+    {\Huge Thank You!}
+    
+    \vspace{1cm}
+    
+    {\Large Yolymatics Tutorials}
+    
+    \vspace{0.5cm}
+    
+    {\large www.yolymaticstutorials.com}
+    
+    \vspace{1cm}
+    
+    \textcolor{yolyaccent}{\Large Keep practicing!}
+  \end{center}
+\end{frame}
+
+\end{document}

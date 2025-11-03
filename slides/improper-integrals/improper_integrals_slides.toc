@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction to Improper Integrals}{3}{0}{1}
+\beamer@sectionintoc {2}{Type 1: Infinite Limits}{7}{0}{2}
+\beamer@sectionintoc {3}{Type 2: Infinite Discontinuities}{21}{0}{3}
+\beamer@sectionintoc {4}{Mixed and Advanced Problems}{31}{0}{4}
+\beamer@sectionintoc {5}{Reference Formulas}{39}{0}{5}
