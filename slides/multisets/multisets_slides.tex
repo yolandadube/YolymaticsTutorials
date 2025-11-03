@@ -1,0 +1,599 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+
+% Define Yolymatics colors
+\definecolor{yolyblue}{RGB}{13,71,161}
+\definecolor{yolylightblue}{RGB}{25,118,210}
+\definecolor{yolyaccent}{RGB}{245,124,0}
+
+% Set theme colors
+\setbeamercolor{structure}{fg=yolyblue}
+\setbeamercolor{palette primary}{bg=yolyblue,fg=white}
+\setbeamercolor{palette secondary}{bg=yolylightblue,fg=white}
+\setbeamercolor{palette tertiary}{bg=yolyaccent,fg=white}
+\setbeamercolor{frametitle}{bg=yolyblue,fg=white}
+
+% Footer
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% Title information
+\title{Multisets}
+\subtitle{Combinations with Repetition}
+\author{Yolymatics Tutorials}
+\institute{www.yolymaticstutorials.com}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+% Section 1: Introduction
+\section{Introduction to Multisets}
+
+\begin{frame}{What is a Multiset?}
+  \begin{block}{Definition}
+    A \textbf{multiset} (or \textbf{bag}) is a collection of objects where repetition of elements is allowed, but order does not matter.
+  \end{block}
+  
+  \vspace{0.5cm}
+  
+  \begin{block}{Comparison with Sets}
+    \begin{itemize}
+      \item \textbf{Set}: $\{a, b, c\}$ - each element appears at most once
+      \item \textbf{Multiset}: $\{a, a, b, c, c, c\}$ - elements can repeat
+      \item Notation: Sometimes written as $\{a^2, b, c^3\}$ to show multiplicities
+    \end{itemize}
+  \end{block}
+  
+  \begin{alertblock}{Key Property}
+    The order of elements does NOT matter: $\{a, a, b\} = \{a, b, a\} = \{b, a, a\}$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Multisets vs Combinations vs Permutations}
+  \begin{block}{Key Distinctions}
+    \begin{tabular}{llll}
+      \toprule
+      \textbf{Concept} & \textbf{Order?} & \textbf{Repetition?} & \textbf{Example} \\
+      \midrule
+      Permutations & Matters & No & $ABC \neq BAC$ \\
+      Combinations & Doesn't & No & $\{A,B,C\} = \{C,A,B\}$ \\
+      \textbf{Multisets} & \textbf{Doesn't} & \textbf{Yes} & $\{A,A,B\} = \{B,A,A\}$ \\
+      Permutations w/ Rep & Matters & Yes & $AAB \neq ABA$ \\
+      \bottomrule
+    \end{tabular}
+  \end{block}
+  
+  \vspace{0.5cm}
+  
+  \begin{exampleblock}{Real-World Examples}
+    \begin{itemize}
+      \item Selecting fruits: 2 apples, 1 banana, 3 oranges
+      \item Distributing identical items to distinct boxes
+      \item Choosing toppings for pizza (can repeat)
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{The Fundamental Multiset Formula}
+  \begin{block}{Problem Statement}
+    How many ways can we select $r$ objects from $n$ types of objects, where repetition is allowed and order does not matter?
+  \end{block}
+  
+  \vspace{0.5cm}
+  
+  \begin{block}{Formula: Combinations with Repetition}
+    $$\left(\!\!\binom{n}{r}\!\!\right) = \binom{n+r-1}{r} = \binom{n+r-1}{n-1} = \frac{(n+r-1)!}{r!(n-1)!}$$
+    
+    where:
+    \begin{itemize}
+      \item $n$ = number of types (distinct objects to choose from)
+      \item $r$ = number of selections (objects to be selected)
+    \end{itemize}
+  \end{block}
+  
+  \begin{alertblock}{Notation}
+    $\left(\!\!\binom{n}{r}\!\!\right)$ is read as "n multichoose r" or "multiset coefficient"
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Stars and Bars Method}
+  \begin{block}{Visual Representation}
+    The multiset problem is equivalent to placing $r$ identical stars into $n$ distinct bins using $n-1$ bars as separators.
+  \end{block}
+  
+  \begin{exampleblock}{Example: Choose 5 items from 3 types}
+    Select 5 objects from types $\{A, B, C\}$
+    
+    \vspace{0.3cm}
+    
+    Representation: $\star \star | \star \star \star |$ means 2 of type A, 3 of type B, 0 of type C
+    
+    \vspace{0.3cm}
+    
+    Total arrangements: We have 5 stars and 2 bars to arrange
+    
+    $$\binom{5+2}{2} = \binom{7}{2} = 21 \text{ ways}$$
+  \end{exampleblock}
+  
+  \begin{alertblock}{Key Insight}
+    We arrange $r$ stars and $(n-1)$ bars, giving $\binom{n+r-1}{r}$ or $\binom{n+r-1}{n-1}$
+  \end{alertblock}
+\end{frame}
+
+% Section 2: Basic Multiset Problems
+\section{Basic Multiset Problems}
+
+\begin{frame}{Problem 1: Simple Multiset Selection}
+  \begin{block}{Problem}
+    A bakery offers 4 types of cookies: chocolate chip, oatmeal, sugar, and peanut butter. You want to buy 6 cookies. How many different selections can you make?
+    
+    \textit{Note: You can choose multiple cookies of the same type.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 2: Distributing Identical Objects}
+  \begin{block}{Problem}
+    In how many ways can 10 identical candies be distributed among 3 children?
+    
+    \textit{Note: A child can receive 0, 1, 2, ..., or all 10 candies.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 3: Non-negative Integer Solutions}
+  \begin{block}{Problem}
+    Find the number of non-negative integer solutions to the equation:
+    $$x_1 + x_2 + x_3 + x_4 = 12$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 4: Coin Selection}
+  \begin{block}{Problem}
+    A vending machine accepts pennies, nickels, dimes, and quarters. How many different ways can you put 8 coins into the machine?
+    
+    \textit{Note: The coins need not have the same value.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 5: Letter Repetition}
+  \begin{block}{Problem}
+    How many 5-letter "words" can be formed using only the letters A, B, and C, where order does not matter?
+    
+    \textit{Example: AAABC is the same as AABCA and BAAAC.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 3: Multisets with Constraints
+\section{Multisets with Constraints}
+
+\begin{frame}{Problem 6: Positive Integer Solutions}
+  \begin{block}{Problem}
+    Find the number of \textbf{positive} integer solutions to:
+    $$x_1 + x_2 + x_3 = 10$$
+    
+    \textit{Hint: Each variable must be at least 1.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 7: Minimum Constraints}
+  \begin{block}{Problem}
+    How many ways can 15 identical books be distributed among 4 students if each student must receive at least 2 books?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 8: Upper Bound Constraints}
+  \begin{block}{Problem}
+    Find the number of non-negative integer solutions to:
+    $$x_1 + x_2 + x_3 = 8$$
+    where $x_1 \leq 3$, $x_2 \leq 4$, and $x_3 \leq 5$.
+    
+    \textit{Hint: Use inclusion-exclusion principle.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 9: Mixed Constraints}
+  \begin{block}{Problem}
+    Find the number of integer solutions to:
+    $$x_1 + x_2 + x_3 + x_4 = 20$$
+    where $x_1 \geq 2$, $x_2 \geq 0$, $x_3 \geq 1$, and $x_4 \geq 3$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 10: Even Distribution Constraint}
+  \begin{block}{Problem}
+    How many ways can 12 identical items be distributed among 3 boxes such that each box contains an even number of items (possibly 0)?
+    
+    \textit{Hint: Let $x_i = 2y_i$ where $y_i \geq 0$.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 4: Advanced Applications
+\section{Advanced Multiset Problems}
+
+\begin{frame}{Problem 11: Generating Functions Application}
+  \begin{block}{Problem}
+    In how many ways can you make change for \$1.00 using only pennies, nickels, dimes, and quarters?
+    
+    \textit{Note: Find non-negative integer solutions to $p + 5n + 10d + 25q = 100$.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 12: Partition with Distinct Parts}
+  \begin{block}{Problem}
+    How many ways can you select a multiset of size 6 from the set $\{1, 2, 3, 4, 5\}$?
+    
+    \textit{Note: Each number can be selected multiple times.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 13: Polynomial Coefficient}
+  \begin{block}{Problem}
+    Find the coefficient of $x^{10}$ in the expansion of:
+    $$(1 + x + x^2 + x^3 + \cdots)^4$$
+    
+    \textit{Hint: This is equivalent to a multiset problem.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 14: Dice Combinations}
+  \begin{block}{Problem}
+    How many different unordered outcomes are possible when rolling 5 distinguishable dice?
+    
+    \textit{Example: Rolling (1,1,3,4,6) is the same as (1,3,1,6,4) in an unordered collection.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 15: Bounded Selections}
+  \begin{block}{Problem}
+    A fruit stand has apples, bananas, and cherries. You want to buy exactly 8 pieces of fruit. However, the stand only has 3 bananas available. How many different selections are possible?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 5: Comparison and Counting Problems
+\section{Counting Method Identification}
+
+\begin{frame}{Problem 16: Identify the Method}
+  \begin{block}{Problem}
+    For each scenario, determine whether it is a multiset problem, regular combination, or permutation:
+    
+    \begin{enumerate}
+      \item Selecting 4 cards from a standard deck (52 cards)
+      \item Arranging 5 books on a shelf
+      \item Choosing 10 donuts from 6 varieties
+      \item Forming a 3-digit PIN code
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 17: Ice Cream Scoops}
+  \begin{block}{Problem}
+    An ice cream shop has 12 flavors. You order a bowl with 4 scoops. How many different bowls are possible if:
+    
+    \begin{enumerate}
+      \item Order matters and repetition is not allowed
+      \item Order doesn't matter and repetition is not allowed
+      \item Order doesn't matter and repetition is allowed
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 18: Committee with Repeated Members}
+  \begin{block}{Problem}
+    A committee of 5 people is to be formed from 8 candidates, where a person can be selected multiple times (representing multiple votes or roles). How many different committees can be formed?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 6: Multiset Theory and Properties
+\section{Theory and Formulas}
+
+\begin{frame}{Formula 1: Basic Multiset Coefficient}
+  \begin{block}{Statement}
+    The number of multisets of size $r$ chosen from $n$ types is:
+    $$\left(\!\!\binom{n}{r}\!\!\right) = \binom{n+r-1}{r} = \binom{n+r-1}{n-1}$$
+  \end{block}
+  
+  \begin{exampleblock}{Alternative Forms}
+    \begin{itemize}
+      \item $\displaystyle\frac{(n+r-1)!}{r!(n-1)!}$ - factorial form
+      
+      \item $\displaystyle\frac{(n+r-1)(n+r-2)\cdots(n)}{r!}$ - product form
+      
+      \item Number of non-negative integer solutions to $x_1 + x_2 + \cdots + x_n = r$
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Formula 2: Positive Integer Solutions}
+  \begin{block}{Statement}
+    The number of \textbf{positive} integer solutions to:
+    $$x_1 + x_2 + \cdots + x_n = r$$
+    where each $x_i \geq 1$, is:
+    $$\binom{r-1}{n-1} = \binom{r-1}{r-n}$$
+  \end{block}
+  
+  \begin{alertblock}{Derivation}
+    Substitute $y_i = x_i - 1$ where $y_i \geq 0$:
+    $$y_1 + y_2 + \cdots + y_n = r - n$$
+    
+    This gives $\binom{(r-n)+n-1}{n-1} = \binom{r-1}{n-1}$ non-negative solutions.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Formula 3: General Minimum Constraints}
+  \begin{block}{Statement}
+    The number of integer solutions to $x_1 + x_2 + \cdots + x_n = r$ where $x_i \geq m_i$ for each $i$:
+    
+    $$\binom{r - (m_1 + m_2 + \cdots + m_n) + n - 1}{n-1}$$
+  \end{block}
+  
+  \begin{block}{Method}
+    \begin{enumerate}
+      \item Substitute $y_i = x_i - m_i$ so that $y_i \geq 0$
+      \item The equation becomes: $y_1 + y_2 + \cdots + y_n = r - \sum m_i$
+      \item Apply the basic multiset formula to the $y_i$ variables
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Formula 4: Inclusion-Exclusion for Upper Bounds}
+  \begin{block}{Statement}
+    For solutions to $x_1 + x_2 + \cdots + x_n = r$ with upper bounds $x_i \leq u_i$:
+    
+    Use the Inclusion-Exclusion Principle:
+    $$\sum_{\text{all}} - \sum_{\text{violate 1}} + \sum_{\text{violate 2}} - \cdots$$
+  \end{block}
+  
+  \begin{exampleblock}{Example: $x_1 + x_2 = 10$ with $x_1 \leq 6$, $x_2 \leq 7$}
+    \begin{align*}
+    \text{Total} &= \binom{11}{1} = 11 \\
+    \text{Subtract } x_1 \geq 7 &= \binom{4}{1} = 4 \\
+    \text{Subtract } x_2 \geq 8 &= \binom{3}{1} = 3 \\
+    \text{Add back } x_1 \geq 7, x_2 \geq 8 &= 0 \\
+    \text{Answer} &= 11 - 4 - 3 + 0 = 4
+    \end{align*}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Formula 5: Stars and Bars Visualization}
+  \begin{block}{Interpretation}
+    To distribute $r$ identical objects into $n$ distinct bins:
+    \begin{itemize}
+      \item Represent objects as $r$ stars: $\star \star \star \cdots \star$
+      \item Use $n-1$ bars to create $n$ compartments: $|$
+      \item Arrange $r$ stars and $n-1$ bars in a line
+    \end{itemize}
+    
+    Total arrangements: $\binom{r + (n-1)}{r} = \binom{r+n-1}{n-1}$
+  \end{block}
+  
+  \begin{exampleblock}{Example}
+    Distribute 5 items into 3 bins: $\star \star | \star | \star \star$
+    
+    This represents: Bin 1 gets 2, Bin 2 gets 1, Bin 3 gets 2
+    
+    Total ways: $\binom{5+3-1}{3-1} = \binom{7}{2} = 21$
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Formula 6: Generating Functions}
+  \begin{block}{Statement}
+    The generating function for selecting $r$ objects from $n$ types with repetition is:
+    $$(1 + x + x^2 + x^3 + \cdots)^n = \frac{1}{(1-x)^n}$$
+    
+    The coefficient of $x^r$ gives the number of multisets of size $r$.
+  \end{block}
+  
+  \begin{block}{Power Series Expansion}
+    $$\frac{1}{(1-x)^n} = \sum_{r=0}^{\infty} \binom{n+r-1}{r} x^r$$
+    
+    The coefficient of $x^r$ is $\binom{n+r-1}{r}$, confirming the multiset formula.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Property 1: Multiset Symmetry}
+  \begin{block}{Statement}
+    $$\left(\!\!\binom{n}{r}\!\!\right) = \binom{n+r-1}{r} = \binom{n+r-1}{n-1}$$
+    
+    This symmetry shows that selecting $r$ items from $n$ types is equivalent to distributing $r$ items into $n$ bins.
+  \end{block}
+  
+  \begin{alertblock}{Interpretation}
+    \begin{itemize}
+      \item $\binom{n+r-1}{r}$ - choose positions for $r$ stars among $r$ stars and $n-1$ bars
+      \item $\binom{n+r-1}{n-1}$ - choose positions for $n-1$ bars among $r$ stars and $n-1$ bars
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Property 2: Relationship to Regular Combinations}
+  \begin{block}{Comparison}
+    \begin{itemize}
+      \item \textbf{Regular combinations}: $\binom{n}{r}$ - choose $r$ from $n$ distinct objects, no repetition
+      
+      \item \textbf{Multisets}: $\left(\!\!\binom{n}{r}\!\!\right) = \binom{n+r-1}{r}$ - choose $r$ from $n$ types, repetition allowed
+    \end{itemize}
+  \end{block}
+  
+  \begin{exampleblock}{Example Comparison}
+    \begin{itemize}
+      \item $\binom{4}{3} = 4$ - choose 3 from 4 distinct items: $\{A,B,C\}, \{A,B,D\}, \{A,C,D\}, \{B,C,D\}$
+      
+      \item $\binom{4+3-1}{3} = \binom{6}{3} = 20$ - choose 3 from 4 types with repetition allowed
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Property 3: Special Cases}
+  \begin{block}{Important Special Values}
+    \begin{enumerate}
+      \item $\left(\!\!\binom{n}{0}\!\!\right) = \binom{n-1}{0} = 1$ - one way to select nothing
+      
+      \item $\left(\!\!\binom{n}{1}\!\!\right) = \binom{n}{1} = n$ - $n$ ways to select one item
+      
+      \item $\left(\!\!\binom{1}{r}\!\!\right) = \binom{r}{r} = 1$ - one way to select $r$ items from 1 type
+      
+      \item $\left(\!\!\binom{2}{r}\!\!\right) = \binom{r+1}{r} = r+1$ - partitions of $r$ into at most 2 parts
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Common Problem Types Summary}
+  \begin{block}{Problem Type Recognition}
+    \begin{tabular}{ll}
+      \toprule
+      \textbf{Problem Type} & \textbf{Formula} \\
+      \midrule
+      Distribute $r$ identical to $n$ distinct & $\binom{n+r-1}{r}$ \\
+      Non-negative solutions: $\sum x_i = r$ & $\binom{n+r-1}{n-1}$ \\
+      Positive solutions: $\sum x_i = r$ & $\binom{r-1}{n-1}$ \\
+      With minimums: $x_i \geq m_i$ & $\binom{r-\sum m_i + n-1}{n-1}$ \\
+      With maximums: $x_i \leq u_i$ & Inclusion-Exclusion \\
+      Coefficient in $(1+x+x^2+\cdots)^n$ & $\binom{n+r-1}{r}$ \\
+      \bottomrule
+    \end{tabular}
+  \end{block}
+\end{frame}
+
+% Section 7: Reference Formulas
+\section{Quick Reference}
+
+\begin{frame}{Quick Formula Reference}
+  \begin{block}{Essential Formulas}
+    \begin{enumerate}
+      \item \textbf{Basic Multiset}: $\left(\!\!\binom{n}{r}\!\!\right) = \binom{n+r-1}{r} = \frac{(n+r-1)!}{r!(n-1)!}$
+      
+      \item \textbf{Positive Integer Solutions}: $x_1 + \cdots + x_n = r$ with $x_i \geq 1$: $\binom{r-1}{n-1}$
+      
+      \item \textbf{With Minimums}: $x_i \geq m_i$: Let $S = \sum m_i$, answer is $\binom{r-S+n-1}{n-1}$
+      
+      \item \textbf{Stars and Bars}: $r$ stars, $n-1$ bars: $\binom{r+n-1}{n-1}$
+      
+      \item \textbf{Regular Combination}: $\binom{n}{r} = \frac{n!}{r!(n-r)!}$ (no repetition)
+      
+      \item \textbf{Permutation}: $P(n,r) = \frac{n!}{(n-r)!}$ (order matters, no repetition)
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+% Final slide
+\begin{frame}
+  \begin{center}
+    {\Huge Thank You!}
+    
+    \vspace{1cm}
+    
+    {\Large Yolymatics Tutorials}
+    
+    \vspace{0.5cm}
+    
+    {\large www.yolymaticstutorials.com}
+    
+    \vspace{1cm}
+    
+    \textcolor{yolyaccent}{\Large Keep counting!}
+  \end{center}
+\end{frame}
+
+\end{document}
