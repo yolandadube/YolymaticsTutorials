@@ -1,0 +1,448 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+
+% Define Yolymatics colors
+\definecolor{yolyblue}{RGB}{13,71,161}
+\definecolor{yolylightblue}{RGB}{25,118,210}
+\definecolor{yolyaccent}{RGB}{245,124,0}
+
+% Set theme colors
+\setbeamercolor{structure}{fg=yolyblue}
+\setbeamercolor{palette primary}{bg=yolyblue,fg=white}
+\setbeamercolor{palette secondary}{bg=yolylightblue,fg=white}
+\setbeamercolor{palette tertiary}{bg=yolyaccent,fg=white}
+\setbeamercolor{frametitle}{bg=yolyblue,fg=white}
+
+% Footer
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% Title information
+\title{M344 Discrete Mathematics}
+\subtitle{Exam Preparation Problems}
+\author{Yolymatics Tutorials}
+\institute{www.yolymaticstutorials.com}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+% Section A: Short Answer Problems
+\section{Section A: Short Answer Problems [30 marks]}
+
+\begin{frame}{Question 1 [3 marks]: Ring Arithmetic}
+  \begin{block}{Problem}
+    In the ring of integers modulo $3$, whose elements are $0, 1, 2$, compute:
+    $$((2 + 2) \times (1 + 1))^5$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 2 [3 marks]: Modular Equations}
+  \begin{block}{Problem}
+    Consider the following modular equation:
+    $$5x \equiv 8 \pmod{7}$$
+    
+    What can you say about existence and uniqueness of the solution? Justify your answer.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 3 [3 marks]: Euler's Theorem}
+  \begin{block}{Problem}
+    Let $a$ and $n$ be natural numbers. Under which assumption does Euler's Theorem assert that:
+    $$a^{\varphi(n)} \equiv 1 \pmod{n}?$$
+    
+    Describe $\varphi(n)$ in this formula.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 4 [3 marks]: Chinese Remainder Theorem}
+  \begin{block}{Problem}
+    Can we apply the Chinese Remainder Theorem to conclude that there exists a natural number $x$ which is divisible by both $5$ and $7$? 
+    
+    What can we say about uniqueness of $x$?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 5: GCD and Linear Combinations [3 marks]}
+  \begin{block}{Problem}
+    Let $p = 2^n 3^m$ and $q = 3^{m} 5^{k}$, where $n, m, k$ are natural numbers. 
+    
+    Consider the set $S = \{px + qy \mid x, y \in \mathbb{Z}\}$. 
+    
+    For which values of $m$ is $3^{m}$ an element of this set? Justify your answer.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 6 [3 marks]: Euler's Totient Function}
+  \begin{block}{Problem}
+    Compute $120 \bmod \varphi(120)$ and show calculation.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 7 [3 marks]: Distribution Problem}
+  \begin{block}{Problem}
+    An absent minded postman has to deliver $7$ different letters to $3$ different addresses. However, out of being absent minded, the postman did not look at the addresses on the letters upon delivery. He does remember correctly though that the first two addresses must receive $2$ letters each. 
+    
+    In how many different ways could the absent minded postman deliver?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 8 [3 marks]: Outcomes with Constraints}
+  \begin{block}{Problem}
+    How many outcomes can there be if $3$ people are donating their towels to $2$ different charities, where each person donates up to $10$ towels in total? 
+    
+    Note that an outcome is determined by the total number of towels donated to each charity.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 9 [3 marks]: Complement Counting}
+  \begin{block}{Problem}
+    There is a scientific experiment with $10$ vials. Each vial either contains water or a special clear chemical that looks like water. Exactly $6$ of the vials contain the special chemical. 
+    
+    A researcher must choose a set of $4$ vials to test. In how many scenarios will at least one of the chosen vials contain water?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 10 [3 marks]: Graph Isomorphism}
+  \begin{block}{Problem}
+    Write down an example of a graph as an ordered pair of sets, having $3$ vertices and $2$ edges. 
+    
+    Write down another graph that is isomorphic to the first one, but not equal to the first one, although it has the same set of vertices.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section B: Medium Problems
+\section{Section B: Medium Problems [15 marks]}
+
+\begin{frame}{Question 11 [5 marks]: Combinatorial Word Problem}
+  \begin{block}{Sample Problem}
+    A university club has 12 members: 7 undergraduate students and 5 graduate students. The club needs to form a committee of 6 members to organize an event.
+    
+    \begin{enumerate}
+      \item How many different committees can be formed if there are no restrictions?
+      \item How many committees contain exactly 2 graduate students?
+      \item How many committees contain at least 3 undergraduate students?
+    \end{enumerate}
+    
+    Show all calculations.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Working Space (continued)}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 12 [5 marks]: Constrained Sequences}
+  \begin{block}{Problem}
+    Consider the set $X \times Y$, where $X$ has 3 distinct elements and $Y$ has 4 distinct elements. In how many ways can we create a list
+    $$(x_0, y_0), (x_1, y_1), (x_2, y_2), (x_3, y_3), (x_4, y_4)$$
+    of 5 elements of $X \times Y$, where the order matters, so that:
+    \begin{itemize}
+      \item $x_{2i} = x_{2i+1}$ for every $i \in \{0, 1\}$
+      \item $y_{2i+1} = y_{2i+2}$ for every $i \in \{0, 1\}$
+      \item The list contains at least two distinct elements of $X \times Y$
+    \end{itemize}
+    
+    Include proof in your answer.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Working Space (continued)}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 13 [5 marks]: Number Theory Proof}
+  \begin{block}{Sample Problem}
+    Let $a, b, c$ be integers such that $\gcd(a, b) = 1$.
+    
+    \textbf{Prove:} If $a \mid c$ and $b \mid c$, then $ab \mid c$.
+    
+    Your proof should:
+    \begin{itemize}
+      \item Use properties of divisibility
+      \item Apply the coprimality condition
+      \item Be rigorous and complete
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Working Space (continued)}
+  \vspace{6cm}
+\end{frame}
+
+% Section C: Advanced Problems
+\section{Section C: Advanced Problems [15 marks]}
+
+\begin{frame}{Question 14 [7 marks]: Graph Theory Analysis}
+  \begin{block}{Problem}
+    Consider the graph
+    $$G = (\{1, 2, 3\}, \{\{x, y\} \subseteq \{1, 2, 3\} \mid x - y \in \{1, 2\}\})$$
+    
+    Answer the following questions.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Question 14(a) [1 mark]: Graph Classification}
+  \begin{block}{Problem}
+    Is $G$ a complete graph, a bipartite graph, a cycle, or a path graph?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 14(b) [1 mark]: Isomorphic Graphs}
+  \begin{block}{Problem}
+    What are all possible graphs which are isomorphic to $G$ and at the same time, whose set $V$ of vertices is the same as that of $G$, i.e., $V = \{1, 2, 3\}$?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 14(c) [5 marks]: Connected Subgraphs}
+  \begin{block}{Problem}
+    Which are all connected subgraphs of $G$ and which of these connected subgraphs are isomorphic to each other?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Working Space (continued)}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Question 15 [8 marks]: Combined Concepts}
+  \begin{block}{Sample Problem}
+    Let $G = (V, E)$ be a graph where $V = \{1, 2, \ldots, n\}$ and two vertices $i$ and $j$ are adjacent if and only if $\gcd(i, j) = 1$ (i.e., $i$ and $j$ are coprime).
+    
+    \textbf{Part (a) [2 marks]:} Draw the graph for $n = 6$.
+    
+    \textbf{Part (b) [3 marks]:} For which values of $n$ is this graph connected? Justify your answer.
+    
+    \textbf{Part (c) [3 marks]:} Prove that if $p$ is a prime number and $n = p$, then the graph is complete.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Working Space (continued)}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Working Space (continued)}
+  \vspace{6cm}
+\end{frame}
+
+% Reference Section
+\section{Reference: Key Theorems and Formulas}
+
+\begin{frame}{Number Theory Reference}
+  \begin{block}{Key Theorems}
+    \begin{enumerate}
+      \item \textbf{Euclidean Algorithm}: $\gcd(a,b) = \gcd(b, a \bmod b)$
+      
+      \item \textbf{Bézout's Identity}: $\gcd(a,b) = ax + by$ for some $x, y \in \mathbb{Z}$
+      
+      \item \textbf{Euler's Theorem}: If $\gcd(a,n) = 1$, then $a^{\varphi(n)} \equiv 1 \pmod{n}$
+      
+      \item \textbf{Chinese Remainder Theorem}: If $\gcd(m,n) = 1$, then the system
+      $$x \equiv a \pmod{m}, \quad x \equiv b \pmod{n}$$
+      has a unique solution modulo $mn$
+      
+      \item \textbf{Euler's Totient}: $\varphi(n) = n \prod_{p \mid n} \left(1 - \frac{1}{p}\right)$
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Combinatorics Reference}
+  \begin{block}{Key Formulas}
+    \begin{enumerate}
+      \item \textbf{Permutations}: $P(n,r) = \frac{n!}{(n-r)!}$
+      
+      \item \textbf{Combinations}: $\binom{n}{r} = \frac{n!}{r!(n-r)!}$
+      
+      \item \textbf{Multisets}: $\left(\!\!\binom{n}{r}\!\!\right) = \binom{n+r-1}{r}$
+      
+      \item \textbf{Inclusion-Exclusion}: $|A \cup B| = |A| + |B| - |A \cap B|$
+      
+      \item \textbf{Complement Principle}: $|A^c| = |U| - |A|$
+      
+      \item \textbf{Product Rule}: If task 1 has $m$ outcomes and task 2 has $n$ outcomes, total is $m \times n$
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Graph Theory Reference}
+  \begin{block}{Key Definitions}
+    \begin{itemize}
+      \item \textbf{Graph}: $G = (V, E)$ where $V$ is vertex set, $E$ is edge set
+      
+      \item \textbf{Complete Graph} $K_n$: Every pair of vertices is adjacent
+      
+      \item \textbf{Bipartite Graph}: Vertices can be partitioned into two sets with edges only between sets
+      
+      \item \textbf{Cycle} $C_n$: Closed path with $n$ vertices
+      
+      \item \textbf{Path} $P_n$: Connected graph with $n$ vertices, no cycles
+      
+      \item \textbf{Isomorphism}: Bijection $f: V_1 \to V_2$ preserving adjacency
+      
+      \item \textbf{Subgraph}: $H = (V', E')$ where $V' \subseteq V$ and $E' \subseteq E$
+      
+      \item \textbf{Connected}: Path exists between any two vertices
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Problem-Solving Strategies}
+  \begin{block}{Approach for Section A (3-mark problems)}
+    \begin{itemize}
+      \item Read carefully and identify the concept being tested
+      \item Write down relevant definitions or theorems
+      \item Show all calculation steps
+      \item State your final answer clearly
+      \item Time: ~5-6 minutes per question
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Approach for Section B (5-mark problems)}
+    \begin{itemize}
+      \item Break problem into smaller parts
+      \item Define variables clearly
+      \item Include justifications for each step
+      \item For proofs: state what you're proving, show logical steps, conclude
+      \item Time: ~10-12 minutes per question
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Problem-Solving Strategies (continued)}
+  \begin{block}{Approach for Section C (7-8 mark problems)}
+    \begin{itemize}
+      \item Read all parts before starting
+      \item Draw diagrams when helpful (especially for graphs)
+      \item Each part may build on previous parts
+      \item Allocate time: Part (a) 2-3 min, Part (b) 4-5 min, Part (c) proof 5-6 min
+      \item Check your work if time permits
+    \end{itemize}
+  \end{block}
+  
+  \begin{alertblock}{Common Mistakes to Avoid}
+    \begin{itemize}
+      \item Not checking if conditions for theorems are satisfied (e.g., coprimality)
+      \item Confusing "at least" with "exactly" in counting problems
+      \item Forgetting to justify existence vs uniqueness
+      \item Missing edge cases in graph problems
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+% Final slide
+\begin{frame}
+  \begin{center}
+    {\Huge Good Luck!}
+    
+    \vspace{1cm}
+    
+    {\Large Yolymatics Tutorials}
+    
+    \vspace{0.5cm}
+    
+    {\large www.yolymaticstutorials.com}
+    
+    \vspace{1cm}
+    
+    \textcolor{yolyaccent}{\Large You've got this!}
+  \end{center}
+\end{frame}
+
+\end{document}

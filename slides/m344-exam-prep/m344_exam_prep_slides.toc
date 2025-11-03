@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Section A: Short Answer Problems [30 marks]}{3}{0}{1}
+\beamer@sectionintoc {2}{Section B: Medium Problems [15 marks]}{23}{0}{2}
+\beamer@sectionintoc {3}{Section C: Advanced Problems [15 marks]}{32}{0}{3}
+\beamer@sectionintoc {4}{Reference: Key Theorems and Formulas}{44}{0}{4}
