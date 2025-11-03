@@ -1,7 +1,7 @@
 \beamer@sectionintoc {1}{Chi-Squared Distribution}{3}{0}{1}
 \beamer@sectionintoc {2}{Goodness of Fit Test}{5}{0}{2}
-\beamer@sectionintoc {3}{Goodness of Fit: Practice Problems}{9}{0}{3}
-\beamer@sectionintoc {4}{Test of Independence}{14}{0}{4}
-\beamer@sectionintoc {5}{Independence: Practice Problems}{19}{0}{5}
-\beamer@sectionintoc {6}{Chi-Squared Tables and Critical Values}{24}{0}{6}
-\beamer@sectionintoc {7}{Summary}{25}{0}{7}
+\beamer@sectionintoc {3}{Goodness of Fit: Practice Problems}{6}{0}{3}
+\beamer@sectionintoc {4}{Test of Independence}{16}{0}{4}
+\beamer@sectionintoc {5}{Independence: Practice Problems}{17}{0}{5}
+\beamer@sectionintoc {6}{Chi-Squared Tables and Critical Values}{27}{0}{6}
+\beamer@sectionintoc {7}{Summary}{28}{0}{7}
