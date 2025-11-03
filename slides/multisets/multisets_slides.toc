@@ -1,7 +1,8 @@
 \beamer@sectionintoc {1}{Introduction to Multisets}{3}{0}{1}
-\beamer@sectionintoc {2}{Basic Multiset Problems}{7}{0}{2}
-\beamer@sectionintoc {3}{Multisets with Constraints}{17}{0}{3}
-\beamer@sectionintoc {4}{Advanced Multiset Problems}{27}{0}{4}
-\beamer@sectionintoc {5}{Counting Method Identification}{37}{0}{5}
-\beamer@sectionintoc {6}{Theory and Formulas}{43}{0}{6}
-\beamer@sectionintoc {7}{Quick Reference}{53}{0}{7}
+\beamer@sectionintoc {2}{Basic Multiset Problems}{8}{0}{2}
+\beamer@sectionintoc {3}{Multisets with Constraints}{18}{0}{3}
+\beamer@sectionintoc {4}{Multisets with Constraints}{20}{0}{4}
+\beamer@sectionintoc {5}{Advanced Multiset Problems}{30}{0}{5}
+\beamer@sectionintoc {6}{Theoretical and Proof Problems}{40}{0}{6}
+\beamer@sectionintoc {7}{Theory and Formulas}{46}{0}{7}
+\beamer@sectionintoc {8}{Quick Reference}{56}{0}{8}

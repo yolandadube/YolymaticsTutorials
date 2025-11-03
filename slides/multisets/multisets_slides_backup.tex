@@ -227,7 +227,7 @@
 
 \begin{frame}{Working Space}
   \vspace{6cm}
-\end{frame}
+\end{frame>
 
 \begin{frame}{Problem 5: Distribution and Stars-Bars}
   \begin{block}{Problem}
@@ -279,13 +279,35 @@
   \vspace{6cm}
 \end{frame}
 
-\begin{frame}{Problem 7: General Minimum Constraints}
+\begin{frame}{Problem 7: Minimum Constraints}
+  \begin{block}{Problem}
+    How many ways can 15 identical books be distributed among 4 students if each student must receive at least 2 books?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 8: Upper Bound Constraints}
+  \begin{block}{Problem}
+    Find the number of non-negative integer solutions to:
+    $$x_1 + x_2 + x_3 = 8$$
+    where $x_1 \leq 3$, $x_2 \leq 4$, and $x_3 \leq 5$.
+    
+    \textit{Hint: Use inclusion-exclusion principle.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 9: Mixed Constraints}
   \begin{block}{Problem}
     Find the number of integer solutions to:
     $$x_1 + x_2 + x_3 + x_4 = 20$$
-    where $x_1 \geq 3$, $x_2 \geq 1$, $x_3 \geq 2$, and $x_4 \geq 0$.
-    
-    Use the substitution method and express using multiset notation.
+    where $x_1 \geq 2$, $x_2 \geq 0$, $x_3 \geq 1$, and $x_4 \geq 3$.
   \end{block}
 \end{frame}
 
@@ -293,48 +315,11 @@
   \vspace{6cm}
 \end{frame}
 
-\begin{frame}{Problem 8: Inclusion-Exclusion Principle}
+\begin{frame}{Problem 10: Even Distribution Constraint}
   \begin{block}{Problem}
-    Find the number of non-negative integer solutions to:
-    $$x_1 + x_2 + x_3 = 10$$
-    where $x_1 \leq 4$, $x_2 \leq 5$, and $x_3 \leq 6$.
+    How many ways can 12 identical items be distributed among 3 boxes such that each box contains an even number of items (possibly 0)?
     
-    \begin{enumerate}
-      \item Calculate the total without upper bounds
-      \item Apply inclusion-exclusion systematically
-    \end{enumerate}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Working Space}
-  \vspace{6cm}
-\end{frame}
-
-\begin{frame}{Problem 9: Bijection and Correspondence}
-  \begin{block}{Problem}
-    Prove that there is a bijection between:
-    \begin{enumerate}
-      \item Multisets of cardinality $r$ from an $n$-element set
-      \item Non-negative integer solutions to $x_1 + x_2 + \cdots + x_n = r$
-    \end{enumerate}
-    
-    Describe the correspondence explicitly.
-  \end{block}
-\end{frame}
-
-\begin{frame}{Working Space}
-  \vspace{6cm}
-\end{frame}
-
-\begin{frame}{Problem 10: Recurrence Relations}
-  \begin{block}{Problem}
-    Let $M(n,r)$ denote the number of multisets of cardinality $r$ from an $n$-element set.
-    
-    \begin{enumerate}
-      \item Prove that $M(n,r) = M(n-1,r) + M(n,r-1)$ for $n, r \geq 1$
-      \item Give an initial conditions for this recurrence
-      \item Explain the combinatorial meaning of this recurrence
-    \end{enumerate}
+    \textit{Hint: Let $x_i = 2y_i$ where $y_i \geq 0$.}
   \end{block}
 \end{frame}
 
@@ -345,15 +330,77 @@
 % Section 4: Advanced Applications
 \section{Advanced Multiset Problems}
 
-\begin{frame}{Problem 11: Generating Functions}
+\begin{frame}{Problem 11: Generating Functions Application}
   \begin{block}{Problem}
-    Consider the generating function:
-    $$G(x) = (1 + x + x^2 + x^3 + \cdots)^n = \frac{1}{(1-x)^n}$$
+    In how many ways can you make change for \$1.00 using only pennies, nickels, dimes, and quarters?
+    
+    \textit{Note: Find non-negative integer solutions to $p + 5n + 10d + 25q = 100$.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 12: Partition with Distinct Parts}
+  \begin{block}{Problem}
+    How many ways can you select a multiset of size 6 from the set $\{1, 2, 3, 4, 5\}$?
+    
+    \textit{Note: Each number can be selected multiple times.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 13: Polynomial Coefficient}
+  \begin{block}{Problem}
+    Find the coefficient of $x^{10}$ in the expansion of:
+    $$(1 + x + x^2 + x^3 + \cdots)^4$$
+    
+    \textit{Hint: This is equivalent to a multiset problem.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 14: Dice Combinations}
+  \begin{block}{Problem}
+    How many different unordered outcomes are possible when rolling 5 distinguishable dice?
+    
+    \textit{Example: Rolling (1,1,3,4,6) is the same as (1,3,1,6,4) in an unordered collection.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 15: Bounded Selections}
+  \begin{block}{Problem}
+    A fruit stand has apples, bananas, and cherries. You want to buy exactly 8 pieces of fruit. However, the stand only has 3 bananas available. How many different selections are possible?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 5: Comparison and Counting Problems
+\section{Counting Method Identification}
+
+\begin{frame}{Problem 16: Identify the Method}
+  \begin{block}{Problem}
+    For each scenario, determine whether it is a multiset problem, regular combination, or permutation:
     
     \begin{enumerate}
-      \item Explain why the coefficient of $x^r$ in $G(x)$ gives $\left(\!\!\binom{n}{r}\!\!\right)$
-      \item Use the binomial series to verify: $\frac{1}{(1-x)^n} = \sum_{r=0}^{\infty} \binom{n+r-1}{r} x^r$
-      \item Find the coefficient of $x^{10}$ in $(1+x+x^2+\cdots)^5$
+      \item Selecting 4 cards from a standard deck (52 cards)
+      \item Arranging 5 books on a shelf
+      \item Choosing 10 donuts from 6 varieties
+      \item Forming a 3-digit PIN code
     \end{enumerate}
   \end{block}
 \end{frame}
@@ -362,34 +409,14 @@
   \vspace{6cm}
 \end{frame}
 
-\begin{frame}{Problem 12: Integer Partitions}
+\begin{frame}{Problem 17: Ice Cream Scoops}
   \begin{block}{Problem}
-    An \textbf{integer partition} of $n$ is a multiset of positive integers that sum to $n$.
+    An ice cream shop has 12 flavors. You order a bowl with 4 scoops. How many different bowls are possible if:
     
     \begin{enumerate}
-      \item How many partitions of 7 exist?
-      \item How many partitions of 10 into at most 4 parts exist?
-      \item Express "partitions of $n$ into at most $k$ parts" as a multiset problem
-    \end{enumerate}
-    
-    \textit{Note: Order doesn't matter, so $\{3,2,2\}$ is the same partition as $\{2,3,2\}$}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Working Space}
-  \vspace{6cm}
-\end{frame}
-
-\begin{frame}{Problem 13: Multinomial Coefficients}
-  \begin{block}{Problem}
-    The multinomial coefficient is defined as:
-    $$\binom{n}{k_1, k_2, \ldots, k_m} = \frac{n!}{k_1! k_2! \cdots k_m!}$$
-    where $k_1 + k_2 + \cdots + k_m = n$.
-    
-    \begin{enumerate}
-      \item Calculate $\binom{10}{3,3,4}$
-      \item How does this relate to multisets?
-      \item Find $\sum \binom{10}{k_1,k_2,k_3}$ where the sum is over all non-negative $k_i$ with $k_1+k_2+k_3=10$
+      \item Order matters and repetition is not allowed
+      \item Order doesn't matter and repetition is not allowed
+      \item Order doesn't matter and repetition is allowed
     \end{enumerate}
   \end{block}
 \end{frame}
@@ -398,82 +425,9 @@
   \vspace{6cm}
 \end{frame}
 
-\begin{frame}{Problem 14: Ferrer's Diagram and Conjugates}
+\begin{frame}{Problem 18: Committee with Repeated Members}
   \begin{block}{Problem}
-    A \textbf{Ferrer's diagram} represents integer partitions graphically using dots.
-    
-    \begin{enumerate}
-      \item Draw the Ferrer's diagram for the partition $\{5,3,3,1\}$ of 12
-      \item The \textbf{conjugate partition} is obtained by reflecting the diagram
-      \item Find the conjugate of $\{5,3,3,1\}$
-      \item Prove that partitions of $n$ into at most $k$ parts bijectively correspond to partitions of $n$ with largest part at most $k$
-    \end{enumerate}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Working Space}
-  \vspace{6cm}
-\end{frame}
-
-\begin{frame}{Problem 15: Constrained Generating Functions}
-  \begin{block}{Problem}
-    Find the number of non-negative integer solutions to:
-    $$x_1 + x_2 + x_3 = 15$$
-    where $x_1$ is even, $x_2$ is odd, and $x_3 \leq 5$.
-    
-    Use generating functions or direct counting with appropriate substitutions.
-  \end{block}
-\end{frame}
-
-\begin{frame}{Working Space}
-  \vspace{6cm}
-\end{frame}
-
-% Section 5: Theoretical Problems
-\section{Theoretical and Proof Problems}
-
-\begin{frame}{Problem 16: Combinatorial Identity}
-  \begin{block}{Problem}
-    Prove the following identity:
-    $$\sum_{k=0}^{r} \binom{n}{k} \binom{m}{r-k} = \binom{n+m}{r}$$
-    
-    \begin{enumerate}
-      \item Give a combinatorial proof using multisets
-      \item Relate this to the generating function $(1+x)^n(1+x)^m = (1+x)^{n+m}$
-    \end{enumerate}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Working Space}
-  \vspace{6cm}
-\end{frame}
-
-\begin{frame}{Problem 17: Vandermonde's Identity for Multisets}
-  \begin{block}{Problem}
-    Prove that:
-    $$\left(\!\!\binom{n}{r}\!\!\right) = \sum_{k=0}^{r} \binom{n-1}{k} \left(\!\!\binom{n-1}{r-k}\!\!\right)$$
-    
-    Give a combinatorial interpretation of this identity.
-    
-    \textit{Hint: Consider how many times the first element appears in a multiset.}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Working Space}
-  \vspace{6cm}
-\end{frame}
-
-\begin{frame}{Problem 18: Stars and Bars - Formal Proof}
-  \begin{block}{Problem}
-    Give a rigorous proof of the stars and bars theorem:
-    
-    "The number of ways to place $r$ indistinguishable balls into $n$ distinguishable bins is $\binom{r+n-1}{n-1}$"
-    
-    \begin{enumerate}
-      \item Explain the bijection between distributions and binary strings
-      \item Formalize the correspondence
-      \item Extend to handle minimum constraints
-    \end{enumerate}
+    A committee of 5 people is to be formed from 8 candidates, where a person can be selected multiple times (representing multiple votes or roles). How many different committees can be formed?
   \end{block}
 \end{frame}
 
