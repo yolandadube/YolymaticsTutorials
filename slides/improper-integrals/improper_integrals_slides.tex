@@ -208,12 +208,12 @@
   \vspace{6cm}
 \end{frame}
 
-\begin{frame}{Problem 7: Trigonometric Function}
+\begin{frame}{Problem 7: Convergence Test - Polynomial vs Exponential}
   \begin{block}{Problem}
-    Evaluate the improper integral:
-    $$\int_0^{\infty} \sin(x)\,dx$$
+    Determine whether the following integral converges or diverges:
+    $$\int_1^{\infty} \frac{x^3}{e^x}\,dx$$
     
-    Does it converge or diverge? Explain your reasoning.
+    \textit{Hint: Consider the behavior of exponential vs polynomial functions.}
   \end{block}
 \end{frame}
 
@@ -322,14 +322,12 @@
   \vspace{6cm}
 \end{frame}
 
-\begin{frame}{Problem 15: Exponential with Polynomial}
+\begin{frame}{Problem 15: Comparison Test - Rational Function}
   \begin{block}{Problem}
-    Evaluate the improper integral:
-    $$\int_0^{\infty} x^2 e^{-x}\,dx$$
+    Determine whether the following integral converges or diverges:
+    $$\int_2^{\infty} \frac{3x^2 + 5}{x^4 - 1}\,dx$$
     
-    Does it converge or diverge? If it converges, find its value.
-    
-    \textit{Hint: Use integration by parts twice.}
+    \textit{Hint: Compare with $\frac{1}{x^2}$ for large $x$.}
   \end{block}
 \end{frame}
 
@@ -337,14 +335,12 @@
   \vspace{6cm}
 \end{frame}
 
-\begin{frame}{Problem 16: Rational Function}
+\begin{frame}{Problem 16: Limit Comparison Test}
   \begin{block}{Problem}
-    Evaluate the improper integral:
-    $$\int_2^{\infty} \frac{1}{x^2-1}\,dx$$
+    Determine whether the following integral converges or diverges:
+    $$\int_1^{\infty} \frac{\sqrt{x}}{x^3 + 2x + 1}\,dx$$
     
-    Does it converge or diverge? If it converges, find its value.
-    
-    \textit{Hint: Use partial fractions first.}
+    \textit{Hint: Use the limit comparison test.}
   \end{block}
 \end{frame}
 
@@ -352,53 +348,280 @@
   \vspace{6cm}
 \end{frame}
 
-% Section 5: Useful Formulas and Results
-\section{Reference Formulas}
+\begin{frame}{Problem 17: Comparison with Known Divergent}
+  \begin{block}{Problem}
+    Determine whether the following integral converges or diverges:
+    $$\int_2^{\infty} \frac{1}{\sqrt{x} \ln(x)}\,dx$$
+    
+    \textit{Hint: Compare with $\frac{1}{x}$.}
+  \end{block}
+\end{frame}
 
-\begin{frame}{Important Results for Improper Integrals}
-  \begin{block}{p-integrals (Type 1)}
-    $$\int_1^{\infty} \frac{1}{x^p}\,dx \text{ converges if } p > 1 \text{ and diverges if } p \leq 1$$
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 18: p-integral Variation}
+  \begin{block}{Problem}
+    Determine whether the following integral converges or diverges:
+    $$\int_1^{\infty} \frac{1}{x(\ln x)^2}\,dx$$
+    
+    \textit{Hint: Use substitution $u = \ln(x)$.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 19: Exponential with Polynomial}
+  \begin{block}{Problem}
+    Determine whether the following integral converges or diverges:
+    $$\int_0^{\infty} \frac{x^{10}}{e^{\sqrt{x}}}\,dx$$
+    
+    \textit{Hint: Consider the comparison test.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 20: Trigonometric Bounded Function}
+  \begin{block}{Problem}
+    Determine whether the following integral converges or diverges:
+    $$\int_1^{\infty} \frac{\cos^2(x)}{x^{3/2}}\,dx$$
+    
+    \textit{Hint: Use the fact that $0 \leq \cos^2(x) \leq 1$.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 21: Algebraic Function}
+  \begin{block}{Problem}
+    Determine whether the following integral converges or diverges:
+    $$\int_1^{\infty} \frac{x+1}{\sqrt{x^5 + 3x^2}}\,dx$$
+    
+    \textit{Hint: Find the dominant terms for large $x$.}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 22: Rational Function - Borderline Case}
+  \begin{block}{Problem}
+    Determine whether the following integral converges or diverges:
+    $$\int_1^{\infty} \frac{1}{x\sqrt{x^2-1}}\,dx$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 23: Type 2 - Convergence Test}
+  \begin{block}{Problem}
+    Determine whether the following integral converges or diverges:
+    $$\int_0^1 \frac{x}{\sqrt{1-x^2}}\,dx$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+\begin{frame}{Problem 24: Type 2 - p-integral at Zero}
+  \begin{block}{Problem}
+    For what values of $p$ does the following integral converge?
+    $$\int_0^1 \frac{\ln(x)}{x^p}\,dx$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Working Space}
+  \vspace{6cm}
+\end{frame}
+
+% Section 5: Convergence Tests Reference
+\section{Convergence and Divergence Tests}
+
+\begin{frame}{Test 1: Direct Comparison Test}
+  \begin{block}{Statement}
+    Suppose $f$ and $g$ are continuous on $[a,\infty)$ with $0 \leq f(x) \leq g(x)$ for all $x \geq a$.
+    
+    \begin{enumerate}
+      \item If $\displaystyle\int_a^{\infty} g(x)\,dx$ converges, then $\displaystyle\int_a^{\infty} f(x)\,dx$ converges
+      
+      \item If $\displaystyle\int_a^{\infty} f(x)\,dx$ diverges, then $\displaystyle\int_a^{\infty} g(x)\,dx$ diverges
+    \end{enumerate}
+  \end{block}
+  
+  \begin{alertblock}{Key Strategy}
+    Compare with known convergent/divergent integrals like $\displaystyle\int_a^{\infty} \frac{1}{x^p}\,dx$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Test 2: Limit Comparison Test}
+  \begin{block}{Statement}
+    Suppose $f$ and $g$ are continuous, positive functions on $[a,\infty)$.
+    
+    If $\displaystyle\lim_{x \to \infty} \frac{f(x)}{g(x)} = L$ where $0 < L < \infty$,
+    
+    then $\displaystyle\int_a^{\infty} f(x)\,dx$ and $\displaystyle\int_a^{\infty} g(x)\,dx$ either both converge or both diverge.
+  \end{block}
+  
+  \begin{alertblock}{When to Use}
+    Use when direct comparison is difficult to establish but functions have similar growth rates.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Test 3: p-integral Test (Type 1)}
+  \begin{block}{Statement}
+    The integral $\displaystyle\int_1^{\infty} \frac{1}{x^p}\,dx$:
+    
+    \begin{itemize}
+      \item \textbf{Converges} if $p > 1$
+      \item \textbf{Diverges} if $p \leq 1$
+    \end{itemize}
     
     When $p > 1$: $\displaystyle\int_1^{\infty} \frac{1}{x^p}\,dx = \frac{1}{p-1}$
   \end{block}
   
-  \begin{block}{p-integrals (Type 2)}
-    $$\int_0^1 \frac{1}{x^p}\,dx \text{ converges if } p < 1 \text{ and diverges if } p \geq 1$$
+  \begin{exampleblock}{Extended Form}
+    $\displaystyle\int_a^{\infty} \frac{1}{(x-c)^p}\,dx$ has the same convergence properties for $a > c$.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Test 4: p-integral Test (Type 2)}
+  \begin{block}{Statement}
+    The integral $\displaystyle\int_0^1 \frac{1}{x^p}\,dx$:
+    
+    \begin{itemize}
+      \item \textbf{Converges} if $p < 1$
+      \item \textbf{Diverges} if $p \geq 1$
+    \end{itemize}
     
     When $p < 1$: $\displaystyle\int_0^1 \frac{1}{x^p}\,dx = \frac{1}{1-p}$
   \end{block}
+  
+  \begin{exampleblock}{Extended Form}
+    $\displaystyle\int_a^b \frac{1}{(x-a)^p}\,dx$ converges if $p < 1$, diverges if $p \geq 1$.
+    
+    $\displaystyle\int_a^b \frac{1}{(b-x)^p}\,dx$ converges if $p < 1$, diverges if $p \geq 1$.
+  \end{exampleblock}
 \end{frame}
 
-\begin{frame}{Common Convergent Integrals}
-  \begin{block}{Useful Results}
+\begin{frame}{Test 5: Logarithmic Integrals}
+  \begin{block}{Important Results}
+    \begin{enumerate}
+      \item $\displaystyle\int_2^{\infty} \frac{1}{x \ln(x)}\,dx$ \textbf{diverges}
+      
+      \item $\displaystyle\int_2^{\infty} \frac{1}{x (\ln x)^p}\,dx$ \textbf{converges} if $p > 1$, \textbf{diverges} if $p \leq 1$
+      
+      \item $\displaystyle\int_0^1 \ln(x)\,dx$ \textbf{converges} (equals $-1$)
+      
+      \item $\displaystyle\int_0^1 |\ln(x)|^p\,dx$ \textbf{converges} for all $p > 0$
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Test 6: Exponential vs Polynomial}
+  \begin{block}{Fundamental Principle}
+    For any polynomial $P(x)$ and any constant $a > 0$:
+    
+    \begin{itemize}
+      \item $\displaystyle\int_1^{\infty} P(x)e^{-ax}\,dx$ \textbf{converges}
+      
+      \item $\displaystyle\int_1^{\infty} \frac{e^{ax}}{P(x)}\,dx$ \textbf{diverges} if $\deg(P) \geq 0$
+      
+      \item $\displaystyle\lim_{x \to \infty} \frac{P(x)}{e^{ax}} = 0$ (exponential dominates polynomial)
+    \end{itemize}
+  \end{block}
+  
+  \begin{alertblock}{Key Insight}
+    Exponential decay ($e^{-ax}$) is stronger than any polynomial growth, so it forces convergence.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Test 7: Bounded Functions}
+  \begin{block}{Comparison Strategy}
+    If $|f(x)| \leq M$ (bounded) for all $x \geq a$, and $\displaystyle\int_a^{\infty} g(x)\,dx$ converges with $g(x) > 0$:
+    
+    Then $\displaystyle\int_a^{\infty} f(x)g(x)\,dx$ converges.
+  \end{block}
+  
+  \begin{exampleblock}{Common Applications}
+    \begin{itemize}
+      \item $|\sin(x)| \leq 1$, $|\cos(x)| \leq 1$
+      \item If $\displaystyle\int_a^{\infty} \frac{1}{x^p}\,dx$ converges (i.e., $p > 1$), then $\displaystyle\int_a^{\infty} \frac{\sin(x)}{x^p}\,dx$ converges
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Test 8: Asymptotic Behavior}
+  \begin{block}{Dominant Term Analysis}
+    For rational functions, identify the dominant terms as $x \to \infty$:
+    
+    $$\int_a^{\infty} \frac{a_nx^n + \cdots + a_0}{b_mx^m + \cdots + b_0}\,dx \text{ behaves like } \int_a^{\infty} \frac{a_n}{b_m} x^{n-m}\,dx$$
+    
+    This converges if $n - m < -1$ (i.e., $m > n + 1$).
+  \end{block}
+  
+  \begin{exampleblock}{Example}
+    $\displaystyle\int_1^{\infty} \frac{3x^2 + 5x + 1}{x^4 + 2x - 7}\,dx$ behaves like $\displaystyle\int_1^{\infty} \frac{3}{x^2}\,dx$ which converges.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Test 9: Absolute Convergence}
+  \begin{block}{Statement}
+    If $\displaystyle\int_a^{\infty} |f(x)|\,dx$ converges, then $\displaystyle\int_a^{\infty} f(x)\,dx$ converges.
+    
+    We say the integral is \textbf{absolutely convergent}.
+  \end{block}
+  
+  \begin{alertblock}{Important Note}
+    The converse is NOT true. An integral can converge without converging absolutely (conditional convergence).
+    
+    Example: $\displaystyle\int_1^{\infty} \frac{\sin(x)}{x}\,dx$ converges, but $\displaystyle\int_1^{\infty} \left|\frac{\sin(x)}{x}\right|\,dx$ diverges.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Quick Reference: Common Convergent Integrals}
+  \begin{block}{Useful Results to Remember}
     \begin{enumerate}
       \item $\displaystyle\int_0^{\infty} e^{-ax}\,dx = \frac{1}{a}$ for $a > 0$
       
       \item $\displaystyle\int_{-\infty}^{\infty} \frac{1}{1+x^2}\,dx = \pi$
       
-      \item $\displaystyle\int_0^{\infty} \frac{\sin(x)}{x}\,dx = \frac{\pi}{2}$
-      
       \item $\displaystyle\int_0^{\infty} x^n e^{-x}\,dx = n!$ for $n \in \mathbb{N}$
       
-      \item $\displaystyle\int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}$ (Gaussian integral)
+      \item $\displaystyle\int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}$ (Gaussian)
+      
+      \item $\displaystyle\int_0^{\infty} \frac{\sin(x)}{x}\,dx = \frac{\pi}{2}$
     \end{enumerate}
   \end{block}
 \end{frame}
 
-\begin{frame}{Comparison Tests}
-  \begin{block}{Direct Comparison Test}
-    If $0 \leq f(x) \leq g(x)$ for all $x \geq a$:
-    \begin{itemize}
-      \item If $\int_a^{\infty} g(x)\,dx$ converges, then $\int_a^{\infty} f(x)\,dx$ converges
-      \item If $\int_a^{\infty} f(x)\,dx$ diverges, then $\int_a^{\infty} g(x)\,dx$ diverges
-    \end{itemize}
-  \end{block}
-  
-  \begin{block}{Limit Comparison Test}
-    If $f(x) \geq 0$ and $g(x) > 0$ for $x \geq a$, and:
-    $$\lim_{x \to \infty} \frac{f(x)}{g(x)} = L \text{ where } 0 < L < \infty$$
-    
-    Then $\int_a^{\infty} f(x)\,dx$ and $\int_a^{\infty} g(x)\,dx$ either both converge or both diverge.
+% Section 6: Useful Formulas
+\section{Reference Formulas}
+
+\begin{frame}{Important Integration Formulas}
+  \begin{block}{Basic Antiderivatives}
+    \begin{enumerate}
+      \item $\displaystyle\int e^{ax}\,dx = \frac{1}{a}e^{ax} + C$
+      
+      \item $\displaystyle\int \frac{1}{x}\,dx = \ln|x| + C$
+      
+      \item $\displaystyle\int \frac{1}{a^2 + x^2}\,dx = \frac{1}{a}\arctan\left(\frac{x}{a}\right) + C$
+      
+      \item $\displaystyle\int \frac{1}{\sqrt{a^2 - x^2}}\,dx = \arcsin\left(\frac{x}{a}\right) + C$
+      
+      \item $\displaystyle\int x^n e^{ax}\,dx$ requires integration by parts repeatedly
+    \end{enumerate}
   \end{block}
 \end{frame}
 
