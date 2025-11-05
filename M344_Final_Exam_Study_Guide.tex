@@ -1,0 +1,322 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+
+\tcbuselibrary{most}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Yolymatics Tutorials}}
+\fancyhead[R]{M344 Final Exam Study Guide}
+\fancyfoot[C]{\thepage}
+
+% Custom boxes
+\newtcolorbox{defbox}[1]{
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  fonttitle=\bfseries,
+  title=#1
+}
+
+\newtcolorbox{thmbox}[1]{
+  colback=green!5!white,
+  colframe=green!75!black,
+  fonttitle=\bfseries,
+  title=#1
+}
+
+\newtcolorbox{exbox}[1]{
+  colback=orange!5!white,
+  colframe=orange!75!black,
+  fonttitle=\bfseries,
+  title=#1
+}
+
+\newtcolorbox{tipbox}[1]{
+  colback=purple!5!white,
+  colframe=purple!75!black,
+  fonttitle=\bfseries,
+  title=#1
+}
+
+\title{\vspace{-2cm}\Huge\textbf{M344 Final Exam}\\\LARGE Quick Reference Study Guide\\\vspace{0.5cm}\Large\textit{Yolymatics Tutorials}}
+\date{\today}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\large\textit{Best wishes on your final exam today!}\\
+\textit{You've prepared well -- trust yourself and show what you know!}\\
+\vspace{0.3cm}
+\textcolor{purple}{\textbf{Exam Time: 2:00 PM} \quad $\bigstar$ \textbf{You've got this!} $\bigstar$}
+\end{center}
+
+\hrule
+\vspace{0.5cm}
+
+\section{Number Theory: Ring of Integers Modulo $n$}
+
+\begin{defbox}{The Ring $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$}
+\textbf{Definition:} $\mathbb{Z}/n\mathbb{Z} = \{[0], [1], [2], \ldots, [n-1]\}$ where $[a] = \{x \in \mathbb{Z} : x \equiv a \pmod{n}\}$
+
+\textbf{Operations:} $[a] + [b] = [a+b]$ and $[a] \cdot [b] = [ab]$
+\end{defbox}
+
+\begin{thmbox}{Proving $\mathbb{Z}/n\mathbb{Z}$ is a Ring}
+\textbf{Must verify:}
+\begin{enumerate}[nosep]
+    \item \textbf{Addition forms an abelian group:}
+    \begin{itemize}[nosep]
+        \item Closure: $[a] + [b] \in \mathbb{Z}/n\mathbb{Z}$ ✓
+        \item Associativity: $([a]+[b])+[c] = [a]+([b]+[c])$ ✓
+        \item Identity: $[0]$ is additive identity ✓
+        \item Inverses: $-[a] = [n-a]$ ✓
+        \item Commutativity: $[a]+[b] = [b]+[a]$ ✓
+    \end{itemize}
+    \item \textbf{Multiplication is associative:} $([a]\cdot[b])\cdot[c] = [a]\cdot([b]\cdot[c])$ ✓
+    \item \textbf{Distributive laws:} $[a]\cdot([b]+[c]) = [a]\cdot[b]+[a]\cdot[c]$ and $([a]+[b])\cdot[c] = [a]\cdot[c]+[b]\cdot[c]$ ✓
+\end{enumerate}
+\end{thmbox}
+
+\begin{defbox}{Group of Units $(\mathbb{Z}/n\mathbb{Z})^*$}
+$(\mathbb{Z}/n\mathbb{Z})^* = \{[a] \in \mathbb{Z}/n\mathbb{Z} : \gcd(a,n) = 1\}$
+
+These are elements with multiplicative inverses. $|(\mathbb{Z}/n\mathbb{Z})^*| = \phi(n)$
+\end{defbox}
+
+\section{Relations and Equivalence Relations}
+
+\begin{defbox}{Relation}
+A relation $R$ on set $A$ is a subset of $A \times A$. Write $a \sim b$ if $(a,b) \in R$.
+\end{defbox}
+
+\begin{thmbox}{Proving a Relation is an Equivalence Relation}
+\textbf{Must verify three properties:}
+\begin{enumerate}[nosep]
+    \item \textbf{Reflexive:} $a \sim a$ for all $a \in A$
+    \item \textbf{Symmetric:} If $a \sim b$, then $b \sim a$
+    \item \textbf{Transitive:} If $a \sim b$ and $b \sim c$, then $a \sim c$
+\end{enumerate}
+\end{thmbox}
+
+\begin{exbox}{Example: Congruence mod $n$}
+Relation: $a \sim b$ iff $n | (a-b)$
+\begin{itemize}[nosep]
+    \item \textbf{Reflexive:} $n | (a-a) = 0$ ✓
+    \item \textbf{Symmetric:} If $n|(a-b)$, then $n|-(a-b) = (b-a)$ ✓
+    \item \textbf{Transitive:} If $n|(a-b)$ and $n|(b-c)$, then $n|(a-b+b-c) = (a-c)$ ✓
+\end{itemize}
+\end{exbox}
+
+\section{Solving Linear Congruences: $ax \equiv b \pmod{n}$}
+
+\begin{thmbox}{Solvability Criteria}
+Let $d = \gcd(a,n)$.
+\begin{itemize}[nosep]
+    \item \textbf{If $d \nmid b$:} NO solutions
+    \item \textbf{If $d | b$:} Exactly $d$ solutions modulo $n$
+\end{itemize}
+\end{thmbox}
+
+\begin{exbox}{Case 1: $\gcd(a,n) = 1$}
+\textbf{Method:} Find $a^{-1} \pmod{n}$ using Extended Euclidean Algorithm
+\begin{enumerate}[nosep]
+    \item Use EEA to find $s,t$ such that $as + nt = 1$
+    \item Then $a^{-1} \equiv s \pmod{n}$
+    \item Solution: $x \equiv a^{-1} \cdot b \pmod{n}$ (unique mod $n$)
+\end{enumerate}
+\end{exbox}
+
+\begin{exbox}{Case 2: $\gcd(a,n) = d > 1$}
+\textbf{Step 1:} Check if $d | b$. If not, no solution!\\
+\textbf{Step 2:} If yes, divide equation by $d$:
+$$\frac{a}{d}x \equiv \frac{b}{d} \pmod{\frac{n}{d}}$$
+\textbf{Step 3:} Now $\gcd(a/d, n/d) = 1$, so solve as in Case 1\\
+\textbf{Step 4:} Get $d$ solutions: $x_0, x_0 + \frac{n}{d}, x_0 + 2\frac{n}{d}, \ldots, x_0 + (d-1)\frac{n}{d}$ mod $n$
+\end{exbox}
+
+\section{Key Theorems in Number Theory}
+
+\begin{thmbox}{Extended Euclidean Algorithm (EEA)}
+For $a,b \in \mathbb{Z}^+$, can find $s,t \in \mathbb{Z}$ such that $as + bt = \gcd(a,b)$
+
+\textbf{Algorithm:} Apply Euclidean algorithm, then back-substitute.
+\end{thmbox}
+
+\begin{thmbox}{Euler's Theorem}
+If $\gcd(a,n) = 1$, then $a^{\phi(n)} \equiv 1 \pmod{n}$
+
+\textbf{Special case (Fermat's Little Theorem):} If $p$ is prime and $\gcd(a,p)=1$, then $a^{p-1} \equiv 1 \pmod{p}$
+\end{thmbox}
+
+\begin{thmbox}{Wilson's Theorem}
+$p$ is prime if and only if $(p-1)! \equiv -1 \pmod{p}$
+\end{thmbox}
+
+\begin{thmbox}{Chinese Remainder Theorem (CRT)}
+If $\gcd(n_1, n_2) = 1$, the system
+\begin{align*}
+x &\equiv a_1 \pmod{n_1}\\
+x &\equiv a_2 \pmod{n_2}
+\end{align*}
+has a unique solution mod $n_1 n_2$.
+
+\textbf{Algorithm:}
+\begin{enumerate}[nosep]
+    \item Set $N = n_1 n_2$, $N_1 = n_2$, $N_2 = n_1$
+    \item Find $M_1$ such that $N_1 M_1 \equiv 1 \pmod{n_1}$
+    \item Find $M_2$ such that $N_2 M_2 \equiv 1 \pmod{n_2}$
+    \item Solution: $x \equiv a_1 N_1 M_1 + a_2 N_2 M_2 \pmod{N}$
+\end{enumerate}
+\end{thmbox}
+
+\begin{defbox}{Euler's Phi Function $\phi(n)$}
+$\phi(n) = |\{k : 1 \leq k \leq n, \gcd(k,n) = 1\}|$
+
+\textbf{Properties:}
+\begin{itemize}[nosep]
+    \item If $p$ is prime: $\phi(p) = p-1$
+    \item $\phi(p^k) = p^k - p^{k-1} = p^{k-1}(p-1)$
+    \item \textbf{Multiplicative:} If $\gcd(m,n) = 1$, then $\phi(mn) = \phi(m)\phi(n)$
+    \item $\phi(n) = n \prod_{p|n}\left(1 - \frac{1}{p}\right)$ where product is over primes dividing $n$
+\end{itemize}
+\end{defbox}
+
+\section{Combinatorics: Counting and Multisets}
+
+\begin{defbox}{Basic Counting Formulas}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Problem} & \textbf{Order Matters} & \textbf{Order Doesn't Matter}\\
+\hline
+Without repetition & $P(n,k) = \frac{n!}{(n-k)!}$ & $C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$\\
+\hline
+With repetition & $n^k$ & $\binom{n+k-1}{k}$\\
+\hline
+\end{tabular}
+\end{defbox}
+
+\begin{thmbox}{Multinomial Theorem}
+$$(x_1 + x_2 + \cdots + x_m)^n = \sum_{k_1+k_2+\cdots+k_m=n} \binom{n}{k_1, k_2, \ldots, k_m} x_1^{k_1} x_2^{k_2} \cdots x_m^{k_m}$$
+
+where $\binom{n}{k_1, k_2, \ldots, k_m} = \frac{n!}{k_1! k_2! \cdots k_m!}$ is the \textbf{multinomial coefficient}.
+\end{thmbox}
+
+\begin{defbox}{Multisets}
+A multiset allows repeated elements. Choosing $k$ objects from $n$ types with repetition:
+$$\binom{n+k-1}{k} = \binom{n+k-1}{n-1}$$
+
+\textbf{Think of it as:} Distributing $k$ identical balls into $n$ distinct bins = "stars and bars"
+\end{defbox}
+
+\begin{exbox}{Multiset Applications}
+\textbf{Problem:} Number of non-negative integer solutions to $x_1 + x_2 + \cdots + x_n = k$?
+
+\textbf{Answer:} $\binom{n+k-1}{k}$
+
+\textbf{Problem:} Coefficient of $x_1^{a_1} x_2^{a_2} \cdots x_m^{a_m}$ in $(x_1+x_2+\cdots+x_m)^n$?
+
+\textbf{Answer:} $\binom{n}{a_1, a_2, \ldots, a_m}$ if $a_1+a_2+\cdots+a_m = n$, else 0.
+\end{exbox}
+
+\begin{tipbox}{Ordered Partitions}
+Distributing $n$ distinct objects into $k$ labeled groups of sizes $n_1, n_2, \ldots, n_k$:
+$$\binom{n}{n_1, n_2, \ldots, n_k} = \frac{n!}{n_1! n_2! \cdots n_k!}$$
+\end{tipbox}
+
+\section{Graph Theory Essentials}
+
+\begin{defbox}{Graph Definition}
+A \textbf{graph} $G = (V,E)$ consists of:
+\begin{itemize}[nosep]
+    \item $V$: a finite set of vertices
+    \item $E$: a set of edges, where each edge is a 2-element subset of $V$
+\end{itemize}
+\end{defbox}
+
+\begin{defbox}{Key Graph Types}
+\begin{itemize}[nosep]
+    \item \textbf{Complete graph $K_n$:} Every pair of vertices is connected
+    \item \textbf{Path graph $P_n$:} $n$ vertices in a line
+    \item \textbf{Cycle $C_n$:} $n$ vertices in a closed loop
+    \item \textbf{Bipartite graph:} $V = A \cup B$ (disjoint), all edges between $A$ and $B$
+    \item \textbf{Complete bipartite $K_{m,n}$:} All possible edges between sets of size $m$ and $n$
+\end{itemize}
+\end{defbox}
+
+\begin{thmbox}{Testing if a Graph is Bipartite}
+A graph $G$ is bipartite if and only if it contains \textbf{no odd cycles}.
+
+\textbf{Algorithm (2-Coloring):}
+\begin{enumerate}[nosep]
+    \item Start at any vertex, color it RED
+    \item Color all neighbors BLUE
+    \item Color all their neighbors RED
+    \item Continue... If you ever need to color a vertex two different colors, it's NOT bipartite
+    \item If you can 2-color the whole graph, it IS bipartite
+\end{enumerate}
+
+\textbf{Alternative:} Try to partition vertices into two sets such that no edge has both endpoints in the same set.
+\end{thmbox}
+
+\begin{defbox}{Other Important Concepts}
+\begin{itemize}[nosep]
+    \item \textbf{Subgraph:} $H = (V', E')$ where $V' \subseteq V$ and $E' \subseteq E$
+    \item \textbf{Walk:} Sequence of vertices $v_0, v_1, \ldots, v_k$ where each consecutive pair is connected
+    \item \textbf{Path:} Walk with no repeated vertices
+    \item \textbf{Connected graph:} There's a path between any two vertices
+    \item \textbf{Tree:} Connected graph with no cycles (has $|V|-1$ edges)
+\end{itemize}
+\end{defbox}
+
+\begin{thmbox}{Graph Isomorphism}
+Graphs $G_1 = (V_1, E_1)$ and $G_2 = (V_2, E_2)$ are \textbf{isomorphic} if there exists a bijection $f: V_1 \to V_2$ such that $\{u,v\} \in E_1$ iff $\{f(u), f(v)\} \in E_2$.
+
+\textbf{To prove isomorphism:} Find the bijection and verify it preserves edges.
+
+\textbf{To prove NOT isomorphic:} Find an invariant that differs:
+\begin{itemize}[nosep]
+    \item Number of vertices or edges
+    \item Degree sequence
+    \item Number of cycles of a given length
+    \item Connectivity
+\end{itemize}
+\end{thmbox}
+
+\section{Quick Problem-Solving Strategy}
+
+\begin{tipbox}{Exam Approach}
+\begin{enumerate}[nosep]
+    \item \textbf{Read carefully:} Identify what topics are involved
+    \item \textbf{Break it down:} Split complex problems into components
+    \item \textbf{Choose tools:} Which theorem/algorithm applies?
+    \item \textbf{Show your work:} Partial credit is valuable!
+    \item \textbf{Check your answer:} Does it make sense?
+\end{enumerate}
+\end{tipbox}
+
+\vspace{1cm}
+
+\begin{center}
+\begin{tcolorbox}[width=0.9\textwidth, colback=yellow!10!white, colframe=red!75!black, fontupper=\large\bfseries, halign=center]
+Final Reminders for Today:\\[0.3cm]
+$\bigstar$ Stay calm and pace yourself\\
+$\bigstar$ Answer what you know first\\
+$\bigstar$ Use all the time you need\\
+$\bigstar$ Trust your preparation\\[0.3cm]
+\textcolor{blue}{Good luck on your final exam!}\\
+\textit{-- Yolymatics Tutorials}
+\end{tcolorbox}
+\end{center}
+
+\end{document}
