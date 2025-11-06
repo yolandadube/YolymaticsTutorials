@@ -1,51 +1,108 @@
-\documentclass[12pt,a4paper]{article}
-\usepackage[margin=2cm]{geometry}
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{fancyhdr}
 \usepackage{multicol}
-\usepackage{framed}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
 
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Linear Algebra Comprehensive Worksheet}
-\rhead{Page \thepage}
-\cfoot{Yolymatics Tutorials}
+\lhead{\small\textit{Linear Algebra Worksheet}}
+\rhead{\small Page \thepage}
+\cfoot{\small\textbf{Yolymatics Tutorials}}
 \setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
 
 \theoremstyle{definition}
 \newtheorem{problem}{Problem}
 
-% Command for student working space
-\newcommand{\workingspace}[1][8cm]{%
-    \vspace{0.3cm}
-    \noindent\textit{Working:}
-    \vspace{#1}
-}
+% Define company colors
+\definecolor{yolyblue}{RGB}{41, 128, 185}
+\definecolor{yolylightblue}{RGB}{174, 214, 241}
+\definecolor{yolygray}{RGB}{236, 240, 241}
 
-% Command for answer box
-\newcommand{\answerbox}[1][3cm]{%
+% Command for student working space with lines
+\newcommand{\workingspace}[1][10]{%
+    \vspace{0.4cm}
+    \noindent\textcolor{yolyblue}{\textbf{Working:}}
     \vspace{0.2cm}
-    \noindent\fbox{\parbox{\textwidth}{%
-        \textbf{Answer:}\\[0.2cm]
-        \vspace{#1}
-    }}
-    \vspace{0.5cm}
+    
+    \foreach \n in {1,...,#1}{%
+        \par\noindent\makebox[\linewidth]{\hrulefill}
+        \vspace{0.5cm}
+    }
+    \vspace{0.3cm}
 }
 
-\title{\textbf{Linear Algebra Comprehensive Worksheet}\\
-\large Student Working Copy}
-\author{Yolymatics Tutorials}
-\date{}
+% Command for attractive answer box
+\newcommand{\answerbox}[1][3]{%
+    \vspace{0.3cm}
+    \begin{tcolorbox}[
+        colback=yolygray,
+        colframe=yolyblue,
+        title=\textbf{Answer:},
+        fonttitle=\bfseries,
+        coltitle=white,
+        colbacktitle=yolyblue,
+        enhanced,
+        attach boxed title to top left={yshift=-2mm, xshift=5mm},
+        boxed title style={sharp corners},
+        sharp corners,
+        breakable,
+        height=#1cm
+    ]
+    \phantom{.}
+    \end{tcolorbox}
+    \vspace{0.3cm}
+}
+
+\title{%
+    \vspace{-1cm}
+    \begin{tcolorbox}[
+        colback=yolyblue,
+        colframe=yolyblue,
+        sharp corners,
+        center title,
+        fontupper=\color{white}\bfseries\LARGE
+    ]
+    Linear Algebra\\[0.3cm]
+    Comprehensive Worksheet
+    \end{tcolorbox}
+    \vspace{-0.5cm}
+}
+\author{\textbf{Yolymatics Tutorials}\\
+\small Professional Mathematics Education}
+\date{\small\today}
 
 \begin{document}
 
 \maketitle
 
-\section*{Instructions}
-This worksheet covers key topics in linear algebra. Show all your working clearly in the spaces provided. Use additional paper if needed.
+\begin{tcolorbox}[
+    colback=yolylightblue,
+    colframe=yolyblue,
+    title=\textbf{Instructions for Students},
+    fonttitle=\bfseries,
+    coltitle=white,
+    colbacktitle=yolyblue,
+    sharp corners
+]
+\begin{itemize}[leftmargin=*]
+    \item Show all your working clearly in the spaces provided
+    \item Write your final answers in the designated answer boxes
+    \item Use additional paper if you need more space
+    \item Each section corresponds to a specific textbook chapter
+    \item Remember to label all diagrams and sketches
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.5cm}
 
 \section{Cross Product (Section 3.5)}
 
@@ -54,13 +111,13 @@ Calculate the cross product $\vec{a} \times \vec{b}$ for the following vectors:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{a} = \begin{pmatrix} 2 \\ 3 \\ -1 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} 1 \\ -2 \\ 4 \end{pmatrix}$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \item $\vec{a} = \begin{pmatrix} 5 \\ 0 \\ -3 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix}$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
 \end{enumerate}
 \end{problem}
 
@@ -71,20 +128,20 @@ Given vectors $\vec{u} = \begin{pmatrix} 3 \\ -1 \\ 2 \end{pmatrix}$ and $\vec{v
 \begin{enumerate}[label=(\alph*)]
     \item Find $\vec{u} \times \vec{v}$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \item Verify that $\vec{u} \times \vec{v}$ is orthogonal to both $\vec{u}$ and $\vec{v}$
     
-    \workingspace[7cm]
-    \answerbox[2cm]
+    \workingspace[9]
+    \answerbox[3]
     
     \newpage
     
     \item Find the area of the parallelogram spanned by $\vec{u}$ and $\vec{v}$
     
-    \workingspace[5cm]
-    \answerbox[1.5cm]
+    \workingspace[7]
+    \answerbox[2.5]
 \end{enumerate}
 \end{problem}
 
@@ -95,11 +152,11 @@ Prove that for any vectors $\vec{a}$ and $\vec{b}$ in $\mathbb{R}^3$:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{a} \times \vec{b} = -(\vec{b} \times \vec{a})$ (anti-commutativity)
     
-    \workingspace[8cm]
+    \workingspace[10]
     
     \item $\vec{a} \times \vec{a} = \vec{0}$
     
-    \workingspace[6cm]
+    \workingspace[8]
 \end{enumerate}
 \end{problem}
 
@@ -109,8 +166,8 @@ Prove that for any vectors $\vec{a}$ and $\vec{b}$ in $\mathbb{R}^3$:
 Find the volume of the parallelepiped determined by the vectors:
 $$\vec{a} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \quad \vec{b} = \begin{pmatrix} -1 \\ 1 \\ 2 \end{pmatrix}, \quad \vec{c} = \begin{pmatrix} 2 \\ 0 \\ 1 \end{pmatrix}$$
 
-\workingspace[10cm]
-\answerbox[2cm]
+\workingspace[12]
+\answerbox[3]
 \end{problem}
 
 \section{Eigenvalues and Eigenvectors (Section 5.1)}
@@ -120,20 +177,20 @@ Find the eigenvalues and corresponding eigenvectors for each matrix:
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \newpage
     
     \item $B = \begin{pmatrix} 2 & -1 \\ -1 & 2 \end{pmatrix}$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \item $C = \begin{pmatrix} 4 & 2 \\ 3 & 3 \end{pmatrix}$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -144,20 +201,20 @@ Consider the matrix $A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 3 & 0 \\ 2 & -4 & 2 \e
 \begin{enumerate}[label=(\alph*)]
     \item Find the characteristic polynomial of $A$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \item Find all eigenvalues of $A$
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
     
     \newpage
     
     \item Find an eigenvector for each eigenvalue
     
-    \workingspace[10cm]
-    \answerbox[3cm]
+    \workingspace[12]
+    \answerbox[4]
 \end{enumerate}
 \end{problem}
 
@@ -168,19 +225,19 @@ Let $\lambda = 5$ be an eigenvalue of $A = \begin{pmatrix} 5 & 2 \\ 2 & 5 \end{p
 \begin{enumerate}[label=(\alph*)]
     \item Verify that $\vec{v}$ is indeed an eigenvector with eigenvalue $\lambda = 5$
     
-    \workingspace[5cm]
+    \workingspace[7]
     
     \item Find the other eigenvalue and eigenvector
     
-    \workingspace[7cm]
-    \answerbox[2cm]
+    \workingspace[9]
+    \answerbox[3]
     
     \newpage
     
     \item What is the trace and determinant of $A$? How do they relate to the eigenvalues?
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -189,7 +246,7 @@ Let $\lambda = 5$ be an eigenvalue of $A = \begin{pmatrix} 5 & 2 \\ 2 & 5 \end{p
 \begin{problem}
 Prove that if $\lambda$ is an eigenvalue of an invertible matrix $A$, then $\frac{1}{\lambda}$ is an eigenvalue of $A^{-1}$.
 
-\workingspace[10cm]
+\workingspace[12]
 \end{problem}
 
 \newpage
@@ -201,22 +258,22 @@ Determine whether each matrix is diagonalizable. If so, find matrices $P$ and $D
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} 1 & 2 \\ 3 & 2 \end{pmatrix}$
     
-    \workingspace[10cm]
-    \answerbox[2.5cm]
+    \workingspace[12]
+    \answerbox[3.5]
     
     \newpage
     
     \item $B = \begin{pmatrix} 2 & 1 \\ 0 & 2 \end{pmatrix}$
     
-    \workingspace[10cm]
-    \answerbox[2.5cm]
+    \workingspace[12]
+    \answerbox[3.5]
     
     \newpage
     
     \item $C = \begin{pmatrix} 3 & -1 \\ 1 & 1 \end{pmatrix}$
     
-    \workingspace[10cm]
-    \answerbox[2.5cm]
+    \workingspace[12]
+    \answerbox[3.5]
 \end{enumerate}
 \end{problem}
 
@@ -227,20 +284,20 @@ Given $A = \begin{pmatrix} 5 & 4 \\ 1 & 2 \end{pmatrix}$ has eigenvalues $\lambd
 \begin{enumerate}[label=(\alph*)]
     \item Write $A$ in the form $PDP^{-1}$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \newpage
     
     \item Use this to compute $A^5$
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
     
     \item Find $A^{10}$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -251,20 +308,20 @@ Let $A = \begin{pmatrix} 2 & 0 & 0 \\ 1 & 2 & 1 \\ -1 & 0 & 1 \end{pmatrix}$.
 \begin{enumerate}[label=(\alph*)]
     \item Find the eigenvalues of $A$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \item Determine the geometric multiplicity of each eigenvalue
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \newpage
     
     \item Is $A$ diagonalizable? Justify your answer
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -274,8 +331,8 @@ Let $A = \begin{pmatrix} 2 & 0 & 0 \\ 1 & 2 & 1 \\ -1 & 0 & 1 \end{pmatrix}$.
 Solve the system of differential equations:
 $$\frac{d\vec{x}}{dt} = A\vec{x}, \quad \text{where} \quad A = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}, \quad \vec{x}(0) = \begin{pmatrix} 3 \\ 1 \end{pmatrix}$$
 
-\workingspace[12cm]
-\answerbox[3cm]
+\workingspace[14]
+\answerbox[4]
 \end{problem}
 
 \newpage
@@ -285,19 +342,19 @@ Consider the system $\vec{x}' = \begin{pmatrix} 4 & -2 \\ 1 & 1 \end{pmatrix}\ve
 \begin{enumerate}[label=(\alph*)]
     \item Find the general solution
     
-    \workingspace[10cm]
-    \answerbox[2.5cm]
+    \workingspace[12]
+    \answerbox[3.5]
     
     \newpage
     
     \item Find the particular solution satisfying the initial condition
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \item Sketch the phase portrait
     
-    \workingspace[10cm]
+    \workingspace[12]
 \end{enumerate}
 \end{problem}
 
@@ -311,8 +368,8 @@ $$\begin{cases}
 \end{cases}$$
 with initial conditions $y_1(0) = 2$ and $y_2(0) = 4$.
 
-\workingspace[10cm]
-\answerbox[2cm]
+\workingspace[12]
+\answerbox[3]
 \end{problem}
 
 \vspace{1cm}
@@ -322,20 +379,20 @@ A dynamical system is described by $\vec{x}' = A\vec{x}$ where $A = \begin{pmatr
 \begin{enumerate}[label=(\alph*)]
     \item Find the eigenvalues of $A$
     
-    \workingspace[7cm]
-    \answerbox[2cm]
+    \workingspace[9]
+    \answerbox[3]
     
     \newpage
     
     \item Classify the equilibrium point at the origin (stable/unstable, node/spiral/saddle)
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
     
     \item Describe the long-term behavior of solutions
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -348,13 +405,13 @@ Compute the inner product $\langle \vec{u}, \vec{v} \rangle$ for:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{u} = \begin{pmatrix} 3 \\ -2 \\ 1 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} 4 \\ 5 \\ -1 \end{pmatrix}$ (standard inner product)
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \item $\vec{u} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}$ with $\langle \vec{u}, \vec{v} \rangle = 2u_1v_1 + 3u_2v_2$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
 \end{enumerate}
 \end{problem}
 
@@ -365,20 +422,20 @@ Let $V = P_2$ be the space of polynomials of degree at most 2, with inner produc
 \begin{enumerate}[label=(\alph*)]
     \item Compute $\langle 1, x \rangle$, $\langle 1, x^2 \rangle$, and $\langle x, x^2 \rangle$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \item Find $\|x\|$ and $\|x^2\|$
     
-    \workingspace[7cm]
-    \answerbox[2cm]
+    \workingspace[9]
+    \answerbox[3]
     
     \newpage
     
     \item Are $\{1, x, x^2\}$ orthogonal?
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
 \end{enumerate}
 \end{problem}
 
@@ -389,7 +446,7 @@ Verify that the following defines an inner product on $\mathbb{R}^2$:
 $$\langle \vec{u}, \vec{v} \rangle = 3u_1v_1 + 2u_2v_2$$
 by checking all four axioms of an inner product.
 
-\workingspace[12cm]
+\workingspace[14]
 \end{problem}
 
 \newpage
@@ -399,18 +456,18 @@ Given $\vec{u} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix}$:
 \begin{enumerate}[label=(\alph*)]
     \item Find $\|\vec{u}\|$
     
-    \workingspace[5cm]
-    \answerbox[1.5cm]
+    \workingspace[7]
+    \answerbox[2.5]
     
     \item Find a unit vector in the direction of $\vec{u}$
     
-    \workingspace[5cm]
-    \answerbox[1.5cm]
+    \workingspace[7]
+    \answerbox[2.5]
     
     \item Find all vectors orthogonal to $\vec{u}$
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -423,20 +480,20 @@ Find the angle between the vectors:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{u} = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \item $\vec{u} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} -4 \\ 3 \end{pmatrix}$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \newpage
     
     \item $\vec{u} = \begin{pmatrix} 2 \\ -1 \\ 2 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
 \end{enumerate}
 \end{problem}
 
@@ -447,20 +504,20 @@ Determine which of the following pairs of vectors are orthogonal:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{a} = \begin{pmatrix} 2 \\ 3 \\ -1 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} 1 \\ -2 \\ -4 \end{pmatrix}$
     
-    \workingspace[5cm]
-    \answerbox[1cm]
+    \workingspace[7]
+    \answerbox[2]
     
     \item $\vec{a} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}$
     
-    \workingspace[5cm]
-    \answerbox[1cm]
+    \workingspace[7]
+    \answerbox[2]
     
     \newpage
     
     \item $\vec{a} = \begin{pmatrix} 4 \\ -2 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} 3 \\ 6 \end{pmatrix}$
     
-    \workingspace[5cm]
-    \answerbox[1cm]
+    \workingspace[7]
+    \answerbox[2]
 \end{enumerate}
 \end{problem}
 
@@ -471,19 +528,19 @@ Find the orthogonal projection of $\vec{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pm
 \begin{enumerate}[label=(\alph*)]
     \item Find $\text{proj}_{\vec{a}}\vec{b}$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \item Find the component of $\vec{b}$ orthogonal to $\vec{a}$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \newpage
     
     \item Verify that these two components are orthogonal
     
-    \workingspace[6cm]
+    \workingspace[8]
 \end{enumerate}
 \end{problem}
 
@@ -494,7 +551,7 @@ Use the Cauchy-Schwarz inequality to prove that for any vectors $\vec{u}$ and $\
 $$|\langle \vec{u}, \vec{v} \rangle| \leq \|\vec{u}\| \cdot \|\vec{v}\|$$
 Then verify this inequality for $\vec{u} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}$ and $\vec{v} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
 
-\workingspace[12cm]
+\workingspace[14]
 \end{problem}
 
 \newpage
@@ -506,8 +563,8 @@ Apply the Gram-Schmidt process to find an orthogonal basis for the subspace span
 $$\vec{v}_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \quad \vec{v}_2 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \quad \vec{v}_3 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}$$
 Then normalize to obtain an orthonormal basis.
 
-\workingspace[15cm]
-\answerbox[3cm]
+\workingspace[16]
+\answerbox[4]
 \end{problem}
 
 \newpage
@@ -516,8 +573,8 @@ Then normalize to obtain an orthonormal basis.
 Find an orthonormal basis for the column space of:
 $$A = \begin{pmatrix} 1 & 0 & 1 \\ 1 & 1 & 2 \\ 1 & 1 & 0 \\ 1 & 2 & 1 \end{pmatrix}$$
 
-\workingspace[15cm]
-\answerbox[3cm]
+\workingspace[16]
+\answerbox[4]
 \end{problem}
 
 \newpage
@@ -527,15 +584,15 @@ Consider the polynomials $p_1(x) = 1$, $p_2(x) = x$, $p_3(x) = x^2$ on the inter
 \begin{enumerate}[label=(\alph*)]
     \item Apply Gram-Schmidt to obtain an orthogonal set $\{q_1, q_2, q_3\}$
     
-    \workingspace[12cm]
-    \answerbox[3cm]
+    \workingspace[14]
+    \answerbox[4]
     
     \newpage
     
     \item Normalize to get an orthonormal set
     
-    \workingspace[10cm]
-    \answerbox[3cm]
+    \workingspace[12]
+    \answerbox[4]
 \end{enumerate}
 \end{problem}
 
@@ -546,15 +603,15 @@ Given vectors $\vec{u}_1 = \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}$ and $\vec{
 \begin{enumerate}[label=(\alph*)]
     \item Find an orthogonal basis $\{\vec{v}_1, \vec{v}_2\}$ for $\text{span}\{\vec{u}_1, \vec{u}_2\}$
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
     
     \newpage
     
     \item Extend this to an orthogonal basis for $\mathbb{R}^3$
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -567,20 +624,20 @@ Determine which of the following matrices are orthogonal:
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$
     
-    \workingspace[8cm]
-    \answerbox[1.5cm]
+    \workingspace[10]
+    \answerbox[2.5]
     
     \item $B = \frac{1}{3}\begin{pmatrix} 2 & -2 & 1 \\ 1 & 2 & 2 \\ 2 & 1 & -2 \end{pmatrix}$
     
-    \workingspace[10cm]
-    \answerbox[1.5cm]
+    \workingspace[12]
+    \answerbox[2.5]
     
     \newpage
     
     \item $C = \begin{pmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix}$
     
-    \workingspace[8cm]
-    \answerbox[1.5cm]
+    \workingspace[10]
+    \answerbox[2.5]
 \end{enumerate}
 \end{problem}
 
@@ -591,18 +648,18 @@ Let $Q = \begin{pmatrix} \frac{2}{3} & \frac{2}{3} & \frac{1}{3} \\ \frac{2}{3} 
 \begin{enumerate}[label=(\alph*)]
     \item Verify that $Q$ is orthogonal
     
-    \workingspace[10cm]
+    \workingspace[12]
     
     \newpage
     
     \item Find $Q^{-1}$
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
     
     \item Show that $Q$ preserves the length of vectors
     
-    \workingspace[8cm]
+    \workingspace[10]
 \end{enumerate}
 \end{problem}
 
@@ -613,17 +670,17 @@ Prove that if $Q$ is an orthogonal matrix, then:
 \begin{enumerate}[label=(\alph*)]
     \item $\det(Q) = \pm 1$
     
-    \workingspace[8cm]
+    \workingspace[10]
     
     \item $Q^T$ is also orthogonal
     
-    \workingspace[8cm]
+    \workingspace[10]
     
     \newpage
     
     \item The rows of $Q$ form an orthonormal set
     
-    \workingspace[8cm]
+    \workingspace[10]
 \end{enumerate}
 \end{problem}
 
@@ -632,8 +689,8 @@ Prove that if $Q$ is an orthogonal matrix, then:
 \begin{problem}
 Find an orthogonal matrix $Q$ whose first column is $\frac{1}{3}\begin{pmatrix} 2 \\ 2 \\ 1 \end{pmatrix}$.
 
-\workingspace[12cm]
-\answerbox[3cm]
+\workingspace[14]
+\answerbox[4]
 \end{problem}
 
 \newpage
@@ -645,15 +702,15 @@ Determine whether each symmetric matrix is orthogonally diagonalizable. If so, f
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}$
     
-    \workingspace[12cm]
-    \answerbox[3cm]
+    \workingspace[14]
+    \answerbox[4]
     
     \newpage
     
     \item $B = \begin{pmatrix} 1 & 2 & 2 \\ 2 & 1 & 2 \\ 2 & 2 & 1 \end{pmatrix}$
     
-    \workingspace[15cm]
-    \answerbox[3cm]
+    \workingspace[16]
+    \answerbox[4]
 \end{enumerate}
 \end{problem}
 
@@ -664,23 +721,23 @@ Let $A = \begin{pmatrix} 5 & -2 \\ -2 & 2 \end{pmatrix}$.
 \begin{enumerate}[label=(\alph*)]
     \item Show that $A$ is symmetric
     
-    \workingspace[4cm]
+    \workingspace[6]
     
     \item Find the eigenvalues and eigenvectors
     
-    \workingspace[10cm]
-    \answerbox[2.5cm]
+    \workingspace[12]
+    \answerbox[3.5]
     
     \newpage
     
     \item Find an orthogonal matrix $P$ that diagonalizes $A$
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
     
     \item Verify that $P^TAP$ is diagonal
     
-    \workingspace[10cm]
+    \workingspace[12]
 \end{enumerate}
 \end{problem}
 
@@ -689,7 +746,7 @@ Let $A = \begin{pmatrix} 5 & -2 \\ -2 & 2 \end{pmatrix}$.
 \begin{problem}
 Prove the Spectral Theorem: Every symmetric matrix is orthogonally diagonalizable.
 
-\workingspace[15cm]
+\workingspace[16]
 \end{problem}
 
 \newpage
@@ -699,15 +756,15 @@ Given $A = \begin{pmatrix} 6 & 2 & 0 \\ 2 & 3 & 0 \\ 0 & 0 & 5 \end{pmatrix}$:
 \begin{enumerate}[label=(\alph*)]
     \item Find an orthogonal diagonalization of $A$
     
-    \workingspace[12cm]
-    \answerbox[3cm]
+    \workingspace[14]
+    \answerbox[4]
     
     \newpage
     
     \item Use this to compute $A^{10}$
     
-    \workingspace[10cm]
-    \answerbox[2.5cm]
+    \workingspace[12]
+    \answerbox[3.5]
 \end{enumerate}
 \end{problem}
 
@@ -720,13 +777,13 @@ Write each quadratic form in matrix notation $\vec{x}^TA\vec{x}$:
 \begin{enumerate}[label=(\alph*)]
     \item $Q(x_1, x_2) = 3x_1^2 + 4x_1x_2 + 5x_2^2$
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
     
     \item $Q(x_1, x_2, x_3) = x_1^2 - 2x_2^2 + 3x_3^2 + 4x_1x_2 - 6x_2x_3$
     
-    \workingspace[8cm]
-    \answerbox[2.5cm]
+    \workingspace[10]
+    \answerbox[3.5]
 \end{enumerate}
 \end{problem}
 
@@ -737,20 +794,20 @@ For the quadratic form $Q(x_1, x_2) = 5x_1^2 + 8x_1x_2 + 5x_2^2$:
 \begin{enumerate}[label=(\alph*)]
     \item Write $Q$ in the form $\vec{x}^TA\vec{x}$
     
-    \workingspace[5cm]
-    \answerbox[1.5cm]
+    \workingspace[7]
+    \answerbox[2.5]
     
     \item Find an orthogonal change of variables that eliminates the cross-product term
     
-    \workingspace[12cm]
-    \answerbox[2.5cm]
+    \workingspace[14]
+    \answerbox[3.5]
     
     \newpage
     
     \item Classify the quadratic form (positive definite, negative definite, or indefinite)
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -761,20 +818,20 @@ Determine whether each quadratic form is positive definite, negative definite, i
 \begin{enumerate}[label=(\alph*)]
     \item $Q(\vec{x}) = 2x_1^2 + 4x_1x_2 + 3x_2^2$
     
-    \workingspace[8cm]
-    \answerbox[1.5cm]
+    \workingspace[10]
+    \answerbox[2.5]
     
     \newpage
     
     \item $Q(\vec{x}) = -x_1^2 + 2x_1x_2 - x_2^2$
     
-    \workingspace[8cm]
-    \answerbox[1.5cm]
+    \workingspace[10]
+    \answerbox[2.5]
     
     \item $Q(\vec{x}) = x_1^2 + x_2^2 + x_3^2$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
 \end{enumerate}
 \end{problem}
 
@@ -784,8 +841,8 @@ Determine whether each quadratic form is positive definite, negative definite, i
 Find the principal axes and classify the conic section:
 $$5x^2 - 4xy + 2y^2 = 6$$
 
-\workingspace[15cm]
-\answerbox[3cm]
+\workingspace[16]
+\answerbox[4]
 \end{problem}
 
 \newpage
@@ -795,8 +852,8 @@ $$5x^2 - 4xy + 2y^2 = 6$$
 \begin{problem}
 Find the maximum and minimum values of $Q(\vec{x}) = 3x_1^2 + 2x_2^2 + 2x_1x_2$ subject to $\|\vec{x}\| = 1$.
 
-\workingspace[12cm]
-\answerbox[2.5cm]
+\workingspace[14]
+\answerbox[3.5]
 \end{problem}
 
 \newpage
@@ -806,20 +863,20 @@ Consider the function $f(x, y) = 4x^2 + 4xy + y^2$.
 \begin{enumerate}[label=(\alph*)]
     \item Find the maximum value of $f$ on the unit circle $x^2 + y^2 = 1$
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
     
     \item Find the minimum value of $f$ on the unit circle
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \newpage
     
     \item At what points are these extreme values attained?
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -830,8 +887,8 @@ Use quadratic forms to find the extreme values of:
 $$f(x, y, z) = x^2 + y^2 + z^2 + 2xy + 2xz + 2yz$$
 subject to the constraint $x^2 + y^2 + z^2 = 1$.
 
-\workingspace[15cm]
-\answerbox[3cm]
+\workingspace[16]
+\answerbox[4]
 \end{problem}
 
 \newpage
@@ -841,20 +898,20 @@ A company's profit function is given by $P(x_1, x_2) = -2x_1^2 - x_2^2 + x_1x_2 
 \begin{enumerate}[label=(\alph*)]
     \item Find the critical points
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
     
     \item Use the second derivative test (Hessian matrix) to classify each critical point
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
     
     \newpage
     
     \item Find the maximum profit
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -867,15 +924,15 @@ For each matrix, find the rank, nullity, a basis for the column space, and a bas
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 1 & 1 & 2 \end{pmatrix}$
     
-    \workingspace[12cm]
-    \answerbox[3cm]
+    \workingspace[14]
+    \answerbox[4]
     
     \newpage
     
     \item $B = \begin{pmatrix} 1 & 2 & 0 & 3 \\ 2 & 4 & 1 & 5 \\ -1 & -2 & 1 & 1 \end{pmatrix}$
     
-    \workingspace[15cm]
-    \answerbox[3cm]
+    \workingspace[16]
+    \answerbox[4]
 \end{enumerate}
 \end{problem}
 
@@ -885,8 +942,8 @@ For each matrix, find the rank, nullity, a basis for the column space, and a bas
 Verify the Rank-Nullity Theorem for the matrix:
 $$A = \begin{pmatrix} 1 & 3 & 4 & 2 \\ 2 & 6 & 9 & 5 \\ -1 & -3 & -4 & 0 \end{pmatrix}$$
 
-\workingspace[15cm]
-\answerbox[2.5cm]
+\workingspace[16]
+\answerbox[3.5]
 \end{problem}
 
 \newpage
@@ -897,20 +954,20 @@ $$A = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 2 & 3 \\ 0 & 0 & 0 & 1 \end{pmatr
 \begin{enumerate}[label=(\alph*)]
     \item Find $\text{rank}(A)$ and $\text{nullity}(A)$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \item Find a basis for $\text{Col}(A)$ and $\text{Nul}(A)$
     
-    \workingspace[10cm]
-    \answerbox[2.5cm]
+    \workingspace[12]
+    \answerbox[3.5]
     
     \newpage
     
     \item Is $T$ one-to-one? Is $T$ onto?
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -921,8 +978,8 @@ Find the dimension of the row space, column space, and null space of:
 $$A = \begin{pmatrix} 2 & 4 & -2 & 1 \\ 1 & 2 & -1 & 0 \\ 3 & 6 & -3 & 2 \\ 0 & 0 & 0 & 1 \end{pmatrix}$$
 Then verify that $\text{dim}(\text{Row}(A)) = \text{dim}(\text{Col}(A))$.
 
-\workingspace[15cm]
-\answerbox[3cm]
+\workingspace[16]
+\answerbox[4]
 \end{problem}
 
 \newpage
@@ -930,8 +987,8 @@ Then verify that $\text{dim}(\text{Row}(A)) = \text{dim}(\text{Col}(A))$.
 \begin{problem}
 Show that the set of all $2 \times 2$ symmetric matrices forms a subspace of $M_{2\times 2}$. What is its dimension? Find a basis.
 
-\workingspace[15cm]
-\answerbox[3cm]
+\workingspace[16]
+\answerbox[4]
 \end{problem}
 
 \newpage
@@ -943,20 +1000,20 @@ Describe the geometric action of each linear transformation:
 \begin{enumerate}[label=(\alph*)]
     \item $T(\vec{x}) = \begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}\vec{x}$
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
     
     \item $T(\vec{x}) = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\vec{x}$
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
     
     \newpage
     
     \item $T(\vec{x}) = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\vec{x}$
     
-    \workingspace[6cm]
-    \answerbox[2cm]
+    \workingspace[8]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -967,20 +1024,20 @@ Let $A = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \en
 \begin{enumerate}[label=(\alph*)]
     \item Describe the geometric transformation represented by $A$
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
     
     \item Find the image of $\vec{v} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ under this transformation
     
-    \workingspace[7cm]
-    \answerbox[1.5cm]
+    \workingspace[9]
+    \answerbox[2.5]
     
     \newpage
     
     \item Find $A^4$. What transformation does it represent?
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -991,19 +1048,19 @@ Consider the shear transformation $S = \begin{pmatrix} 1 & k \\ 0 & 1 \end{pmatr
 \begin{enumerate}[label=(\alph*)]
     \item Describe how $S$ transforms the unit square with vertices $(0,0)$, $(1,0)$, $(1,1)$, $(0,1)$ for $k=2$
     
-    \workingspace[8cm]
+    \workingspace[10]
     
     \newpage
     
     \item Find the eigenvalues and eigenvectors of $S$
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
     
     \item Does a shear transformation preserve area? Justify your answer
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
@@ -1014,19 +1071,19 @@ The matrix $A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}$ has eigenvalues $\
 \begin{enumerate}[label=(\alph*)]
     \item Describe geometrically what $A$ does to vectors in the directions of $\vec{v}_1$ and $\vec{v}_2$
     
-    \workingspace[8cm]
-    \answerbox[2cm]
+    \workingspace[10]
+    \answerbox[3]
     
     \item Sketch the image of the unit circle under transformation by $A$
     
-    \workingspace[10cm]
+    \workingspace[12]
     
     \newpage
     
     \item What is the area magnification factor of this transformation?
     
-    \workingspace[6cm]
-    \answerbox[1.5cm]
+    \workingspace[8]
+    \answerbox[2.5]
 \end{enumerate}
 \end{problem}
 
@@ -1037,24 +1094,48 @@ Decompose the transformation $T(\vec{x}) = \begin{pmatrix} 4 & 2 \\ 2 & 4 \end{p
 \begin{enumerate}[label=(\alph*)]
     \item A rotation followed by scaling along coordinate axes
     
-    \workingspace[12cm]
-    \answerbox[2.5cm]
+    \workingspace[14]
+    \answerbox[3.5]
     
     \newpage
     
     \item Describe the geometric effect on the unit circle
     
-    \workingspace[10cm]
-    \answerbox[2cm]
+    \workingspace[12]
+    \answerbox[3]
 \end{enumerate}
 \end{problem}
 
-\vspace{2cm}
+\vspace{1cm}
 
 \begin{center}
-\textbf{End of Worksheet}\\[0.5cm]
-\textit{Well done for completing this comprehensive linear algebra worksheet!}\\
-\textit{Review your work and check your answers with your instructor.}
+\begin{tcolorbox}[
+    colback=yolyblue,
+    colframe=yolyblue,
+    width=0.8\textwidth,
+    arc=3mm,
+    boxrule=0pt,
+    halign=center,
+    valign=center
+]
+\textcolor{white}{\Large\textbf{End of Worksheet}}\\[0.3cm]
+\textcolor{white}{\large Well done for completing this comprehensive worksheet!}\\[0.2cm]
+\textcolor{white}{\normalsize Review your work and check your answers with your instructor.}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[
+    colback=yolylightblue,
+    colframe=yolyblue,
+    width=0.8\textwidth,
+    sharp corners
+]
+\centering
+\textbf{Yolymatics Tutorials}\\[0.2cm]
+\textit{Excellence in Mathematics Education}\\
+\small www.yolymatics.com
+\end{tcolorbox}
 \end{center}
 
 \end{document}
