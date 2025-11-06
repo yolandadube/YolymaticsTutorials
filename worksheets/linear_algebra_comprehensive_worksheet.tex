@@ -6,17 +6,37 @@
 \usepackage{tikz}
 \usepackage{fancyhdr}
 \usepackage{multicol}
+\usepackage{framed}
 
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{Linear Algebra Comprehensive Worksheet}
 \rhead{Page \thepage}
 \cfoot{Yolymatics Tutorials}
+\setlength{\headheight}{15pt}
 
 \theoremstyle{definition}
 \newtheorem{problem}{Problem}
 
-\title{\textbf{Linear Algebra Comprehensive Worksheet}}
+% Command for student working space
+\newcommand{\workingspace}[1][8cm]{%
+    \vspace{0.3cm}
+    \noindent\textit{Working:}
+    \vspace{#1}
+}
+
+% Command for answer box
+\newcommand{\answerbox}[1][3cm]{%
+    \vspace{0.2cm}
+    \noindent\fbox{\parbox{\textwidth}{%
+        \textbf{Answer:}\\[0.2cm]
+        \vspace{#1}
+    }}
+    \vspace{0.5cm}
+}
+
+\title{\textbf{Linear Algebra Comprehensive Worksheet}\\
+\large Student Working Copy}
 \author{Yolymatics Tutorials}
 \date{}
 
@@ -25,7 +45,7 @@
 \maketitle
 
 \section*{Instructions}
-This worksheet covers key topics in linear algebra. Show all your working clearly. Use additional paper if needed.
+This worksheet covers key topics in linear algebra. Show all your working clearly in the spaces provided. Use additional paper if needed.
 
 \section{Cross Product (Section 3.5)}
 
@@ -33,30 +53,64 @@ This worksheet covers key topics in linear algebra. Show all your working clearl
 Calculate the cross product $\vec{a} \times \vec{b}$ for the following vectors:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{a} = \begin{pmatrix} 2 \\ 3 \\ -1 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} 1 \\ -2 \\ 4 \end{pmatrix}$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
     \item $\vec{a} = \begin{pmatrix} 5 \\ 0 \\ -3 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix}$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Given vectors $\vec{u} = \begin{pmatrix} 3 \\ -1 \\ 2 \end{pmatrix}$ and $\vec{v} = \begin{pmatrix} -2 \\ 4 \\ 1 \end{pmatrix}$:
 \begin{enumerate}[label=(\alph*)]
     \item Find $\vec{u} \times \vec{v}$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
     \item Verify that $\vec{u} \times \vec{v}$ is orthogonal to both $\vec{u}$ and $\vec{v}$
+    
+    \workingspace[7cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item Find the area of the parallelogram spanned by $\vec{u}$ and $\vec{v}$
+    
+    \workingspace[5cm]
+    \answerbox[1.5cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Prove that for any vectors $\vec{a}$ and $\vec{b}$ in $\mathbb{R}^3$:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{a} \times \vec{b} = -(\vec{b} \times \vec{a})$ (anti-commutativity)
+    
+    \workingspace[8cm]
+    
     \item $\vec{a} \times \vec{a} = \vec{0}$
+    
+    \workingspace[6cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Find the volume of the parallelepiped determined by the vectors:
 $$\vec{a} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \quad \vec{b} = \begin{pmatrix} -1 \\ 1 \\ 2 \end{pmatrix}, \quad \vec{c} = \begin{pmatrix} 2 \\ 0 \\ 1 \end{pmatrix}$$
+
+\workingspace[10cm]
+\answerbox[2cm]
 \end{problem}
 
 \section{Eigenvalues and Eigenvectors (Section 5.1)}
@@ -65,32 +119,80 @@ $$\vec{a} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \quad \vec{b} = \begin{pm
 Find the eigenvalues and corresponding eigenvectors for each matrix:
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item $B = \begin{pmatrix} 2 & -1 \\ -1 & 2 \end{pmatrix}$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
     \item $C = \begin{pmatrix} 4 & 2 \\ 3 & 3 \end{pmatrix}$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Consider the matrix $A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 3 & 0 \\ 2 & -4 & 2 \end{pmatrix}$
 \begin{enumerate}[label=(\alph*)]
     \item Find the characteristic polynomial of $A$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
     \item Find all eigenvalues of $A$
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item Find an eigenvector for each eigenvalue
+    
+    \workingspace[10cm]
+    \answerbox[3cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Let $\lambda = 5$ be an eigenvalue of $A = \begin{pmatrix} 5 & 2 \\ 2 & 5 \end{pmatrix}$ with eigenvector $\vec{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
 \begin{enumerate}[label=(\alph*)]
     \item Verify that $\vec{v}$ is indeed an eigenvector with eigenvalue $\lambda = 5$
+    
+    \workingspace[5cm]
+    
     \item Find the other eigenvalue and eigenvector
+    
+    \workingspace[7cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item What is the trace and determinant of $A$? How do they relate to the eigenvalues?
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
 
+\vspace{1cm}
+
 \begin{problem}
 Prove that if $\lambda$ is an eigenvalue of an invertible matrix $A$, then $\frac{1}{\lambda}$ is an eigenvalue of $A^{-1}$.
+
+\workingspace[10cm]
 \end{problem}
+
+\newpage
 
 \section{Diagonalization (Section 5.2)}
 
@@ -98,26 +200,71 @@ Prove that if $\lambda$ is an eigenvalue of an invertible matrix $A$, then $\fra
 Determine whether each matrix is diagonalizable. If so, find matrices $P$ and $D$ such that $A = PDP^{-1}$.
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} 1 & 2 \\ 3 & 2 \end{pmatrix}$
+    
+    \workingspace[10cm]
+    \answerbox[2.5cm]
+    
+    \newpage
+    
     \item $B = \begin{pmatrix} 2 & 1 \\ 0 & 2 \end{pmatrix}$
+    
+    \workingspace[10cm]
+    \answerbox[2.5cm]
+    
+    \newpage
+    
     \item $C = \begin{pmatrix} 3 & -1 \\ 1 & 1 \end{pmatrix}$
+    
+    \workingspace[10cm]
+    \answerbox[2.5cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Given $A = \begin{pmatrix} 5 & 4 \\ 1 & 2 \end{pmatrix}$ has eigenvalues $\lambda_1 = 6$ and $\lambda_2 = 1$ with corresponding eigenvectors $\vec{v}_1 = \begin{pmatrix} 4 \\ 1 \end{pmatrix}$ and $\vec{v}_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix}$:
 \begin{enumerate}[label=(\alph*)]
     \item Write $A$ in the form $PDP^{-1}$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item Use this to compute $A^5$
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+    
     \item Find $A^{10}$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Let $A = \begin{pmatrix} 2 & 0 & 0 \\ 1 & 2 & 1 \\ -1 & 0 & 1 \end{pmatrix}$.
 \begin{enumerate}[label=(\alph*)]
     \item Find the eigenvalues of $A$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
     \item Determine the geometric multiplicity of each eigenvalue
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item Is $A$ diagonalizable? Justify your answer
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
 
@@ -126,16 +273,35 @@ Let $A = \begin{pmatrix} 2 & 0 & 0 \\ 1 & 2 & 1 \\ -1 & 0 & 1 \end{pmatrix}$.
 \begin{problem}
 Solve the system of differential equations:
 $$\frac{d\vec{x}}{dt} = A\vec{x}, \quad \text{where} \quad A = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}, \quad \vec{x}(0) = \begin{pmatrix} 3 \\ 1 \end{pmatrix}$$
+
+\workingspace[12cm]
+\answerbox[3cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Consider the system $\vec{x}' = \begin{pmatrix} 4 & -2 \\ 1 & 1 \end{pmatrix}\vec{x}$ with initial condition $\vec{x}(0) = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$.
 \begin{enumerate}[label=(\alph*)]
     \item Find the general solution
+    
+    \workingspace[10cm]
+    \answerbox[2.5cm]
+    
+    \newpage
+    
     \item Find the particular solution satisfying the initial condition
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
     \item Sketch the phase portrait
+    
+    \workingspace[10cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Solve the decoupled system:
@@ -144,16 +310,36 @@ $$\begin{cases}
 \frac{dy_2}{dt} = -2y_2
 \end{cases}$$
 with initial conditions $y_1(0) = 2$ and $y_2(0) = 4$.
+
+\workingspace[10cm]
+\answerbox[2cm]
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 A dynamical system is described by $\vec{x}' = A\vec{x}$ where $A = \begin{pmatrix} -1 & 1 \\ -1 & -1 \end{pmatrix}$.
 \begin{enumerate}[label=(\alph*)]
     \item Find the eigenvalues of $A$
+    
+    \workingspace[7cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item Classify the equilibrium point at the origin (stable/unstable, node/spiral/saddle)
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
+    
     \item Describe the long-term behavior of solutions
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \section{Inner Product (Section 6.1)}
 
@@ -161,33 +347,74 @@ A dynamical system is described by $\vec{x}' = A\vec{x}$ where $A = \begin{pmatr
 Compute the inner product $\langle \vec{u}, \vec{v} \rangle$ for:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{u} = \begin{pmatrix} 3 \\ -2 \\ 1 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} 4 \\ 5 \\ -1 \end{pmatrix}$ (standard inner product)
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
     \item $\vec{u} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}$ with $\langle \vec{u}, \vec{v} \rangle = 2u_1v_1 + 3u_2v_2$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Let $V = P_2$ be the space of polynomials of degree at most 2, with inner product $\langle p, q \rangle = \int_{0}^{1} p(x)q(x)\,dx$.
 \begin{enumerate}[label=(\alph*)]
     \item Compute $\langle 1, x \rangle$, $\langle 1, x^2 \rangle$, and $\langle x, x^2 \rangle$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
     \item Find $\|x\|$ and $\|x^2\|$
+    
+    \workingspace[7cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item Are $\{1, x, x^2\}$ orthogonal?
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Verify that the following defines an inner product on $\mathbb{R}^2$:
 $$\langle \vec{u}, \vec{v} \rangle = 3u_1v_1 + 2u_2v_2$$
 by checking all four axioms of an inner product.
+
+\workingspace[12cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Given $\vec{u} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix}$:
 \begin{enumerate}[label=(\alph*)]
     \item Find $\|\vec{u}\|$
+    
+    \workingspace[5cm]
+    \answerbox[1.5cm]
+    
     \item Find a unit vector in the direction of $\vec{u}$
+    
+    \workingspace[5cm]
+    \answerbox[1.5cm]
+    
     \item Find all vectors orthogonal to $\vec{u}$
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \section{Angle and Orthogonality (Section 6.2)}
 
@@ -195,34 +422,82 @@ Given $\vec{u} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix}$:
 Find the angle between the vectors:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{u} = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
     \item $\vec{u} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} -4 \\ 3 \end{pmatrix}$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
+    \newpage
+    
     \item $\vec{u} = \begin{pmatrix} 2 \\ -1 \\ 2 \end{pmatrix}$, $\vec{v} = \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Determine which of the following pairs of vectors are orthogonal:
 \begin{enumerate}[label=(\alph*)]
     \item $\vec{a} = \begin{pmatrix} 2 \\ 3 \\ -1 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} 1 \\ -2 \\ -4 \end{pmatrix}$
+    
+    \workingspace[5cm]
+    \answerbox[1cm]
+    
     \item $\vec{a} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}$
+    
+    \workingspace[5cm]
+    \answerbox[1cm]
+    
+    \newpage
+    
     \item $\vec{a} = \begin{pmatrix} 4 \\ -2 \end{pmatrix}$, $\vec{b} = \begin{pmatrix} 3 \\ 6 \end{pmatrix}$
+    
+    \workingspace[5cm]
+    \answerbox[1cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Find the orthogonal projection of $\vec{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}$ onto $\vec{a} = \begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix}$.
 \begin{enumerate}[label=(\alph*)]
     \item Find $\text{proj}_{\vec{a}}\vec{b}$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
     \item Find the component of $\vec{b}$ orthogonal to $\vec{a}$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
+    \newpage
+    
     \item Verify that these two components are orthogonal
+    
+    \workingspace[6cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Use the Cauchy-Schwarz inequality to prove that for any vectors $\vec{u}$ and $\vec{v}$ in an inner product space:
 $$|\langle \vec{u}, \vec{v} \rangle| \leq \|\vec{u}\| \cdot \|\vec{v}\|$$
 Then verify this inequality for $\vec{u} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}$ and $\vec{v} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
+
+\workingspace[12cm]
 \end{problem}
+
+\newpage
 
 \section{Gram-Schmidt Process (Section 6.3)}
 
@@ -230,28 +505,60 @@ Then verify this inequality for $\vec{u} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}$
 Apply the Gram-Schmidt process to find an orthogonal basis for the subspace spanned by:
 $$\vec{v}_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \quad \vec{v}_2 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \quad \vec{v}_3 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}$$
 Then normalize to obtain an orthonormal basis.
+
+\workingspace[15cm]
+\answerbox[3cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Find an orthonormal basis for the column space of:
 $$A = \begin{pmatrix} 1 & 0 & 1 \\ 1 & 1 & 2 \\ 1 & 1 & 0 \\ 1 & 2 & 1 \end{pmatrix}$$
+
+\workingspace[15cm]
+\answerbox[3cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Consider the polynomials $p_1(x) = 1$, $p_2(x) = x$, $p_3(x) = x^2$ on the interval $[0, 1]$ with inner product $\langle p, q \rangle = \int_{0}^{1} p(x)q(x)\,dx$.
 \begin{enumerate}[label=(\alph*)]
     \item Apply Gram-Schmidt to obtain an orthogonal set $\{q_1, q_2, q_3\}$
+    
+    \workingspace[12cm]
+    \answerbox[3cm]
+    
+    \newpage
+    
     \item Normalize to get an orthonormal set
+    
+    \workingspace[10cm]
+    \answerbox[3cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Given vectors $\vec{u}_1 = \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}$ and $\vec{u}_2 = \begin{pmatrix} -1 \\ 0 \\ 7 \end{pmatrix}$:
 \begin{enumerate}[label=(\alph*)]
     \item Find an orthogonal basis $\{\vec{v}_1, \vec{v}_2\}$ for $\text{span}\{\vec{u}_1, \vec{u}_2\}$
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item Extend this to an orthogonal basis for $\mathbb{R}^3$
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \section{Orthogonal Matrices (Section 7.1)}
 
@@ -259,32 +566,77 @@ Given vectors $\vec{u}_1 = \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}$ and $\vec{
 Determine which of the following matrices are orthogonal:
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$
+    
+    \workingspace[8cm]
+    \answerbox[1.5cm]
+    
     \item $B = \frac{1}{3}\begin{pmatrix} 2 & -2 & 1 \\ 1 & 2 & 2 \\ 2 & 1 & -2 \end{pmatrix}$
+    
+    \workingspace[10cm]
+    \answerbox[1.5cm]
+    
+    \newpage
+    
     \item $C = \begin{pmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix}$
+    
+    \workingspace[8cm]
+    \answerbox[1.5cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Let $Q = \begin{pmatrix} \frac{2}{3} & \frac{2}{3} & \frac{1}{3} \\ \frac{2}{3} & \frac{1}{3} & -\frac{2}{3} \\ -\frac{1}{3} & \frac{2}{3} & \frac{2}{3} \end{pmatrix}$
 \begin{enumerate}[label=(\alph*)]
     \item Verify that $Q$ is orthogonal
+    
+    \workingspace[10cm]
+    
+    \newpage
+    
     \item Find $Q^{-1}$
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
+    
     \item Show that $Q$ preserves the length of vectors
+    
+    \workingspace[8cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Prove that if $Q$ is an orthogonal matrix, then:
 \begin{enumerate}[label=(\alph*)]
     \item $\det(Q) = \pm 1$
+    
+    \workingspace[8cm]
+    
     \item $Q^T$ is also orthogonal
+    
+    \workingspace[8cm]
+    
+    \newpage
+    
     \item The rows of $Q$ form an orthonormal set
+    
+    \workingspace[8cm]
 \end{enumerate}
 \end{problem}
 
+\vspace{1cm}
+
 \begin{problem}
 Find an orthogonal matrix $Q$ whose first column is $\frac{1}{3}\begin{pmatrix} 2 \\ 2 \\ 1 \end{pmatrix}$.
+
+\workingspace[12cm]
+\answerbox[3cm]
 \end{problem}
+
+\newpage
 
 \section{Orthogonal Diagonalization (Section 7.2)}
 
@@ -292,31 +644,74 @@ Find an orthogonal matrix $Q$ whose first column is $\frac{1}{3}\begin{pmatrix} 
 Determine whether each symmetric matrix is orthogonally diagonalizable. If so, find an orthogonal matrix $P$ and diagonal matrix $D$ such that $A = PDP^T$.
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}$
+    
+    \workingspace[12cm]
+    \answerbox[3cm]
+    
+    \newpage
+    
     \item $B = \begin{pmatrix} 1 & 2 & 2 \\ 2 & 1 & 2 \\ 2 & 2 & 1 \end{pmatrix}$
+    
+    \workingspace[15cm]
+    \answerbox[3cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Let $A = \begin{pmatrix} 5 & -2 \\ -2 & 2 \end{pmatrix}$.
 \begin{enumerate}[label=(\alph*)]
     \item Show that $A$ is symmetric
+    
+    \workingspace[4cm]
+    
     \item Find the eigenvalues and eigenvectors
+    
+    \workingspace[10cm]
+    \answerbox[2.5cm]
+    
+    \newpage
+    
     \item Find an orthogonal matrix $P$ that diagonalizes $A$
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+    
     \item Verify that $P^TAP$ is diagonal
+    
+    \workingspace[10cm]
 \end{enumerate}
 \end{problem}
 
+\newpage
+
 \begin{problem}
 Prove the Spectral Theorem: Every symmetric matrix is orthogonally diagonalizable.
+
+\workingspace[15cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Given $A = \begin{pmatrix} 6 & 2 & 0 \\ 2 & 3 & 0 \\ 0 & 0 & 5 \end{pmatrix}$:
 \begin{enumerate}[label=(\alph*)]
     \item Find an orthogonal diagonalization of $A$
+    
+    \workingspace[12cm]
+    \answerbox[3cm]
+    
+    \newpage
+    
     \item Use this to compute $A^{10}$
+    
+    \workingspace[10cm]
+    \answerbox[2.5cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \section{Quadratic Forms (Section 7.3)}
 
@@ -324,62 +719,146 @@ Given $A = \begin{pmatrix} 6 & 2 & 0 \\ 2 & 3 & 0 \\ 0 & 0 & 5 \end{pmatrix}$:
 Write each quadratic form in matrix notation $\vec{x}^TA\vec{x}$:
 \begin{enumerate}[label=(\alph*)]
     \item $Q(x_1, x_2) = 3x_1^2 + 4x_1x_2 + 5x_2^2$
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
+    
     \item $Q(x_1, x_2, x_3) = x_1^2 - 2x_2^2 + 3x_3^2 + 4x_1x_2 - 6x_2x_3$
+    
+    \workingspace[8cm]
+    \answerbox[2.5cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 For the quadratic form $Q(x_1, x_2) = 5x_1^2 + 8x_1x_2 + 5x_2^2$:
 \begin{enumerate}[label=(\alph*)]
     \item Write $Q$ in the form $\vec{x}^TA\vec{x}$
+    
+    \workingspace[5cm]
+    \answerbox[1.5cm]
+    
     \item Find an orthogonal change of variables that eliminates the cross-product term
+    
+    \workingspace[12cm]
+    \answerbox[2.5cm]
+    
+    \newpage
+    
     \item Classify the quadratic form (positive definite, negative definite, or indefinite)
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Determine whether each quadratic form is positive definite, negative definite, indefinite, or positive/negative semidefinite:
 \begin{enumerate}[label=(\alph*)]
     \item $Q(\vec{x}) = 2x_1^2 + 4x_1x_2 + 3x_2^2$
+    
+    \workingspace[8cm]
+    \answerbox[1.5cm]
+    
+    \newpage
+    
     \item $Q(\vec{x}) = -x_1^2 + 2x_1x_2 - x_2^2$
+    
+    \workingspace[8cm]
+    \answerbox[1.5cm]
+    
     \item $Q(\vec{x}) = x_1^2 + x_2^2 + x_3^2$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Find the principal axes and classify the conic section:
 $$5x^2 - 4xy + 2y^2 = 6$$
+
+\workingspace[15cm]
+\answerbox[3cm]
 \end{problem}
+
+\newpage
 
 \section{Optimization using Quadratic Forms (Section 7.4)}
 
 \begin{problem}
 Find the maximum and minimum values of $Q(\vec{x}) = 3x_1^2 + 2x_2^2 + 2x_1x_2$ subject to $\|\vec{x}\| = 1$.
+
+\workingspace[12cm]
+\answerbox[2.5cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Consider the function $f(x, y) = 4x^2 + 4xy + y^2$.
 \begin{enumerate}[label=(\alph*)]
     \item Find the maximum value of $f$ on the unit circle $x^2 + y^2 = 1$
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+    
     \item Find the minimum value of $f$ on the unit circle
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item At what points are these extreme values attained?
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Use quadratic forms to find the extreme values of:
 $$f(x, y, z) = x^2 + y^2 + z^2 + 2xy + 2xz + 2yz$$
 subject to the constraint $x^2 + y^2 + z^2 = 1$.
+
+\workingspace[15cm]
+\answerbox[3cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 A company's profit function is given by $P(x_1, x_2) = -2x_1^2 - x_2^2 + x_1x_2 + 8x_1 + 6x_2$.
 \begin{enumerate}[label=(\alph*)]
     \item Find the critical points
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+    
     \item Use the second derivative test (Hessian matrix) to classify each critical point
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item Find the maximum profit
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \section{Rank, Nullity and Matrix Spaces (Section 4.9)}
 
@@ -387,34 +866,75 @@ A company's profit function is given by $P(x_1, x_2) = -2x_1^2 - x_2^2 + x_1x_2 
 For each matrix, find the rank, nullity, a basis for the column space, and a basis for the null space:
 \begin{enumerate}[label=(\alph*)]
     \item $A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 1 & 1 & 2 \end{pmatrix}$
+    
+    \workingspace[12cm]
+    \answerbox[3cm]
+    
+    \newpage
+    
     \item $B = \begin{pmatrix} 1 & 2 & 0 & 3 \\ 2 & 4 & 1 & 5 \\ -1 & -2 & 1 & 1 \end{pmatrix}$
+    
+    \workingspace[15cm]
+    \answerbox[3cm]
 \end{enumerate}
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Verify the Rank-Nullity Theorem for the matrix:
 $$A = \begin{pmatrix} 1 & 3 & 4 & 2 \\ 2 & 6 & 9 & 5 \\ -1 & -3 & -4 & 0 \end{pmatrix}$$
+
+\workingspace[15cm]
+\answerbox[2.5cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Let $T: \mathbb{R}^4 \to \mathbb{R}^3$ be a linear transformation with matrix representation:
 $$A = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 2 & 3 \\ 0 & 0 & 0 & 1 \end{pmatrix}$$
 \begin{enumerate}[label=(\alph*)]
     \item Find $\text{rank}(A)$ and $\text{nullity}(A)$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
     \item Find a basis for $\text{Col}(A)$ and $\text{Nul}(A)$
+    
+    \workingspace[10cm]
+    \answerbox[2.5cm]
+    
+    \newpage
+    
     \item Is $T$ one-to-one? Is $T$ onto?
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
+
+\vspace{1cm}
 
 \begin{problem}
 Find the dimension of the row space, column space, and null space of:
 $$A = \begin{pmatrix} 2 & 4 & -2 & 1 \\ 1 & 2 & -1 & 0 \\ 3 & 6 & -3 & 2 \\ 0 & 0 & 0 & 1 \end{pmatrix}$$
 Then verify that $\text{dim}(\text{Row}(A)) = \text{dim}(\text{Col}(A))$.
+
+\workingspace[15cm]
+\answerbox[3cm]
 \end{problem}
+
+\newpage
 
 \begin{problem}
 Show that the set of all $2 \times 2$ symmetric matrices forms a subspace of $M_{2\times 2}$. What is its dimension? Find a basis.
+
+\workingspace[15cm]
+\answerbox[3cm]
 \end{problem}
+
+\newpage
 
 \section{Geometry of Matrix Operators (Section 8.6)}
 
@@ -422,50 +942,119 @@ Show that the set of all $2 \times 2$ symmetric matrices forms a subspace of $M_
 Describe the geometric action of each linear transformation:
 \begin{enumerate}[label=(\alph*)]
     \item $T(\vec{x}) = \begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}\vec{x}$
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
+    
     \item $T(\vec{x}) = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\vec{x}$
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
+    
+    \newpage
+    
     \item $T(\vec{x}) = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\vec{x}$
-\end{enumerate}
-\end{problem}
-
-\begin{problem}
-Let $A = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$ where $\theta = \frac{\pi}{4}$.
-\begin{enumerate}[label=(\alph*)]
-    \item Describe the geometric transformation represented by $A$
-    \item Find the image of $\vec{v} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ under this transformation
-    \item Find $A^4$. What transformation does it represent?
-\end{enumerate}
-\end{problem}
-
-\begin{problem}
-Consider the shear transformation $S = \begin{pmatrix} 1 & k \\ 0 & 1 \end{pmatrix}$.
-\begin{enumerate}[label=(\alph*)]
-    \item Describe how $S$ transforms the unit square with vertices $(0,0)$, $(1,0)$, $(1,1)$, $(0,1)$ for $k=2$
-    \item Find the eigenvalues and eigenvectors of $S$
-    \item Does a shear transformation preserve area? Justify your answer
-\end{enumerate}
-\end{problem}
-
-\begin{problem}
-The matrix $A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}$ has eigenvalues $\lambda_1 = 4$ and $\lambda_2 = 2$ with eigenvectors $\vec{v}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ and $\vec{v}_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
-\begin{enumerate}[label=(\alph*)]
-    \item Describe geometrically what $A$ does to vectors in the directions of $\vec{v}_1$ and $\vec{v}_2$
-    \item Sketch the image of the unit circle under transformation by $A$
-    \item What is the area magnification factor of this transformation?
-\end{enumerate}
-\end{problem}
-
-\begin{problem}
-Decompose the transformation $T(\vec{x}) = \begin{pmatrix} 4 & 2 \\ 2 & 4 \end{pmatrix}\vec{x}$ into:
-\begin{enumerate}[label=(\alph*)]
-    \item A rotation followed by scaling along coordinate axes
-    \item Describe the geometric effect on the unit circle
+    
+    \workingspace[6cm]
+    \answerbox[2cm]
 \end{enumerate}
 \end{problem}
 
 \vspace{1cm}
 
+\begin{problem}
+Let $A = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$ where $\theta = \frac{\pi}{4}$.
+\begin{enumerate}[label=(\alph*)]
+    \item Describe the geometric transformation represented by $A$
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+    
+    \item Find the image of $\vec{v} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ under this transformation
+    
+    \workingspace[7cm]
+    \answerbox[1.5cm]
+    
+    \newpage
+    
+    \item Find $A^4$. What transformation does it represent?
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+\end{enumerate}
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}
+Consider the shear transformation $S = \begin{pmatrix} 1 & k \\ 0 & 1 \end{pmatrix}$.
+\begin{enumerate}[label=(\alph*)]
+    \item Describe how $S$ transforms the unit square with vertices $(0,0)$, $(1,0)$, $(1,1)$, $(0,1)$ for $k=2$
+    
+    \workingspace[8cm]
+    
+    \newpage
+    
+    \item Find the eigenvalues and eigenvectors of $S$
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+    
+    \item Does a shear transformation preserve area? Justify your answer
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+The matrix $A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}$ has eigenvalues $\lambda_1 = 4$ and $\lambda_2 = 2$ with eigenvectors $\vec{v}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ and $\vec{v}_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
+\begin{enumerate}[label=(\alph*)]
+    \item Describe geometrically what $A$ does to vectors in the directions of $\vec{v}_1$ and $\vec{v}_2$
+    
+    \workingspace[8cm]
+    \answerbox[2cm]
+    
+    \item Sketch the image of the unit circle under transformation by $A$
+    
+    \workingspace[10cm]
+    
+    \newpage
+    
+    \item What is the area magnification factor of this transformation?
+    
+    \workingspace[6cm]
+    \answerbox[1.5cm]
+\end{enumerate}
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}
+Decompose the transformation $T(\vec{x}) = \begin{pmatrix} 4 & 2 \\ 2 & 4 \end{pmatrix}\vec{x}$ into:
+\begin{enumerate}[label=(\alph*)]
+    \item A rotation followed by scaling along coordinate axes
+    
+    \workingspace[12cm]
+    \answerbox[2.5cm]
+    
+    \newpage
+    
+    \item Describe the geometric effect on the unit circle
+    
+    \workingspace[10cm]
+    \answerbox[2cm]
+\end{enumerate}
+\end{problem}
+
+\vspace{2cm}
+
 \begin{center}
-\textbf{End of Worksheet}
+\textbf{End of Worksheet}\\[0.5cm]
+\textit{Well done for completing this comprehensive linear algebra worksheet!}\\
+\textit{Review your work and check your answers with your instructor.}
 \end{center}
 
 \end{document}
