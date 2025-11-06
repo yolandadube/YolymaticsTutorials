@@ -636,20 +636,12 @@ if __name__ == "__main__":
         'email': ''
     }
 
-    # Lessons for Bella Grasso
-    lessons = [
-        ("Monday (08/09)", 2),
-        ("Wednesday (10/09)", 2),
-        ("Friday (12/09)", 2),
-        ("Saturday (13/09)", 2),
-        ("Sunday (21/09)", 2),
-        ("Sunday (28/09)", 2),
-    ]
-    total_hours = sum(hours for _, hours in lessons)
+    # Total hours for Bella Grasso - October & November 2024
+    total_hours = 19  # 2+2+2+2+1+2+2+2+2+2 hours
 
     result = generator.generate_invoice(
         student_name="Bella Grasso",
-        courses=["Discrete Mathematics"],
+        courses=["Discrete Mathematics Tutoring"],
         lessons_per_course=[total_hours],
         rate_per_lesson=350.00,
         client_info=rosaria_grasso_info,
