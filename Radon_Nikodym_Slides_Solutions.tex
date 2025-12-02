@@ -1,0 +1,804 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+% Custom commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\ind}{\mathbbm{1}}
+\newcommand{\mF}{\mathcal{F}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Yolymatics Tutorials}
+\lhead{Radon-Nikodym Theorem - Solutions}
+\rfoot{Page \thepage}
+
+\title{\textbf{Solutions to Practice Problems}\\
+\large The Radon-Nikodym Theorem}
+\author{Yolymatics Tutorials}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textcopyright\ Yolymatics Tutorials. All rights reserved.
+\end{center}
+
+\vspace{1em}
+\noindent\textbf{Note:} These solutions provide detailed step-by-step explanations for all practice problems from the lecture slides on the Radon-Nikodym Theorem.
+
+\newpage
+
+\section*{Problem 1: Computing Radon-Nikodym Derivatives}
+
+\textbf{Problem:} Let $(\Omega, \mF, \mu)$ be a measure space. Define measures $\nu_1$ and $\nu_2$ by:
+\[
+\nu_1(A) = 3\mu(A) \quad \text{and} \quad \nu_2(A) = \mu(A \cap E)
+\]
+where $E \in \mF$ is a fixed set.
+
+\subsection*{Solution}
+
+\textbf{(a) Show that $\nu_1 \ll \mu$ and compute $\frac{d\nu_1}{d\mu}$.}
+
+\textbf{Proof of absolute continuity:}
+Let $A \in \mF$ such that $\mu(A) = 0$. Then:
+\[
+\nu_1(A) = 3\mu(A) = 3 \cdot 0 = 0
+\]
+Therefore, $\nu_1 \ll \mu$.
+
+\textbf{Computing the derivative:}
+For any $A \in \mF$:
+\[
+\nu_1(A) = 3\mu(A) = \int_A 3 \, d\mu
+\]
+By the definition of the Radon-Nikodym derivative:
+\[
+\boxed{\frac{d\nu_1}{d\mu} = 3 \quad \mu\text{-a.e.}}
+\]
+
+\vspace{1em}
+\textbf{(b) Show that $\nu_2 \ll \mu$ and compute $\frac{d\nu_2}{d\mu}$.}
+
+\textbf{Proof of absolute continuity:}
+Let $A \in \mF$ such that $\mu(A) = 0$. Then:
+\[
+\nu_2(A) = \mu(A \cap E) \leq \mu(A) = 0
+\]
+Therefore, $\nu_2(A) = 0$, which shows $\nu_2 \ll \mu$.
+
+\textbf{Computing the derivative:}
+For any $A \in \mF$:
+\[
+\nu_2(A) = \mu(A \cap E) = \int_{A \cap E} 1 \, d\mu = \int_A I_E \, d\mu
+\]
+where $I_E$ is the indicator function of $E$. By the definition of the Radon-Nikodym derivative:
+\[
+\boxed{\frac{d\nu_2}{d\mu} = I_E \quad \mu\text{-a.e.}}
+\]
+
+\vspace{1em}
+\textbf{(c) Define $\nu_3 = \nu_1 + \nu_2$. Compute $\frac{d\nu_3}{d\mu}$.}
+
+By the linearity property of Radon-Nikodym derivatives:
+\[
+\frac{d\nu_3}{d\mu} = \frac{d(\nu_1 + \nu_2)}{d\mu} = \frac{d\nu_1}{d\mu} + \frac{d\nu_2}{d\mu}
+\]
+\[
+\boxed{\frac{d\nu_3}{d\mu} = 3 + I_E \quad \mu\text{-a.e.}}
+\]
+
+\newpage
+
+\section*{Problem 2: Chain Rule Application}
+
+\textbf{Problem:} Let $\mu$, $\nu$, and $\lambda$ be $\sigma$-finite measures on $(\Omega, \mF)$ such that:
+\[
+\lambda \ll \nu \ll \mu
+\]
+Suppose that:
+\[
+\frac{d\nu}{d\mu}(\omega) = 2\omega \quad \text{and} \quad \frac{d\lambda}{d\nu}(\omega) = e^{-\omega}
+\]
+for $\omega \in [0, \infty)$.
+
+\subsection*{Solution}
+
+\textbf{(a) Use the chain rule to find $\frac{d\lambda}{d\mu}$.}
+
+By the chain rule for Radon-Nikodym derivatives:
+\[
+\frac{d\lambda}{d\mu} = \frac{d\lambda}{d\nu} \cdot \frac{d\nu}{d\mu}
+\]
+Substituting the given expressions:
+\[
+\frac{d\lambda}{d\mu}(\omega) = e^{-\omega} \cdot 2\omega = 2\omega e^{-\omega}
+\]
+\[
+\boxed{\frac{d\lambda}{d\mu}(\omega) = 2\omega e^{-\omega} \quad \text{for } \omega \in [0, \infty)}
+\]
+
+\vspace{1em}
+\textbf{(b) Verify your answer by computing $\lambda([0, 1])$ in two different ways.}
+
+\textbf{Method 1: Using $\lambda \ll \mu$ directly}
+\[
+\lambda([0, 1]) = \int_0^1 \frac{d\lambda}{d\mu}(\omega) \, d\mu(\omega) = \int_0^1 2\omega e^{-\omega} \, d\mu(\omega)
+\]
+
+\textbf{Method 2: Using the chain through $\nu$}
+First, compute $\nu([0, 1])$:
+\[
+\nu([0, 1]) = \int_0^1 \frac{d\nu}{d\mu}(\omega) \, d\mu(\omega) = \int_0^1 2\omega \, d\mu(\omega)
+\]
+
+Then, compute $\lambda([0, 1])$ using $\lambda \ll \nu$:
+\[
+\lambda([0, 1]) = \int_0^1 \frac{d\lambda}{d\nu}(\omega) \, d\nu(\omega)
+\]
+
+By the change of variables formula:
+\[
+\lambda([0, 1]) = \int_0^1 e^{-\omega} \, d\nu(\omega) = \int_0^1 e^{-\omega} \cdot 2\omega \, d\mu(\omega) = \int_0^1 2\omega e^{-\omega} \, d\mu(\omega)
+\]
+
+Both methods give the same result, confirming our answer. If $\mu = \lambda_1$ (Lebesgue measure):
+\[
+\lambda([0, 1]) = \int_0^1 2\omega e^{-\omega} \, d\omega = 2 - 4e^{-1}
+\]
+
+\newpage
+
+\section*{Problem 3: Absolute Continuity Check}
+
+\textbf{Problem:} Consider the measures on $(\R, \mathcal{B}(\R))$:
+\begin{align*}
+\mu(A) &= \int_A e^{-x} \, dx \quad \text{for } A \subseteq [0, \infty) \\
+\nu(A) &= \int_A x e^{-x} \, dx \quad \text{for } A \subseteq [0, \infty)
+\end{align*}
+
+\subsection*{Solution}
+
+\textbf{(a) Show that $\nu \ll \mu$.}
+
+Let $A \in \mathcal{B}(\R)$ such that $\mu(A) = 0$. We need to show that $\nu(A) = 0$.
+
+If $\mu(A) = 0$, then:
+\[
+\int_A e^{-x} \, dx = 0
+\]
+
+Since $e^{-x} > 0$ for all $x \in [0, \infty)$, this implies that $\lambda_1(A \cap [0, \infty)) = 0$ (where $\lambda_1$ is Lebesgue measure).
+
+Therefore:
+\[
+\nu(A) = \int_A x e^{-x} \, dx = \int_{A \cap [0,\infty)} x e^{-x} \, dx = 0
+\]
+since the integrand is non-negative and the domain of integration has Lebesgue measure zero.
+
+Thus, $\boxed{\nu \ll \mu}$.
+
+\vspace{1em}
+\textbf{(b) Find $\frac{d\nu}{d\mu}$.}
+
+We can write both measures in terms of Lebesgue measure $\lambda_1$:
+\[
+\mu(A) = \int_A e^{-x} \, d\lambda_1(x) \quad \Rightarrow \quad \frac{d\mu}{d\lambda_1}(x) = e^{-x}
+\]
+\[
+\nu(A) = \int_A x e^{-x} \, d\lambda_1(x) \quad \Rightarrow \quad \frac{d\nu}{d\lambda_1}(x) = x e^{-x}
+\]
+
+Using the chain rule (or inverse rule):
+\[
+\frac{d\nu}{d\mu} = \frac{d\nu/d\lambda_1}{d\mu/d\lambda_1} = \frac{x e^{-x}}{e^{-x}} = x
+\]
+
+Therefore:
+\[
+\boxed{\frac{d\nu}{d\mu}(x) = x \quad \text{for } x \in [0, \infty)}
+\]
+
+We can verify: $\nu(A) = \int_A x \, d\mu(x) = \int_A x e^{-x} \, dx$. ✓
+
+\vspace{1em}
+\textbf{(c) Is $\mu \ll \nu$? If so, find $\frac{d\mu}{d\nu}$.}
+
+For $\mu \ll \nu$, we need: $\nu(A) = 0 \Rightarrow \mu(A) = 0$.
+
+Consider $A = \{0\}$. Then:
+\[
+\nu(\{0\}) = \int_{\{0\}} x e^{-x} \, dx = 0
+\]
+but
+\[
+\mu(\{0\}) = \int_{\{0\}} e^{-x} \, dx = 0
+\]
+
+Actually, both are zero for singleton sets (Lebesgue measure). Let's be more careful.
+
+The density $\frac{d\nu}{d\mu}(x) = x$ equals zero when $x = 0$. This means $\nu$ assigns no mass where $x = 0$, but $\mu$ does (in the sense that $e^{-0} = 1 \neq 0$).
+
+However, we need to check if there's a set with $\nu(A) = 0$ but $\mu(A) > 0$.
+
+Since $\frac{d\nu}{d\mu}(x) = x$, and $x = 0$ only at a single point, we have $\nu(A) = 0$ implies $\mu(A \cap \{0\}) + \mu(A \cap (0, \infty)) = \mu(A)$ where the first term is zero (singleton) and for the second term to contribute to $\nu(A) = 0$ with $x > 0$, we need $\mu(A \cap (0, \infty)) = 0$.
+
+So yes, $\boxed{\mu \ll \nu}$ (they are equivalent).
+
+\[
+\boxed{\frac{d\mu}{d\nu}(x) = \frac{1}{x} \quad \text{for } x \in (0, \infty)}
+\]
+
+\newpage
+
+\section*{Problem 4: Probability Density Functions}
+
+\textbf{Problem:} Let $X$ be a random variable with probability density function:
+\[
+f_X(x) = \begin{cases}
+2x & \text{if } 0 \leq x \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+Define $Y = X^2$.
+
+\subsection*{Solution}
+
+\textbf{(a) Express $\Prob_X$ (the law of $X$) using Radon-Nikodym notation.}
+
+The law of $X$ is the measure $\Prob_X$ on $(\R, \mathcal{B}(\R))$ defined by:
+\[
+\Prob_X(B) = \Prob(X \in B) = \int_B f_X(x) \, dx = \int_B f_X(x) \, d\lambda_1(x)
+\]
+
+Since $\Prob_X(B) = \int_B f_X \, d\lambda_1$, we have $\Prob_X \ll \lambda_1$ with:
+\[
+\boxed{\frac{d\Prob_X}{d\lambda_1}(x) = f_X(x) = \begin{cases}
+2x & \text{if } 0 \leq x \leq 1 \\
+0 & \text{otherwise}
+\end{cases}}
+\]
+
+\vspace{1em}
+\textbf{(b) Find the cumulative distribution function of $Y$.}
+
+For $y < 0$: $F_Y(y) = \Prob(Y \leq y) = 0$.
+
+For $0 \leq y \leq 1$:
+\[
+F_Y(y) = \Prob(Y \leq y) = \Prob(X^2 \leq y) = \Prob(X \leq \sqrt{y})
+\]
+(since $X \geq 0$ by definition)
+\[
+= \int_0^{\sqrt{y}} 2x \, dx = \left[x^2\right]_0^{\sqrt{y}} = y
+\]
+
+For $y > 1$: $F_Y(y) = 1$.
+
+Therefore:
+\[
+\boxed{F_Y(y) = \begin{cases}
+0 & \text{if } y < 0 \\
+y & \text{if } 0 \leq y \leq 1 \\
+1 & \text{if } y > 1
+\end{cases}}
+\]
+
+\vspace{1em}
+\textbf{(c) Find $f_Y$, the probability density function of $Y$.}
+
+The PDF is the derivative of the CDF:
+\[
+f_Y(y) = \frac{d}{dy} F_Y(y) = \begin{cases}
+1 & \text{if } 0 \leq y \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+This shows that $Y$ is uniformly distributed on $[0, 1]$.
+
+\[
+\boxed{f_Y(y) = \begin{cases}
+1 & \text{if } 0 \leq y \leq 1 \\
+0 & \text{otherwise}
+\end{cases}}
+\]
+
+\vspace{1em}
+\textbf{(d) Express your answer using $\frac{d\Prob_Y}{d\lambda_1}$.}
+
+Since $\Prob_Y(B) = \int_B f_Y(y) \, dy$ for any $B \in \mathcal{B}(\R)$:
+\[
+\boxed{\frac{d\Prob_Y}{d\lambda_1}(y) = I_{[0,1]}(y)}
+\]
+where $I_{[0,1]}$ is the indicator function of $[0, 1]$.
+
+\newpage
+
+\section*{Problem 5: Change of Variables}
+
+\textbf{Problem:} Let $\nu$ and $\mu$ be measures on $(\R, \mathcal{B}(\R))$ with $\nu \ll \mu$ and:
+\[
+\frac{d\nu}{d\mu}(x) = x^2 \quad \text{for } x \in [0, 2]
+\]
+Define $g(x) = 3x + 1$.
+
+\subsection*{Solution}
+
+\textbf{(a) Use the change of variables formula to compute $\int_{[0, 2]} g(x) \, d\nu(x)$ in terms of an integral with respect to $\mu$.}
+
+By the change of variables formula for Radon-Nikodym derivatives:
+\[
+\int_A g \, d\nu = \int_A g \frac{d\nu}{d\mu} \, d\mu
+\]
+
+Therefore:
+\[
+\int_{[0, 2]} g(x) \, d\nu(x) = \int_{[0, 2]} g(x) \frac{d\nu}{d\mu}(x) \, d\mu(x)
+\]
+\[
+= \int_{[0, 2]} (3x + 1) \cdot x^2 \, d\mu(x)
+\]
+\[
+\boxed{= \int_{[0, 2]} (3x^3 + x^2) \, d\mu(x)}
+\]
+
+\vspace{1em}
+\textbf{(b) If $\mu = \lambda_1$ (Lebesgue measure), evaluate the integral explicitly.}
+
+If $\mu = \lambda_1$:
+\[
+\int_{[0, 2]} (3x^3 + x^2) \, d\mu(x) = \int_0^2 (3x^3 + x^2) \, dx
+\]
+\[
+= \left[\frac{3x^4}{4} + \frac{x^3}{3}\right]_0^2
+\]
+\[
+= \frac{3 \cdot 16}{4} + \frac{8}{3}
+\]
+\[
+= 12 + \frac{8}{3} = \frac{36 + 8}{3} = \frac{44}{3}
+\]
+
+Therefore:
+\[
+\boxed{\int_{[0, 2]} g(x) \, d\nu(x) = \frac{44}{3}}
+\]
+
+\newpage
+
+\section*{Problem 6: Mutual Singularity}
+
+\textbf{Problem:} Let $\delta_0$ be the Dirac measure at 0 and $\lambda_1$ be Lebesgue measure on $(\R, \mathcal{B}(\R))$.
+
+\subsection*{Solution}
+
+\textbf{(a) Show that $\delta_0 \perp \lambda_1$ by finding a set $A$ such that $\delta_0(A) = \lambda_1(A^c) = 0$.}
+
+Let $A = \{0\}$. Then:
+\[
+\delta_0(A) = \delta_0(\{0\}) = 1 \neq 0
+\]
+
+This doesn't work. Let's try $A = \{0\}$ and check $A^c = \R \setminus \{0\}$:
+\[
+\delta_0(A) = \delta_0(\{0\}) = 1
+\]
+\[
+\lambda_1(A^c) = \lambda_1(\R \setminus \{0\}) = \infty
+\]
+
+Actually, we need to find $A$ such that $\delta_0$ concentrates on $A$ and $\lambda_1$ concentrates on $A^c$.
+
+Let $A = \{0\}$. Then:
+- $\delta_0(A^c) = \delta_0(\R \setminus \{0\}) = 0$ ✓
+- $\lambda_1(A) = \lambda_1(\{0\}) = 0$ ✓
+
+So we should verify: $\delta_0(\R \setminus A) = 0$ and $\lambda_1(A) = 0$.
+
+This means $\delta_0$ and $\lambda_1$ are mutually singular because:
+\[
+\boxed{A = \{0\}: \quad \lambda_1(A) = 0 \text{ and } \delta_0(A^c) = 0}
+\]
+
+\vspace{1em}
+\textbf{(b) Consider $\mu = \delta_0 + \lambda_1$. Find the Lebesgue decomposition of $\mu$ with respect to $\lambda_1$.}
+
+The Lebesgue decomposition states that $\mu = \mu_{ac} + \mu_s$ where $\mu_{ac} \ll \lambda_1$ and $\mu_s \perp \lambda_1$.
+
+From the definition $\mu = \delta_0 + \lambda_1$:
+- $\lambda_1 \ll \lambda_1$ (trivially, with density 1)
+- $\delta_0 \perp \lambda_1$ (from part a)
+
+Therefore:
+\[
+\boxed{\mu_{ac} = \lambda_1 \quad \text{and} \quad \mu_s = \delta_0}
+\]
+
+\vspace{1em}
+\textbf{(c) What is $\frac{d\mu_{ac}}{d\lambda_1}$?}
+
+Since $\mu_{ac} = \lambda_1$:
+\[
+\mu_{ac}(A) = \lambda_1(A) = \int_A 1 \, d\lambda_1
+\]
+
+Therefore:
+\[
+\boxed{\frac{d\mu_{ac}}{d\lambda_1}(x) = 1 \quad \text{for all } x \in \R}
+\]
+
+\newpage
+
+\section*{Problem 7: Equivalence of Measures}
+
+\textbf{Problem:} Let $\mu$ and $\nu$ be measures on $(\Omega, \mF)$ with $\mu \equiv \nu$ (equivalent measures).
+
+\subsection*{Solution}
+
+\textbf{(a) Show that if $f = \frac{d\nu}{d\mu}$, then $f > 0$ $\mu$-a.e.}
+
+Since $\mu \equiv \nu$, we have both $\nu \ll \mu$ and $\mu \ll \nu$.
+
+By the Radon-Nikodym theorem, $\nu(A) = \int_A f \, d\mu$ where $f = \frac{d\nu}{d\mu}$.
+
+Define $A_0 = \{f = 0\}$. We need to show that $\mu(A_0) = 0$.
+
+Since $\mu \ll \nu$, if $\nu(A_0) = 0$ then $\mu(A_0) = 0$.
+
+Now:
+\[
+\nu(A_0) = \int_{A_0} f \, d\mu = \int_{A_0} 0 \, d\mu = 0
+\]
+
+Therefore $\mu(A_0) = 0$, which means $f > 0$ $\mu$-a.e. (on the complement of $A_0$).
+
+More precisely, $\boxed{f > 0 \text{ } \mu\text{-a.e.}}$
+
+\vspace{1em}
+\textbf{(b) Prove that $\frac{d\mu}{d\nu} = \frac{1}{f}$ $\nu$-a.e.}
+
+Since $\mu \ll \nu$, by Radon-Nikodym, there exists $g = \frac{d\mu}{d\nu}$ such that:
+\[
+\mu(A) = \int_A g \, d\nu
+\]
+
+For any $A \in \mF$:
+\[
+\mu(A) = \int_A g \, d\nu = \int_A g \cdot f \, d\mu
+\]
+(using the change of variables formula)
+
+But also $\mu(A) = \int_A 1 \, d\mu$.
+
+By uniqueness of the Radon-Nikodym derivative:
+\[
+g \cdot f = 1 \quad \mu\text{-a.e.}
+\]
+
+Since $f > 0$ $\mu$-a.e., we can divide:
+\[
+g = \frac{1}{f} \quad \mu\text{-a.e.}
+\]
+
+Since $\mu \equiv \nu$, this also holds $\nu$-a.e.
+
+\[
+\boxed{\frac{d\mu}{d\nu} = \frac{1}{f} = \frac{1}{\frac{d\nu}{d\mu}} \quad \nu\text{-a.e.}}
+\]
+
+\vspace{1em}
+\textbf{(c) If $\lambda$ is another measure with $\lambda \ll \mu$, show that $\lambda \ll \nu$.}
+
+We need to show: $\nu(A) = 0 \Rightarrow \lambda(A) = 0$.
+
+Given $\nu(A) = 0$ and $\mu \ll \nu$, we have $\mu(A) = 0$.
+
+Since $\lambda \ll \mu$ and $\mu(A) = 0$, we get $\lambda(A) = 0$.
+
+Therefore, $\boxed{\lambda \ll \nu}$.
+
+\vspace{1em}
+\textbf{(d) Express $\frac{d\lambda}{d\nu}$ in terms of $\frac{d\lambda}{d\mu}$ and $\frac{d\nu}{d\mu}$.}
+
+By the chain rule:
+\[
+\frac{d\lambda}{d\mu} = \frac{d\lambda}{d\nu} \cdot \frac{d\nu}{d\mu}
+\]
+
+Since $\frac{d\nu}{d\mu} > 0$ $\mu$-a.e. (from part a):
+\[
+\frac{d\lambda}{d\nu} = \frac{d\lambda/d\mu}{d\nu/d\mu}
+\]
+
+Using part (b), we can also write:
+\[
+\boxed{\frac{d\lambda}{d\nu} = \frac{d\lambda}{d\mu} \cdot \frac{d\mu}{d\nu} = \frac{d\lambda}{d\mu} \cdot \frac{1}{\frac{d\nu}{d\mu}}}
+\]
+
+\newpage
+
+\section*{Problem 8: Conditional Expectation Application}
+
+\textbf{Problem:} Let $(\Omega, \mF, \Prob)$ be a probability space with $\Omega = [0, 1]$, $\mF = \mathcal{B}([0, 1])$, and $\Prob = \lambda_1|_{[0,1]}$ (uniform distribution).
+
+Let $X(\omega) = \omega^2$ and $\mathcal{G} = \sigma(\{[0, 1/2], (1/2, 1]\})$.
+
+\subsection*{Solution}
+
+\textbf{(a) Define the measure $\nu(G) = \E(X; G)$ for $G \in \mathcal{G}$.}
+
+The measure $\nu$ is defined by:
+\[
+\boxed{\nu(G) = \E(X; G) = \int_G X \, d\Prob = \int_G \omega^2 \, d\omega}
+\]
+for any $G \in \mathcal{G}$.
+
+\vspace{1em}
+\textbf{(b) Compute $\nu([0, 1/2])$ and $\nu((1/2, 1])$.}
+
+\[
+\nu([0, 1/2]) = \int_0^{1/2} \omega^2 \, d\omega = \left[\frac{\omega^3}{3}\right]_0^{1/2} = \frac{1}{3} \cdot \frac{1}{8} = \frac{1}{24}
+\]
+
+\[
+\nu((1/2, 1]) = \int_{1/2}^1 \omega^2 \, d\omega = \left[\frac{\omega^3}{3}\right]_{1/2}^1 = \frac{1}{3} - \frac{1}{24} = \frac{8 - 1}{24} = \frac{7}{24}
+\]
+
+\[
+\boxed{\nu([0, 1/2]) = \frac{1}{24}, \quad \nu((1/2, 1]) = \frac{7}{24}}
+\]
+
+\vspace{1em}
+\textbf{(c) Show that $\nu \ll \Prob|_{\mathcal{G}}$.}
+
+Let $G \in \mathcal{G}$ such that $\Prob(G) = 0$.
+
+The $\sigma$-algebra $\mathcal{G}$ is generated by the partition $\{[0, 1/2], (1/2, 1]\}$, so $G$ must be one of: $\emptyset$, $[0, 1/2]$, $(1/2, 1]$, or $[0, 1]$.
+
+If $\Prob(G) = 0$, then $G = \emptyset$, which gives:
+\[
+\nu(G) = \nu(\emptyset) = 0
+\]
+
+Therefore, $\boxed{\nu \ll \Prob|_{\mathcal{G}}}$.
+
+\vspace{1em}
+\textbf{(d) Find $\E(X | \mathcal{G}) = \frac{d\nu}{d\Prob|_{\mathcal{G}}}$.}
+
+By the Radon-Nikodym theorem, $\E(X | \mathcal{G})$ is the $\mathcal{G}$-measurable function $Y$ such that:
+\[
+\nu(G) = \int_G Y \, d\Prob \quad \text{for all } G \in \mathcal{G}
+\]
+
+Since $\mathcal{G}$ is generated by $\{[0, 1/2], (1/2, 1]\}$, $Y$ must be constant on each set.
+
+On $[0, 1/2]$:
+\[
+\nu([0, 1/2]) = \int_{[0,1/2]} Y \, d\Prob = Y \cdot \Prob([0, 1/2]) = Y \cdot \frac{1}{2}
+\]
+\[
+\frac{1}{24} = Y \cdot \frac{1}{2} \quad \Rightarrow \quad Y = \frac{1}{12}
+\]
+
+On $(1/2, 1]$:
+\[
+\nu((1/2, 1]) = Y \cdot \Prob((1/2, 1]) = Y \cdot \frac{1}{2}
+\]
+\[
+\frac{7}{24} = Y \cdot \frac{1}{2} \quad \Rightarrow \quad Y = \frac{7}{12}
+\]
+
+Therefore:
+\[
+\boxed{\E(X | \mathcal{G})(\omega) = \begin{cases}
+\frac{1}{12} & \text{if } \omega \in [0, 1/2] \\
+\frac{7}{12} & \text{if } \omega \in (1/2, 1]
+\end{cases}}
+\]
+
+\newpage
+
+\section*{Problem 9: Discrete-Continuous Mixture}
+
+\textbf{Problem:} Consider the measure on $(\R, \mathcal{B}(\R))$:
+\[
+\mu = \frac{1}{2}\delta_0 + \frac{1}{2}\lambda_1|_{[0,1]}
+\]
+where $\delta_0$ is the Dirac measure at 0 and $\lambda_1|_{[0,1]}$ is Lebesgue measure restricted to $[0, 1]$.
+
+\subsection*{Solution}
+
+\textbf{(a) Show that $\mu$ is a probability measure.}
+
+We need to verify that $\mu(\R) = 1$ and $\mu$ satisfies the properties of a probability measure.
+
+\[
+\mu(\R) = \frac{1}{2}\delta_0(\R) + \frac{1}{2}\lambda_1|_{[0,1]}(\R)
+\]
+\[
+= \frac{1}{2} \cdot 1 + \frac{1}{2} \cdot \lambda_1([0, 1])
+\]
+\[
+= \frac{1}{2} + \frac{1}{2} \cdot 1 = 1
+\]
+
+Since both $\delta_0$ and $\lambda_1|_{[0,1]}$ are measures, and any non-negative linear combination of measures is a measure, $\mu$ is a measure.
+
+Therefore, $\boxed{\mu \text{ is a probability measure}}$.
+
+\vspace{1em}
+\textbf{(b) Find the Lebesgue decomposition of $\mu$ with respect to $\lambda_1$: $\mu = \mu_{ac} + \mu_s$.}
+
+We decompose $\mu$ into its absolutely continuous and singular parts with respect to $\lambda_1$.
+
+\textbf{Absolutely continuous part:}
+$\lambda_1|_{[0,1]} \ll \lambda_1$ (trivially), so:
+\[
+\mu_{ac} = \frac{1}{2}\lambda_1|_{[0,1]}
+\]
+
+\textbf{Singular part:}
+From Problem 6, we know $\delta_0 \perp \lambda_1$, so:
+\[
+\mu_s = \frac{1}{2}\delta_0
+\]
+
+Therefore:
+\[
+\boxed{\mu = \mu_{ac} + \mu_s = \frac{1}{2}\lambda_1|_{[0,1]} + \frac{1}{2}\delta_0}
+\]
+
+\vspace{1em}
+\textbf{(c) Compute $\frac{d\mu_{ac}}{d\lambda_1}$.}
+
+The absolutely continuous part is $\mu_{ac} = \frac{1}{2}\lambda_1|_{[0,1]}$.
+
+For any $A \in \mathcal{B}(\R)$:
+\[
+\mu_{ac}(A) = \frac{1}{2}\lambda_1(A \cap [0, 1]) = \int_A \frac{1}{2} I_{[0,1]}(x) \, d\lambda_1(x)
+\]
+
+Therefore:
+\[
+\boxed{\frac{d\mu_{ac}}{d\lambda_1}(x) = \begin{cases}
+\frac{1}{2} & \text{if } x \in [0, 1] \\
+0 & \text{otherwise}
+\end{cases} = \frac{1}{2} I_{[0,1]}(x)}
+\]
+
+\newpage
+
+\section*{Problem 10: Advanced Application}
+
+\textbf{Problem:} Let $\mu$ be a $\sigma$-finite measure on $(\R, \mathcal{B}(\R))$ and $f, g \in m\mathcal{B}(\R)^+$ with $f > 0$ $\mu$-a.e.
+
+Define measures:
+\[
+\nu(A) = \int_A f \, d\mu \quad \text{and} \quad \lambda(A) = \int_A g \, d\mu
+\]
+
+\subsection*{Solution}
+
+\textbf{(a) Show that $\nu \equiv \mu$ and find $\frac{d\mu}{d\nu}$.}
+
+\textbf{Step 1: Show $\nu \ll \mu$}
+
+If $\mu(A) = 0$, then:
+\[
+\nu(A) = \int_A f \, d\mu = 0
+\]
+(since $f \geq 0$ and the domain has $\mu$-measure zero)
+
+Therefore, $\nu \ll \mu$.
+
+\textbf{Step 2: Show $\mu \ll \nu$}
+
+If $\nu(A) = 0$, then:
+\[
+0 = \nu(A) = \int_A f \, d\mu
+\]
+
+Since $f > 0$ $\mu$-a.e., and the integral is zero, we must have $\mu(A \cap \{f > 0\}) = 0$.
+
+Let $B = \{f = 0\}$. Then $\mu(B) = 0$ (since $f > 0$ $\mu$-a.e.), so:
+\[
+\mu(A) = \mu(A \cap B) + \mu(A \cap B^c) = 0 + \mu(A \cap \{f > 0\}) = 0
+\]
+
+Therefore, $\mu \ll \nu$.
+
+Since $\nu \ll \mu$ and $\mu \ll \nu$, we have $\boxed{\nu \equiv \mu}$.
+
+\textbf{Finding $\frac{d\mu}{d\nu}$:}
+
+From the definition of $\nu$:
+\[
+\frac{d\nu}{d\mu} = f
+\]
+
+Using the inverse formula from Problem 7:
+\[
+\boxed{\frac{d\mu}{d\nu} = \frac{1}{f} \quad \nu\text{-a.e.}}
+\]
+
+\vspace{1em}
+\textbf{(b) Show that $\lambda \ll \nu$ and find $\frac{d\lambda}{d\nu}$.}
+
+If $\nu(A) = 0$, then from part (a), $\mu(A) = 0$ (since $\mu \equiv \nu$).
+
+If $\mu(A) = 0$, then:
+\[
+\lambda(A) = \int_A g \, d\mu = 0
+\]
+
+Therefore, $\boxed{\lambda \ll \nu}$.
+
+\textbf{Finding $\frac{d\lambda}{d\nu}$:}
+
+We have:
+\[
+\frac{d\lambda}{d\mu} = g \quad \text{and} \quad \frac{d\nu}{d\mu} = f
+\]
+
+By the chain rule (or division):
+\[
+\frac{d\lambda}{d\nu} = \frac{d\lambda/d\mu}{d\nu/d\mu} = \frac{g}{f}
+\]
+
+Therefore:
+\[
+\boxed{\frac{d\lambda}{d\nu}(x) = \frac{g(x)}{f(x)} \quad \nu\text{-a.e.}}
+\]
+
+(This is well-defined since $f > 0$ $\mu$-a.e., hence $\nu$-a.e.)
+
+\vspace{1em}
+\textbf{(c) For a measurable function $h$, express $\int h \, d\lambda$ in terms of an integral with respect to $\nu$.}
+
+By the change of variables formula:
+\[
+\int h \, d\lambda = \int h \frac{d\lambda}{d\nu} \, d\nu = \int h \cdot \frac{g}{f} \, d\nu
+\]
+
+We can also express this in terms of $\mu$:
+\[
+\int h \, d\lambda = \int h \cdot g \, d\mu
+\]
+
+and
+\[
+\int h \cdot \frac{g}{f} \, d\nu = \int h \cdot \frac{g}{f} \cdot f \, d\mu = \int h \cdot g \, d\mu
+\]
+
+Therefore:
+\[
+\boxed{\int h \, d\lambda = \int h \cdot \frac{g}{f} \, d\nu}
+\]
+
+\vspace{2em}
+\begin{center}
+\rule{\textwidth}{0.4pt}
+
+\vspace{0.5em}
+\textbf{End of Solutions}
+
+\vspace{0.5em}
+\textcopyright\ Yolymatics Tutorials. All rights reserved.
+\end{center}
+
+\end{document}
