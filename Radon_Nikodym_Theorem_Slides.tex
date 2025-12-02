@@ -1,0 +1,615 @@
+\documentclass[12pt]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+
+% Theorem environments
+\newtheorem{proposition}{Proposition}
+
+% Custom commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\ind}{\mathbbm{1}}
+\newcommand{\mF}{\mathcal{F}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+
+\title{The Radon-Nikodym Theorem}
+\subtitle{Applications in Measure Theory and Probability}
+\author{Yolymatics Tutorials}
+\institute{Property of Yolymatics Tutorials}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Motivation and Background}
+
+\begin{frame}
+\frametitle{Why the Radon-Nikodym Theorem?}
+\begin{itemize}
+    \item We often encounter measures that are related to each other
+    \item Example: probability distributions with densities
+    \item Question: When can we express one measure as an ``integral'' of another?
+    \item The Radon-Nikodym theorem provides the answer
+\end{itemize}
+\vspace{1em}
+\textbf{Key Insight:} Think of ``changing variables'' in integration, but for measures
+\end{frame}
+
+\begin{frame}
+\frametitle{Prerequisites: Absolute Continuity}
+Let $(\Omega, \mF)$ be a measurable space and $\mu, \nu$ be positive measures on $(\Omega, \mF)$.
+
+\vspace{1em}
+\begin{block}{Definition (Absolute Continuity)}
+We say that $\nu$ is \textbf{absolutely continuous} with respect to $\mu$, written $\nu \ll \mu$, if for each $A \in \mF$:
+\[
+\mu(A) = 0 \implies \nu(A) = 0
+\]
+\end{block}
+
+\vspace{0.5em}
+\textbf{Intuition:} Sets that are negligible under $\mu$ are also negligible under $\nu$.
+
+\vspace{0.5em}
+$\nu$ ``doesn't see'' anything that $\mu$ doesn't see.
+\end{frame}
+
+\begin{frame}
+\frametitle{Related Concepts}
+\begin{block}{Definition (Equivalence)}
+$\mu$ and $\nu$ are \textbf{equivalent}, written $\mu \equiv \nu$, if $\nu \ll \mu$ and $\mu \ll \nu$.
+\end{block}
+
+\vspace{0.5em}
+\begin{block}{Definition (Mutual Singularity)}
+$\nu$ and $\mu$ are \textbf{mutually singular}, written $\nu \perp \mu$, if there exists $A \in \mF$ such that:
+\[
+\nu(A) = \mu(A^c) = 0
+\]
+\end{block}
+
+\vspace{0.5em}
+\textbf{Intuition:} Singular measures ``live on different sets''.
+\end{frame}
+
+\begin{frame}
+\frametitle{Examples of Absolute Continuity}
+\begin{example}
+\begin{enumerate}
+    \item On $(\R, \mathcal{B}(\R))$: Dirac measure $\delta_0$ and Lebesgue measure $\lambda_1$ are \textbf{mutually singular} since $\lambda_1(\{0\}) = \delta_0(\R \setminus \{0\}) = 0$.
+    
+    \vspace{0.8em}
+    \item If $(\Omega, \mF, \mu)$ is a measure space and $F \in \mF$, define $\nu(A) := \mu(A \cap F)$ for every $A \in \mF$. Then $\nu \ll \mu$.
+    
+    \vspace{0.8em}
+    \item For constants $a, b > 0$, we have $a\mu \equiv b\mu$.
+\end{enumerate}
+\end{example}
+\end{frame}
+
+\section{The Radon-Nikodym Theorem}
+
+\begin{frame}
+\frametitle{The Main Theorem}
+\begin{theorem}[Radon-Nikodym Theorem]
+Let $(\Omega, \mF)$ be a measurable space, and $\mu, \nu$ be two $\sigma$-finite measures on $(\Omega, \mF)$ such that $\nu \ll \mu$. Then there exists $f \in m\mF^+$ such that $\nu = \nu_f^\mu$, meaning:
+\[
+\nu(A) = \int_A f \, d\mu, \quad \forall A \in \mF
+\]
+Furthermore, if $g \in m\mF^+$ is such that $\nu = \nu_g^\mu$, then $f = g$ $\mu$-a.e.
+\end{theorem}
+
+\vspace{0.5em}
+\textbf{Key Point:} The function $f$ is unique up to a $\mu$-null set.
+\end{frame}
+
+\begin{frame}
+\frametitle{The Radon-Nikodym Derivative}
+\begin{block}{Definition}
+The function $f$ in the Radon-Nikodym theorem is called the \textbf{Radon-Nikodym derivative} or \textbf{density} of $\nu$ with respect to $\mu$ and is denoted by:
+\[
+f =: \frac{d\nu}{d\mu}
+\]
+\end{block}
+
+\vspace{1em}
+\textbf{Notation parallel:} Just like ordinary derivatives, but for measures!
+
+\vspace{0.5em}
+We can now write:
+\[
+\nu(A) = \int_A \frac{d\nu}{d\mu} \, d\mu
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Simple Examples}
+\begin{example}
+\begin{enumerate}
+    \item If $\nu := a\mu$ for constant $a > 0$, then
+    \[
+    \frac{d\nu}{d\mu} = a, \quad \mu\text{-a.e.}
+    \]
+    
+    \vspace{1em}
+    \item If $\nu(A) := \mu(A \cap F)$ for some $F \in \mF$, then
+    \[
+    \frac{d\nu}{d\mu} = I_F, \quad \mu\text{-a.e.}
+    \]
+    where $I_F$ is the indicator function of $F$.
+\end{enumerate}
+\end{example}
+\end{frame}
+
+\section{Key Properties and Applications}
+
+\begin{frame}
+\frametitle{Change of Variables Formula}
+\begin{theorem}
+Let $(\Omega, \mF)$ be a measurable space and $\nu, \mu$ be measures with $\nu \ll \mu$. If $g \in L^1(\Omega, \mF, \nu)$, then $g \frac{d\nu}{d\mu} \in L^1(\Omega, \mF, \mu)$ and
+\[
+\int_A g \, d\nu = \int_A g \frac{d\nu}{d\mu} \, d\mu, \quad \forall A \in \mF
+\]
+\end{theorem}
+
+\vspace{0.5em}
+\textbf{This is the measure-theoretic change of variables!}
+
+\vspace{0.5em}
+Compare to: $\int f(y) \, dy = \int f(g(x)) g'(x) \, dx$ from calculus.
+\end{frame}
+
+\begin{frame}
+\frametitle{Properties of Radon-Nikodym Derivatives}
+\begin{proposition}
+Let $(\Omega, \mF)$ be a measurable space and $\mu, \nu, \lambda$ be measures.
+\begin{enumerate}
+    \item \textbf{Linearity:} If $\nu \ll \mu$ and $\lambda \ll \mu$, then $a\nu + b\lambda \ll \mu$ for $a, b \geq 0$, and
+    \[
+    \frac{d(a\nu + b\lambda)}{d\mu} = a\frac{d\nu}{d\mu} + b\frac{d\lambda}{d\mu}, \quad \mu\text{-a.e.}
+    \]
+    
+    \item \textbf{Chain rule:} If $\lambda \ll \nu$ and $\nu \ll \mu$, then $\lambda \ll \mu$ and
+    \[
+    \frac{d\lambda}{d\mu} = \frac{d\lambda}{d\nu} \cdot \frac{d\nu}{d\mu}, \quad \mu\text{-a.e.}
+    \]
+    
+    \item \textbf{Inverse:} If $\nu \equiv \mu$, then $\frac{d\nu}{d\mu} > 0$ $\mu$-a.e. and
+    \[
+    \frac{d\mu}{d\nu} = \frac{1}{\frac{d\nu}{d\mu}}, \quad \nu\text{-a.e.}
+    \]
+\end{enumerate}
+\end{proposition}
+\end{frame}
+
+\begin{frame}
+\frametitle{Application: Probability Densities}
+Let $(\Omega, \mF, \Prob)$ be a probability space and $X$ be a random variable.
+
+\vspace{0.5em}
+The \textbf{law} of $X$ is the measure $\Prob_X$ on $(\R, \mathcal{B}(\R))$ defined by:
+\[
+\Prob_X(B) = \Prob(X \in B), \quad B \in \mathcal{B}(\R)
+\]
+
+\vspace{0.5em}
+\begin{block}{Continuous Random Variables}
+If $\Prob_X \ll \lambda_1$ (absolutely continuous w.r.t. Lebesgue measure), then by Radon-Nikodym:
+\[
+\Prob_X(B) = \int_B f_X(x) \, dx
+\]
+where $f_X = \frac{d\Prob_X}{d\lambda_1}$ is the \textbf{probability density function}.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Application: Conditional Expectation}
+The Radon-Nikodym theorem is fundamental to defining conditional expectation.
+
+\vspace{0.5em}
+\begin{block}{Setup}
+Let $(\Omega, \mF, \Prob)$ be a probability space, $X \in L^1(\Omega, \mF, \Prob)$, and $\mathcal{G} \subseteq \mF$ a sub-$\sigma$-algebra.
+\end{block}
+
+\vspace{0.5em}
+Define $\nu: \mathcal{G} \to \R$ by:
+\[
+\nu(G) = \int_G X \, d\Prob = \E(X; G), \quad G \in \mathcal{G}
+\]
+
+Then $\nu \ll \Prob|_{\mathcal{G}}$, so by Radon-Nikodym, there exists $Y \in L^1(\Omega, \mathcal{G}, \Prob)$ such that:
+\[
+\nu(G) = \int_G Y \, d\Prob, \quad \forall G \in \mathcal{G}
+\]
+
+We write $Y = \E(X | \mathcal{G})$, the conditional expectation of $X$ given $\mathcal{G}$.
+\end{frame}
+
+\section{The Lebesgue Decomposition Theorem}
+
+\begin{frame}
+\frametitle{Decomposing Measures}
+\textbf{Question:} What if $\nu$ is NOT absolutely continuous with respect to $\mu$?
+
+\vspace{1em}
+\begin{block}{Analogy from Linear Algebra}
+Any vector $v \in \R^n$ can be decomposed as:
+\[
+v = v_\parallel + v_\perp
+\]
+where $v_\parallel$ is parallel to a given vector $u$ and $v_\perp$ is orthogonal to $u$.
+\end{block}
+
+\vspace{0.5em}
+\textbf{Lebesgue Decomposition:} Similar decomposition for measures!
+\end{frame}
+
+\begin{frame}
+\frametitle{Lebesgue Decomposition Theorem}
+\begin{theorem}[Lebesgue Decomposition]
+Let $(\Omega, \mF)$ be a measurable space and $\mu, \nu$ be $\sigma$-finite measures on $(\Omega, \mF)$. Then there exist two unique mutually singular $\sigma$-finite measures $\nu_{ac}$ and $\nu_s$ on $(\Omega, \mF)$ such that:
+\begin{enumerate}
+    \item $\nu = \nu_{ac} + \nu_s$
+    \item $\nu_{ac} \ll \mu$ (absolutely continuous part)
+    \item $\nu_s \perp \mu$ (singular part)
+\end{enumerate}
+\end{theorem}
+
+\vspace{0.5em}
+By Radon-Nikodym, we can write:
+\[
+\nu_{ac}(A) = \int_A \frac{d\nu_{ac}}{d\mu} \, d\mu
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Lebesgue Decomposition on $\R$}
+For measures on $(\R, \mathcal{B}(\R))$, we have an even finer decomposition:
+
+\vspace{0.5em}
+\begin{theorem}
+Let $\mu$ be a $\sigma$-finite measure on $(\R, \mathcal{B}(\R))$. Then there exist three unique $\sigma$-finite measures $\mu_{ac}$, $\mu_d$, and $\mu_{sc}$ such that:
+\begin{enumerate}
+    \item $\mu = \mu_{ac} + \mu_d + \mu_{sc}$
+    \item $\mu_{ac}$ is absolutely continuous (w.r.t. Lebesgue measure)
+    \item $\mu_d$ is discrete (concentrated on countable set)
+    \item $\mu_{sc}$ is singular continuous
+\end{enumerate}
+\end{theorem}
+
+\vspace{0.5em}
+\textbf{Example:} For a mixed random variable:
+\[
+\Prob_X = p \cdot \text{discrete part} + (1-p) \cdot \text{continuous part}
+\]
+\end{frame}
+
+\section{Practice Problems}
+
+\begin{frame}
+\frametitle{Problem 1: Computing Radon-Nikodym Derivatives}
+\textbf{Problem:} Let $(\Omega, \mF, \mu)$ be a measure space. Define measures $\nu_1$ and $\nu_2$ by:
+\[
+\nu_1(A) = 3\mu(A) \quad \text{and} \quad \nu_2(A) = \mu(A \cap E)
+\]
+where $E \in \mF$ is a fixed set.
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Show that $\nu_1 \ll \mu$ and compute $\frac{d\nu_1}{d\mu}$.
+    \item[(b)] Show that $\nu_2 \ll \mu$ and compute $\frac{d\nu_2}{d\mu}$.
+    \item[(c)] Define $\nu_3 = \nu_1 + \nu_2$. Compute $\frac{d\nu_3}{d\mu}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 1: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 2: Chain Rule Application}
+\textbf{Problem:} Let $\mu$, $\nu$, and $\lambda$ be $\sigma$-finite measures on $(\Omega, \mF)$ such that:
+\[
+\lambda \ll \nu \ll \mu
+\]
+Suppose that:
+\[
+\frac{d\nu}{d\mu}(\omega) = 2\omega \quad \text{and} \quad \frac{d\lambda}{d\nu}(\omega) = e^{-\omega}
+\]
+for $\omega \in [0, \infty)$.
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Use the chain rule to find $\frac{d\lambda}{d\mu}$.
+    \item[(b)] Verify your answer by computing $\lambda([0, 1])$ in two different ways.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 2: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 3: Absolute Continuity Check}
+\textbf{Problem:} Consider the measures on $(\R, \mathcal{B}(\R))$:
+\begin{align*}
+\mu(A) &= \int_A e^{-x} \, dx \quad \text{for } A \subseteq [0, \infty) \\
+\nu(A) &= \int_A x e^{-x} \, dx \quad \text{for } A \subseteq [0, \infty)
+\end{align*}
+(Both measures are zero on sets outside $[0, \infty)$.)
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Show that $\nu \ll \mu$.
+    \item[(b)] Find $\frac{d\nu}{d\mu}$.
+    \item[(c)] Is $\mu \ll \nu$? If so, find $\frac{d\mu}{d\nu}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 3: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 4: Probability Density Functions}
+\textbf{Problem:} Let $X$ be a random variable with probability density function:
+\[
+f_X(x) = \begin{cases}
+2x & \text{if } 0 \leq x \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+Define $Y = X^2$.
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Express $\Prob_X$ (the law of $X$) using Radon-Nikodym notation.
+    \item[(b)] Find the cumulative distribution function of $Y$.
+    \item[(c)] Find $f_Y$, the probability density function of $Y$.
+    \item[(d)] Express your answer using $\frac{d\Prob_Y}{d\lambda_1}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 4: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 5: Change of Variables}
+\textbf{Problem:} Let $\nu$ and $\mu$ be measures on $(\R, \mathcal{B}(\R))$ with $\nu \ll \mu$ and:
+\[
+\frac{d\nu}{d\mu}(x) = x^2 \quad \text{for } x \in [0, 2]
+\]
+
+Define $g(x) = 3x + 1$.
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Use the change of variables formula to compute:
+    \[
+    \int_{[0, 2]} g(x) \, d\nu(x)
+    \]
+    in terms of an integral with respect to $\mu$.
+    
+    \item[(b)] If $\mu = \lambda_1$ (Lebesgue measure), evaluate the integral explicitly.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 5: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 6: Mutual Singularity}
+\textbf{Problem:} Let $\delta_0$ be the Dirac measure at 0 and $\lambda_1$ be Lebesgue measure on $(\R, \mathcal{B}(\R))$.
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Show that $\delta_0 \perp \lambda_1$ by finding a set $A$ such that:
+    \[
+    \delta_0(A) = \lambda_1(A^c) = 0
+    \]
+    
+    \item[(b)] Consider $\mu = \delta_0 + \lambda_1$. Find the Lebesgue decomposition of $\mu$ with respect to $\lambda_1$.
+    
+    \item[(c)] What is $\frac{d\mu_{ac}}{d\lambda_1}$?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 6: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 7: Equivalence of Measures}
+\textbf{Problem:} Let $\mu$ and $\nu$ be measures on $(\Omega, \mF)$ with $\mu \equiv \nu$ (equivalent measures).
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Show that if $f = \frac{d\nu}{d\mu}$, then $f > 0$ $\mu$-a.e.
+    
+    \item[(b)] Prove that $\frac{d\mu}{d\nu} = \frac{1}{f}$ $\nu$-a.e.
+    
+    \item[(c)] If $\lambda$ is another measure with $\lambda \ll \mu$, show that $\lambda \ll \nu$.
+    
+    \item[(d)] Express $\frac{d\lambda}{d\nu}$ in terms of $\frac{d\lambda}{d\mu}$ and $\frac{d\nu}{d\mu}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 7: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 8: Conditional Expectation Application}
+\textbf{Problem:} Let $(\Omega, \mF, \Prob)$ be a probability space with $\Omega = [0, 1]$, $\mF = \mathcal{B}([0, 1])$, and $\Prob = \lambda_1|_{[0,1]}$ (uniform distribution).
+
+Let $X(\omega) = \omega^2$ and $\mathcal{G} = \sigma(\{[0, 1/2], (1/2, 1]\})$.
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Define the measure $\nu(G) = \E(X; G)$ for $G \in \mathcal{G}$.
+    
+    \item[(b)] Compute $\nu([0, 1/2])$ and $\nu((1/2, 1])$.
+    
+    \item[(c)] Show that $\nu \ll \Prob|_{\mathcal{G}}$.
+    
+    \item[(d)] Find $\E(X | \mathcal{G}) = \frac{d\nu}{d\Prob|_{\mathcal{G}}}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 8: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 9: Discrete-Continuous Mixture}
+\textbf{Problem:} Consider the measure on $(\R, \mathcal{B}(\R))$:
+\[
+\mu = \frac{1}{2}\delta_0 + \frac{1}{2}\lambda_1|_{[0,1]}
+\]
+where $\delta_0$ is the Dirac measure at 0 and $\lambda_1|_{[0,1]}$ is Lebesgue measure restricted to $[0, 1]$.
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Show that $\mu$ is a probability measure.
+    
+    \item[(b)] Find the Lebesgue decomposition of $\mu$ with respect to $\lambda_1$:
+    \[
+    \mu = \mu_{ac} + \mu_s
+    \]
+    
+    \item[(c)] Compute $\frac{d\mu_{ac}}{d\lambda_1}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 9: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 10: Advanced Application}
+\textbf{Problem:} Let $\mu$ be a $\sigma$-finite measure on $(\R, \mathcal{B}(\R))$ and $f, g \in m\mathcal{B}(\R)^+$ with $f > 0$ $\mu$-a.e.
+
+Define measures:
+\[
+\nu(A) = \int_A f \, d\mu \quad \text{and} \quad \lambda(A) = \int_A g \, d\mu
+\]
+
+\vspace{0.5em}
+\begin{enumerate}
+    \item[(a)] Show that $\nu \equiv \mu$ and find $\frac{d\mu}{d\nu}$.
+    
+    \item[(b)] Show that $\lambda \ll \nu$ and find $\frac{d\lambda}{d\nu}$.
+    
+    \item[(c)] For a measurable function $h$, express $\int h \, d\lambda$ in terms of an integral with respect to $\nu$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem 10: Work Space}
+\vspace{8cm}
+\end{frame}
+
+\section{Summary}
+
+\begin{frame}
+\frametitle{Key Takeaways}
+\begin{enumerate}
+    \item \textbf{Radon-Nikodym Theorem:} If $\nu \ll \mu$ ($\sigma$-finite), then $\nu$ has a density:
+    \[
+    \nu(A) = \int_A \frac{d\nu}{d\mu} \, d\mu
+    \]
+    
+    \vspace{0.5em}
+    \item \textbf{Change of Variables:} 
+    \[
+    \int g \, d\nu = \int g \frac{d\nu}{d\mu} \, d\mu
+    \]
+    
+    \vspace{0.5em}
+    \item \textbf{Chain Rule:} If $\lambda \ll \nu \ll \mu$, then:
+    \[
+    \frac{d\lambda}{d\mu} = \frac{d\lambda}{d\nu} \cdot \frac{d\nu}{d\mu}
+    \]
+    
+    \vspace{0.5em}
+    \item \textbf{Lebesgue Decomposition:} Every measure $\nu$ can be decomposed as:
+    \[
+    \nu = \nu_{ac} + \nu_s \quad (\text{absolutely continuous + singular parts})
+    \]
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Applications Summary}
+\textbf{The Radon-Nikodym theorem is fundamental to:}
+
+\vspace{0.5em}
+\begin{itemize}
+    \item Probability density functions
+    \vspace{0.3em}
+    \item Conditional expectation and conditioning
+    \vspace{0.3em}
+    \item Change of measure in probability theory
+    \vspace{0.3em}
+    \item Martingale theory and stochastic calculus
+    \vspace{0.3em}
+    \item Girsanov's theorem (change of measure for Brownian motion)
+    \vspace{0.3em}
+    \item Option pricing in mathematical finance
+\end{itemize}
+
+\vspace{1em}
+\textbf{Master this theorem—it's one of the cornerstones of modern probability theory!}
+\end{frame}
+
+\begin{frame}
+\frametitle{References and Further Reading}
+\begin{itemize}
+    \item Course notes: \textit{Order out of Chaos II} by M. Mavuso
+    \vspace{0.3em}
+    \item Billingsley, P. (1995). \textit{Probability and Measure}
+    \vspace{0.3em}
+    \item Williams, D. (1991). \textit{Probability with Martingales}
+    \vspace{0.3em}
+    \item Durrett, R. (2019). \textit{Probability: Theory and Examples}
+    \vspace{0.3em}
+    \item Folland, G. (1999). \textit{Real Analysis: Modern Techniques}
+\end{itemize}
+
+\vspace{1em}
+\centering
+\Large{Questions?}
+
+\vspace{1em}
+\small{\textcopyright\ Yolymatics Tutorials. All rights reserved.}
+\end{frame}
+
+\end{document}
